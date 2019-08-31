@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+		<input type="button" value="点击1">
+		<input type="button" value="点击2">
+		<input type="button" value="点击3">
+		<input type="button" value="点击4">
+		<input type="button" value="点击5">
+		<input type="button" value="点击6">
+		<input type="button" value="点击7">
+		<input type="button" value="点击8">
+		<input type="button" value="点击9">
+	
+	<script type="text/javascript">
+		
+		// 点击按钮，点谁打印出来谁
+		$('input').click(function () {
+			// 事件处理程序中this，代表的是当前事件源
+			console.log( $(this) );
+		});
+
+
+	</script>
+
+
+</body>
+</html>

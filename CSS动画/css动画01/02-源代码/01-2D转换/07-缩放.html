@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: greenyellow;
+      margin: 100px auto;
+      transition: all 2s;
+    }
+
+    div:hover {
+      /* 最多设置2个值，第一个值表示缩放宽度，第二值表示高度。注意：不加单位 */
+      /* 放大：若大于1表示放大多少倍 */
+      /* transform: scale(2,2) */
+      /* 缩小：若设置的值大于0小于1表示缩小 */
+      /* transform: scale(0.5,0.5) */
+      /* 若设置一个值时，表示宽高一起缩放多少倍（等比例变化） */
+      transform: scale(2)
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

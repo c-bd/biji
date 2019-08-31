@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* 1  xs */
+    
+    @media screen and (min-width:0) {
+      .container {
+        width: 100%;
+      }
+    }
+    /* 2 s */
+    
+    @media screen and (min-width:768px) {
+      .container {
+        width: 750px;
+      }
+    }
+    /* 3. m */
+    
+    @media screen and (min-width:992px) {
+      .container {
+        width: 970px;
+      }
+    }
+    /* 4. L */
+    
+    @media screen and (min-width:1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+    /* 5.  第五档位 */
+    /* @media screen and (min-width:1280px) {} */
+    
+    .container {
+      height: 300px;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container"></div>
+</body>
+
+</html>

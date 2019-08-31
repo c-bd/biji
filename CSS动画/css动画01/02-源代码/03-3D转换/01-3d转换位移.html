@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      /* 透视 */
+      perspective: 600px;
+    }
+    div {
+      width: 200px;
+      height: 200px;
+      background: red;
+      margin: 100px auto;
+      /* 控制X轴 正值向右  负值向左*/
+      /* transform: translateX(100px); */
+      /* transform: translateX(-100px) */
+
+      /* 控制Y轴 正值向下  负值向上*/
+      /* transform: translateY(100px); */
+      /* transform: translateY(-100px) */
+
+      /* 控制Z轴 正值向前-越来越大  负值向后-越来越小*/
+      transform: translateZ(100px)
+      /* transform: translateZ(-100px) */
+
+      /* 注意：若要设置多个轴时，不要分开设置，要在同一个transform中设置 */
+      /* transform: translateX(100px) translateY(100px); */
+
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>

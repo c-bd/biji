@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/getMsg');
+        // 在发送请求之前，设置好responseType
+        /*
+        responseType 属性，真实的意思是预期服务器返回数据的类型
+        指定好这个属性之后，xhr对象，会根据这个属性的值，自动将返回的结果处理成JS数据
+        */
+        xhr.responseType = 'json';
+        xhr.send();
+        xhr.onload = function () {
+            console.log(this.response);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      /* width: 100%; */
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+</body>
+
+
+<script>
+  // 案例：刷新页面，页面有盒子一直随机变颜色；
+
+
+  // 随机变颜色
+  // 颜色：rgb(120,120,110);
+  // 0-255 范围；需要求一个0-255随机整数；
+  // var res = Math.random() * 256;
+  // res = Math.floor(res);
+
+  // 为了是三个位置上的数都不同；
+  // 封装：函数
+  function getColor() {
+    var res = Math.random() * 256;
+    res = Math.floor(res);
+
+    return res;
+  }
+
+
+  // 需要让里面的功能多次执行；需要封装函数；
+  function divColor() {
+    return `rgb(${getColor()},${getColor()},${getColor()})`;
+  }
+
+
+  // console.log(color);
+
+  // 字符串拼接：'rgb(120,120,110)'; 
+  // document.write()
+
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+  document.write(`<div style="background:${divColor()}"></div>`);
+</script>
+
+</html>

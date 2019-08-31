@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		// 利用递归求1~n的阶乘
+		// 递归
+		// function fn (n) {
+
+		// 	if (n == 1) {
+		// 		return 1;
+		// 	}
+		// 	// 阶乘：1到这个数之间所有数相乘
+		// 	return n * fn(n-1);
+
+		// }
+
+
+		// // 代码
+		// // return n * fn(n-1)
+		// // return 4 * 3 * 2 * 1;
+
+		// console.log( fn(4) );
+
+
+		// 利用递归求斐波那契数列
+		// 1 1 2 3 5 8 13 21......
+		
+		function fn (n) {
+
+			if (n == 1 || n == 2) {
+				return 1;
+			}
+
+			return fn(n-1) + fn(n-2);
+
+		}
+
+		// n = 5
+		// return fn(3) + fn(2) + fn(3)
+		// return fn(2) + fn(1) + fn(2) + fn(3)
+		// return 1 + 1 + 1 + 1 + 1
+
+		console.log( fn(5) );
+	</script>
+</body>
+</html>

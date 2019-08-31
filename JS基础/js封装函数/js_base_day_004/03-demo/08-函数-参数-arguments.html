@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 求三个数的和，并返回
+  // function get_sum(a, b, c) {
+  //   return a + b + c;
+  // }
+
+  // var res = get_sum(1, 1, 1);
+  // console.log(res);
+
+  // 当我们参数个数非常多，多到你不确定个数；
+  // function get_sum_1(a, b, c, d) {
+  //   return a + b + c + d;
+  // }
+
+  // 
+  function fn() {
+    // arguments:函数内部的变量，
+    // 不需要我们声明的；
+    // console.log(arguments, typeof(arguments));
+
+    // 伪数组：但是可以循环遍历的。
+    // for (var index = 0; index < arguments.length; index++) {
+    //   console.log(arguments[index]);
+    // }
+  }
+  // fn(1);
+  // 解决：不知道你以后要输入多少个参数的问题,全部获取到；
+  fn(5, 4, 89, "abc", 50);
+</script>
+
+</html>

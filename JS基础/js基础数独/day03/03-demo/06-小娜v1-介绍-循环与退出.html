@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 1.如果我们不输入q,有个引导性的弹窗一直出现；
+  // 2.输入q,  退出 无限循环  ；
+  // 分析：
+
+
+  // 无限的弹窗？
+  while (true) {
+    var info = prompt("你好，我是小娜v1~~\n输入q:退出小娜\n1:求和\n2:显示时间\n3:来个随机笑话");
+    // 转译字符：\n 换行
+
+    // 没有 这些本身自带的关键字
+    if (info == "q") {
+      alert('难道你不爱小娜了么?');
+
+      // 退出 while 循环；
+      break;
+    }
+    // 输入1：情况
+    else if (info == "1") {
+      // str string
+      var str = prompt("请输入你要求和的数据，格式如下：1,2,3,4");
+
+      // 字符串.split(分隔符)
+      // 返回：数（数据）组；里面的元素都是字符串
+      var a = str.split(",");
+
+      // 如何数组里直接都是数字。求和；
+      var sum = 0;
+      for (var index = 0; index < a.length; index++) {
+        // console.log(a[index]);
+
+        // 每个元素是字符串
+        // + ： 字符串拼接，不是我们想要的加法；
+        // 类型转换：数字类型，能运算
+        // parseFloat():可以把"10.1abc"---->10.1
+        // 字符串*1:只能用于单独字符串里面是纯数据的形式
+        sum = sum + parseFloat(a[index]);
+      }
+
+      // 循环结束
+      alert("你的输入的数据求和是：" + sum);
+    }
+    // 输入2：显示弹窗一个时间
+    else if (info == "2") {
+      var date = new Date();
+
+      // 获取当前的年份，返回的是一个数字
+      var year = date.getFullYear();
+      console.log(year);
+      // 人类：1-12
+      // 计算机：0-11
+      var month = date.getMonth() + 1;
+      console.log(month);
+
+      // 单位数
+      if (month < 10) {
+        month = "0" + month;
+      }
+
+      // 日期 :约会 have a date;
+      var day = date.getDate();
+      console.log(day);
+
+      if (day < 10) {
+        day = "0" + day;
+      }
+
+
+      // 时
+      var hour = date.getHours();
+      console.log(hour);
+
+      if (hour < 10) {
+        hour = "0" + hour;
+      }
+
+      // 分
+      var minute = date.getMinutes();
+      console.log(minute);
+
+      if (minute < 10) {
+        minute = "0" + minute;
+      }
+
+      // 秒
+      var second = date.getSeconds();
+      console.log(second);
+
+      if (second < 10) {
+        second = "0" + second;
+      }
+
+
+      // alert(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
+
+      // 拓展es6 ：字符串拼接 模板字符串；
+      alert(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+    }
+    // 输入3：
+    else if (info == "3") {
+      // 笑话：[0,6]
+      var arr = [
+        "啊哈哈~~我是笑话1，你就笑笑把~",
+        "啊哈哈~~我是笑话2，你就笑笑把~",
+        "啊哈哈~~我是笑话3，你就笑笑把~",
+        "啊哈哈~~我是笑话4，你就笑笑把~",
+        "啊哈哈~~我是笑话5，你就笑笑把~",
+        "啊哈哈~~我是笑话6，你就笑笑把~",
+        "啊哈哈~~我是笑话7，你就笑笑把~",
+      ];
+      // 随机小数
+      var r = Math.random() * arr.length;
+
+
+      // 得到随机下标
+      var xia = Math.floor(r);
+
+      // 随机笑话
+      alert(arr[xia])
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+</script>
+
+</html>

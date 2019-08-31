@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		function Star (uname) {
+			this.uname = uname;
+		}
+
+		// Star.prototype.chang = function () {
+		// 	console.log('唱');
+		// }
+		// Star.prototype.tiao = function () {
+		// 	console.log('跳');
+		// }
+		// console.log(Star.prototype);
+		Star.prototype = {
+			// 指回
+			constructor : Star,
+			change : function () {
+				console.log('唱歌');
+			},
+
+			tiao : function () {
+				console.log('跳舞');
+			}
+		};
+
+		console.log(Star.prototype);
+
+
+		// var obj = new Object();
+		// var obj = {name:'张三丰'}
+		// // obj = {name:'李寻欢'}
+		// obj.uname = '李寻欢'
+	</script>
+</body>
+</html>

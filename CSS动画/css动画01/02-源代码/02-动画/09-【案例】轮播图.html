@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 初始化 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    ul li {
+      list-style: none;
+    }
+    /* 根据页面需求定义的css代码 */
+    .box {
+      width: 500px;
+      height: 100px;
+      border: 1px solid;
+      margin:0 auto;
+      overflow: hidden;
+    }
+    /* 内部盒子要放10个图片，所以需要足够的宽度 */
+    .box ul {
+      width: 1000px;
+      /* 调用动画 */
+      animation: move 3s linear infinite;
+    }
+    .box li {
+      float: left;
+    }
+    .box:hover ul {
+      /* 暂定动画 */
+      animation-play-state: paused;
+    }
+    /* 
+      核心需求 ：
+        1. 动画，动画的是内部盒子ul
+        2. 动画变化的是ul的横向x位置  
+        3. 开始位置：0;  结束位置：-500逆向移动
+        4. 鼠标进入轮播区域，暂停动画
+    */
+    @keyframes move {
+      0% {
+        transform: translate(0);
+      }
+      100%{
+        transform: translate(-500px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <ul>
+      <li><img src="images/01.jpg" alt=""></li>
+      <li><img src="images/02.jpg" alt=""></li>
+      <li><img src="images/03.jpg" alt=""></li>
+      <li><img src="images/04.jpg" alt=""></li>
+      <li><img src="images/05.jpg" alt=""></li>
+      <li><img src="images/01.jpg" alt=""></li>
+      <li><img src="images/02.jpg" alt=""></li>
+      <li><img src="images/03.jpg" alt=""></li>
+      <li><img src="images/04.jpg" alt=""></li>
+      <li><img src="images/05.jpg" alt=""></li>
+    </ul>
+  </div>
+</body>
+</html>

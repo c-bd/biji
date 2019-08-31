@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 父盒子 */
+    .f {
+      /* 定位 */
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background: red;
+    }
+
+    /* 【盒子居中：解决方案1】 */
+    /* 子盒子 */
+    /* .s {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: blue;
+      left: 0;
+      right: 0;
+      top:0;
+      bottom: 0;
+      margin: auto;
+
+    } */
+
+    /* 【盒子居中：解决方案2】 */
+    /* 子盒子 */
+    /* .s {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: blue;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+    } */
+
+    /* 【盒子居中：解决方案3】 */
+    /* 子盒子 */
+    .s {
+      position: absolute;
+      width: 199px;
+      height: 199px;
+      background: blue;
+      left: 50%;
+      top: 50%;
+      /* 位移 */
+      /* 优势：对于盒子不用计算向上或向左移动 */
+      transform: translate(-50%,-50%)
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 父盒子 -->
+  <div class="f">
+    <!-- 子盒子 -->
+    <div class="s"></div>
+  </div>
+</body>
+
+</html>

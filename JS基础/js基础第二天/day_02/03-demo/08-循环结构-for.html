@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  var he = 0;
+  // 
+  for (var a = 1; a <= 3; a++) {
+    // 每一次都要从这个循环体过一次；
+    // 每个数据都加在he上面；
+    he = he + a;
+  }
+
+  // 这个时候，打印的he,必定是循环执行完毕；
+  console.log(he);
+
+
+  // 第十次：
+  // a:10
+  // a <= 10 : true
+  // 执行循环体 he = he + a; 把10加上给这个he;
+  // a++:  a--->11
+
+
+  // 第一次
+  // a:11
+  // a <= 10 : false  循环结束
+
+
+
+  // // 初始化 var a = 1(只执行一次);
+  // var a = 1;
+  // // 执行后面条件表达式 a <= 10，返回true,
+  // while (a <= 10) {
+  //   // 执行循环体，执行完成后
+
+
+  //   // a++;
+  //   a++;
+  // }
+
+  // 第一次：
+  // 初始化 var a = 1(只执行一次);
+  // 执行后面条件表达式 a <= 10，返回true,
+  // 执行循环体，执行完成后
+  // a++;
+</script>
+
+</html>

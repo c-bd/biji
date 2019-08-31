@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		var data = [
+			{
+				id : 1,
+				name : '家电',
+				shop : [
+					{
+						id : 11,
+						name : '洗衣机',
+						shop : [
+							{
+								id : 111,
+								name : '海尔',
+								shop : [
+									{
+										id : 1111,
+										name : 'a',
+									},
+									{
+										id : 1112,
+										name : 'b',
+									}
+								]
+							},
+							{
+								id : 112,
+								name : '美的'
+							}
+						]
+					},
+					{
+						id : 12,
+						name : '冰箱'
+					}
+				]
+			},
+			{
+				id : 2,
+				name : '服饰'
+			}
+		];
+
+		// 查找数据，根据id
+		function fn (data, id) {// id=11
+			var arr = {};
+			// 在data里面查找id
+			data.forEach(function (ele,i) {
+				// ele = {}
+				if (ele.id == id) {
+					// console.log(ele);
+					arr = ele;
+				}else if (ele.shop && ele.shop.length > 0) {/// ele.shop==[{},{}]
+					arr = fn(ele.shop, id);
+				}
+
+			});
+
+			return arr;
+
+		}
+
+		console.log( fn(data, 1112) );
+
+
+	</script>
+
+</body>
+</html>

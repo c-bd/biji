@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul > li {
+			background : red;
+			margin : 10px;
+		}
+
+
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	
+
+	<script type="text/javascript">
+		
+		// 获取元素
+		var lis = document.querySelectorAll('li');// lis = [li,li,li......]
+
+		// 添加事件
+		for (var i = 0; i < lis.length; i++) {
+			// lis[i].index = i;
+			// lis[i].onclick = function () {
+			// 	console.log(this.index);
+			// }
+			
+
+			(function (xiabiao) {
+				// xiabiao = 0;
+				// xiabiao = 1
+				lis[xiabiao].onclick = function () {
+					console.log(xiabiao);
+				}
+
+			})(i);
+
+		}
+
+
+	</script>
+</body>
+</html>

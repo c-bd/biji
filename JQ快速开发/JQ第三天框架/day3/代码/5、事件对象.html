@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	
+	
+	<input type="button" value="单击">
+	<a href="http://www.baidu.com">链接</a>
+
+
+
+	<script type="text/javascript">
+
+
+		$('a').click(function (ev) {
+			alert(1223);
+			// ev.preventDefault();
+			return false;
+		})
+
+		
+		// $('input').click(function (e) {
+		// 	console.log('哇哈哈');
+		// 	e.stopPropagation();
+		// });
+
+
+
+		// $(document).click(function () {
+		// 	console.log('document');
+		// });
+	</script>
+
+</body>
+</html>

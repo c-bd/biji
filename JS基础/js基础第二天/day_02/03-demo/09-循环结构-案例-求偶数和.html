@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 需求：1-10之间所有偶数的和；
+  // 分析：
+  //  1-10：循环
+  //  数字%2==0 偶数条件 if分支
+  //  求和：初始化一个变量。sum = sum + 数字；
+
+  var he = 0;
+  for (var index = 1; index <= 10; index++) {
+    // 循环体 后台点名：一次一次的过一下；
+    // console.log(index);
+
+    // 偶数条件：true
+    if (index % 2 == 0) {
+      // 求和：加上he上面index，都是满足条件的index；
+      he = he + index;
+    }
+
+  }
+
+  // 所有偶数的和
+  console.log(he);
+</script>
+
+</html>

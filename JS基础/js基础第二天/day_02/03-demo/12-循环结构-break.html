@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 电梯停6层，我们到第三层就不需要往上走了；
+  // for (var index = 1; index <= 6; index++) {
+  //   console.log(index);
+
+  //   // 按了第三层；
+  //   // 匹配到三层时，不需要往后匹配；
+  //   if (index == 3) {
+  //     console.log("第三层到了");
+
+  //     // 直接退出循环，后面的循环都不会执行；
+  //     break;
+  //   }
+
+  // }
+
+  // 
+
+  for (var index = 1; index <= 6; index++) {
+
+
+    // 到了三层不需要停；
+
+    if (index == 3) {
+
+      // 本次循环 跳过,继续往后：往下次执行你的循环，不是说接着执行下面的代码；；
+      continue;
+    }
+    console.log(index);
+
+  }
+</script>
+
+</html>

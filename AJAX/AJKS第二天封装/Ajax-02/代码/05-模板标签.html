@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./assets/template-web.js"></script>
+
+    <!-- 1. 定义模板 -->
+    <script id="abc" type="text/html">
+        <h1>{{name}}</h1>
+        <p>我是{{nickname}}，我有一辆{{car}}，我今年{{age}}岁了</p>
+        {{if age >= 18}}
+            <p>欢迎来玩~</p>
+        {{else}}
+            <p>未成年人禁止进入</p>
+        {{/if}}
+        <p>我有好几个女朋友，分别是：</p>
+        <ul>
+            {{each girls}}
+            <li>{{$index}} -- {{$value}}</li>
+            {{/each}}
+        </ul>
+    </script>
+
+
+    <script>
+        // 2. 调用template函数
+        var str = template('abc', {
+            name: '狗哥',
+            nickname: '北狗最光阴',
+            car: '宝马',
+            age: 31,
+            girls: ['王婆', '金莲', '西门大官人', '李师师', '赛金花']
+        });
+
+        console.log(str);
+        document.body.innerHTML = str;
+    </script>
+
+</body>
+</html>

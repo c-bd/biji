@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 0--10
+    // var sui_ji=Math.random()*(10+1);
+    // 向下取整
+    // sui_ji=Math.floor(sui_ji);
+
+    // 20----50
+    // var sui_ji=Math.random()*(30+1)
+    // sui_ji=Math.floor(sui_ji)+20;
+    
+    //n----m
+    // var sui_ji=Math.random()*(m-n+1);
+    // sui_ji=Math.floor(sui_ji)+n;
+
+    // 封装函数
+    // function get_suiJi(n,m) {
+    //     var sui_ji=Math.random()*(m-n+1);
+    //     sui_ji=Math.floor(sui_ji)+n;
+    //     return sui_ji;
+    // }
+
+    // 给Math添加获得随机数的方法
+    Math.get_suiJi=function (n,m) {
+        var sui_ji=Math.random()*(m-n+1);
+        sui_ji=Math.floor(sui_ji)+n;
+        return sui_ji;
+    }
+    // 调用
+    var a=Math.get_suiJi(10,15);
+    console.log(a);
+    
+</script>
+</html>

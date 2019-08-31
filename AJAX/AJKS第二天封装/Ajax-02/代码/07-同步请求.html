@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        console.log(111);
+
+        // 发送一次ajax请求
+        var xhr = new XMLHttpRequest();
+
+        // 当请求--响应过程完毕的时候，会触发xhr.onload事件
+        xhr.onload = function () {
+            console.log(this.response);
+        }
+        // xhr.open(请求方式, 请求的url, true/false);
+        // 第三个参数true，表示异步请求，默认就是异步请求
+        // 第三个参数false，表示同步请求
+        xhr.open('GET', '/time', false);
+        xhr.send();
+
+
+        console.log(222);
+
+        /* document.body.onclick = function () {
+            alert(123);
+        } */
+    </script>
+</body>
+
+</html>

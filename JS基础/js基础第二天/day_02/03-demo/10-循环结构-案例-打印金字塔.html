@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // for for 
+  // 外面的for控制行数；告诉里面的for在哪打；
+  // 里面for循环，当被告诉是第一行的时候，打1个；
+  // 里面for循环，当被告诉是第二行的时候，打2个；
+  // ...
+  // 里面for循环，当被告诉是第十行的时候，打10个；
+
+  for (var index = 1; index <= 10; index++) {
+    // console.log(index);
+
+    // 外面的for第一次进来的时候。index:1;
+    // 外面的for第五次进来的时候。index5;
+    // 外面的for第十次进来的时候。index:10;
+
+    // 打几个；
+    for (let jndex = 1; jndex <= index; jndex++) {
+      document.write("o");
+    }
+
+    // 换行；
+    document.write("</br>");
+  }
+</script>
+
+</html>

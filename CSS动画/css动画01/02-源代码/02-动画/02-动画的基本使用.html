@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background:hotpink;
+      /* 调用 */
+      /* 指定动画的名称 */
+      animation-name: move; 
+      /* 指定动画持续的时长*/
+      animation-duration: 10s;
+    }
+
+    /* 定义动画 顺序没有影响*/
+    @keyframes move {
+      0% {
+        /* 动画开始时 */
+        transform: translate(0px);
+        width:100px; 
+      }
+      100% {
+        /* 动画结束时 */
+        transform: translate(800px);
+        width:200px; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

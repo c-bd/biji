@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 求1-10和；
+  // 循环：1-10变化有规律
+
+
+  // 封装为函数：需求1-n;
+  // 配置好内部的参数，记得一定要写在声明函数时后面的()内；
+  function get_sum(n) {
+    var a = 0;
+    for (var index = 1; index <= n; index++) {
+      a += index;
+
+    }
+
+
+    // 循环结束
+    // console.log(a, '内部打打印');
+    return a;
+
+
+    // 能不能多次return;
+    // 如果你想把很多值，一次返回，组个数组；
+    // return [1, 2];
+  }
+
+  // break:是for循环的结束的语法；
+  // for (let index = 0; index < array.length; index++) {
+  //   // const element = array[index];
+  //   break;
+  // }
+
+
+  // 调用函数
+  // 内部有return 后面有返回值；
+  // 执行完函数，有返回值；
+  // var sum = get_sum(10);
+  // console.log(sum, "外面返回的值");
+
+
+  // 改造：n-m数字的和// 10-20
+  // 实际过程：
+
+
+
+  // n-m数字的和;
+  // 注意：
+  // 比如：n>m
+  // 比如：
+  // 封装函数：
+  function get_sum_2(n, m) {
+    // 
+
+
+    // 内部定义的变量
+    var sum = 0;
+    for (var index = n; index <= m; index++) {
+      sum += index;
+    }
+    // console.log(sum);
+    return sum;
+  }
+
+  // 会接受到函数的返回值；
+  var res = get_sum_2(5, 6);
+  console.log(res);
+
+
+
+
+
+
+
+  // function demo() {
+  //   // Uncaught ReferenceError: a is not defined 
+  //   // a 没有定义
+  //   console.log(a);
+  // }
+
+  // // 
+  // demo(1)
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #000;
+    }
+    div {
+      width: 0;
+      font-size: 50px;
+      color: gold;
+      overflow: hidden;
+      /* 调用动画 */
+      animation: changeWidth 5s steps(11) forwards;
+      /* 强制文字不换行 */
+      white-space: nowrap;
+    }
+    /* 
+      核心需求：
+        1. 文字是提前写好的
+        2. 开始，文字看不到
+        3. 在宽度变化中(动画中)，文字逐一看到
+     */
+     @keyframes changeWidth{
+       0%{
+         width: 0;
+       }
+       100%{
+        width: 550px;
+       }
+     }
+  </style>
+</head>
+<body>
+  <div>世纪佳缘我在这里等你❤</div>
+</body>
+</html>

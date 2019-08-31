@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <span id="msg"></span>
+    
+    <script>
+        // 找到输入框，注册失去焦点事件。
+        document.getElementById('username').onblur = function () {
+            // 获取输入框的值
+            var val = this.value;
+            // 发送POST方式的Ajax请求
+            // 1. 创建 xhr 对象
+            var xhr = new XMLHttpRequest();
+            // 2. 设置请求方式和请求的url（数据接口地址）
+            xhr.open('POST', '/checkUser');
+            // 3. 设置请求头
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // 4. 发送请求
+            xhr.send('username=' + val);
+            // 5. 接收服务器响应的结果
+            xhr.onload = function () {
+                console.log(this.response);
+                if (this.response === 'false') {
+                    // 用户名可用
+                    document.getElementById('msg').innerHTML = '<font color="green">恭喜，该用户名可用</font>';
+                } else {
+                    // 用户名已存在
+                    document.getElementById('msg').innerHTML = '<font color="red">sorry，用户名已被占用</font>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

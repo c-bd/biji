@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        // 查看xhr的状态
+        console.log(xhr.readyState); // 0
+
+        xhr.open('GET', '/time');
+        xhr.send();
+        xhr.onload = function () {
+            // 查看xhr的状态
+            console.log(xhr.readyState); // 4
+            console.log(this.response);
+        }
+    </script>
+</body>
+</html>

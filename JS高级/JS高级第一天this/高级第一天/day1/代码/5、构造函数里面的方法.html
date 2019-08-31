@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+
+		class Star {
+
+			constructor (uname, age) {
+				this.uname = uname;
+				this.age = age;
+			}
+
+			// 方法：function fn () {}
+			sing () {
+				console.log( this.uname + '在唱歌');
+			}
+
+			say () {
+				console.log(this.uname + '说：我今年' + this.age);
+			}
+
+		}
+
+		var zjl = new Star('周杰伦', 22);
+		// console.log( zjl.uname );
+		zjl.sing();
+		zjl.say();
+
+
+		var ldh = new Star('刘德华', 23);
+		ldh.sing();
+		ldh.say();
+
+		// function fn () {}
+		// var obj = {
+		// 	fn : function () {}
+		// }
+		// var obj =  {
+		// 	// fn : function () {}
+		// 	nane : 'zhangsanfng',
+		// 	lanqiu : function () {}
+		// }
+	</script>
+</body>
+</html>

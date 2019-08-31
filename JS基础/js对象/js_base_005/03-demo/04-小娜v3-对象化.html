@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 1.无限循环 引导信息，各种情况都各自的分支；
+
+  // 2.把 小娜 对象（工具，瑞士军刀）；
+  var xiao_na = {};
+  // 2.1 小娜应该有提示框功能方法；
+  // xiao_na.quit = function() {
+  //   alert("你不爱小娜了么？");
+  // };
+  // 方法：单独负责弹窗，至于弹出什么内容，我不管；
+  // 比如：函数以后有很多地方用到相同的一个功能，相同的功能封装一个该对象的方法
+  xiao_na.tan_chuang = function(str) {
+    // 相同的一个功能
+    // 假设特别复杂；
+    alert(str);
+  };
+
+  // 2.2 求和；添加方法；
+  xiao_na.get_sum = function() {
+
+    // 接受到用户输入的数据
+    var arr = prompt("按照1|2|3|4格式输入数据：");
+
+    // 需要转换数组；
+    arr = arr.split("|");
+
+    // arr 数（数据）组，内部的元素是 String类型；
+    var sum = 0;
+    // 遍历数组：for
+    for (var index = 0; index < arr.length; index++) {
+      // 把每个元素转换为Number类型
+      // parseFloat(arr[index]);
+      sum += parseFloat(arr[index]);
+    }
+
+    // 把弹窗这个功能也放入小娜
+    // alert(`和：${sum}`);
+    xiao_na.tan_chuang(`和_：${sum}`);
+  };
+
+  // 2.3 时间单位数优化； numb:代表一个数；
+  xiao_na.time_youhua = function(numb) {
+    // 运算
+    // numb = numb < 10 ? "0" + numb : numb;
+    // 结果返回；
+    // return numb;
+
+    // 简写：把三元表达式的结果返回出去；
+    return numb < 10 ? "0" + numb : numb;
+  };
+
+  // 2.4 得到时间也就作为小娜的功能点；
+  xiao_na.get_time = function() {
+    var date = new Date();
+
+    // 
+    var year = date.getFullYear();
+
+    // 0-11
+    var Month = date.getMonth() + 1;
+    Month = xiao_na.time_youhua(Month);
+
+    var day = date.getDate();
+    day = xiao_na.time_youhua(day);
+
+    var Hours = date.getHours();
+    Hours = xiao_na.time_youhua(Hours);
+
+    var Minutes = date.getMinutes();
+    Minutes = xiao_na.time_youhua(Minutes);
+
+    var Seconds = date.getSeconds();
+    Seconds = xiao_na.time_youhua(Seconds);
+
+    // 弹出弹窗：
+    xiao_na.tan_chuang(`${year}-${Month}-${day} ${Hours}:${Minutes}:${Seconds}`)
+  };
+
+  // 2.6.1 首先把笑话的数组，放在小娜的属性上，小娜这个对象，是全局的，所以她的也是通过小娜可以全局的获取
+  xiao_na.xiao_hua_arr = [
+    "笑话1",
+    "笑话2",
+    "笑话3",
+    "笑话4",
+    "笑话5",
+  ];
+
+
+  // 2.5 随机笑话的功能
+  xiao_na.get_random_XH = function() {
+
+    // 需求[0,4] 随机整数；
+    // [0,1) * 4 = [0,4)---->向下取整[0,3]
+    // [0,1) * 5 = [0,5)---->向下取整[0,4]
+
+    // 2.6.2:把使用到该笑话数组的属性进行更变；
+    var res = Math.random() * xiao_na.xiao_hua_arr.length;
+    res = Math.floor(res);
+
+    // 弹窗功能：参数，随机笑话；
+    // xiao_na.tan_chuang("准备好笑了么？")
+    xiao_na.tan_chuang(xiao_na.xiao_hua_arr[res]);
+  }
+
+
+  // 2.6 添加笑话；
+  // 效果： 
+  // xiao_na.add_XH();
+
+  // var xin_XH = ["新笑话1", "新笑话2"];
+  // // 2.6.3 随机随地可以获取 笑话数组；
+  // console.log(xiao_na.xiao_hua_arr);
+
+  // // 返回的是一个新的数组；
+  // xiao_na.xiao_hua_arr = xiao_na.xiao_hua_arr.concat(xin_XH);
+
+
+
+  // 2.7 封装为函数,配置为参数：
+  // function add_XH(new_arr) {
+  //   // var xin_XH = new_arr;
+  //   // // 返回的是一个新的数组；
+  //   // xiao_na.xiao_hua_arr = xiao_na.xiao_hua_arr.concat(xin_XH);
+
+  //   // 过程：
+  //   // 把旧属性上值，进行拼接，
+  //   // 再把旧属性值进行重新赋值；
+  //   xiao_na.xiao_hua_arr = xiao_na.xiao_hua_arr.concat(new_arr);
+  // }
+
+
+
+  // 2.8 拓展小娜的新增笑话
+  xiao_na.add_XH = function(new_arr) {
+    // var xin_XH = new_arr;
+    // // 返回的是一个新的数组；
+    // xiao_na.xiao_hua_arr = xiao_na.xiao_hua_arr.concat(xin_XH);
+
+    // 过程：
+    // 把旧属性上值，进行拼接，
+    // 再把旧属性值进行重新赋值；
+    xiao_na.xiao_hua_arr = xiao_na.xiao_hua_arr.concat(new_arr);
+  };
+
+
+  // 笑话新增：代码里实现
+  // 作业：输入4,用户可以添加笑话；
+  xiao_na.add_XH(["新笑话1", "新笑话2"]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // 
+  while (true) {
+    // y引导信息：
+    var info = prompt("我是小娜V3\n q:退出; \n 1:求和; \n 2:系统时间； \n 3:随机笑话");
+
+
+    // info 是 q ;
+    if (info == "q") {
+
+      // 调用对象上的方法：
+      // xiao_na["quit"]();
+      xiao_na.tan_chuang("你难道不爱小娜了么？");
+
+      break;
+    }
+    // 1：求和功能
+    else if (info == "1") {
+      // 求和
+      xiao_na.get_sum();
+    }
+    // 2：系统时间
+    else if (info == "2") {
+      // 弹个系统时间
+      xiao_na.get_time();
+    }
+    // 3：随机笑话
+    else if (info == "3") {
+      // 
+      xiao_na.get_random_XH();
+    }
+
+
+  }
+</script>
+
+</html

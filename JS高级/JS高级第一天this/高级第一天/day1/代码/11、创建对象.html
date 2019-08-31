@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		// var obj = {
+		// 	name : '张三丰',
+		// 	age : 22
+		// 	tiaji : function () {}
+		// };
+		// // console.log( obj.name );
+
+		// var obj = new Object();
+		// obj.uname = '李寻欢';
+		// obj.age = 22;
+		// obj.abc = function () {}
+		// console.log( obj.uname );
+		
+		// var obj1 = new Object();
+		// obj1.name = name;
+		// obj1.age = age;
+
+		// 自定义构造函数
+		// function Person (uname, age) {
+		// 	this.uname = uname;
+		// 	this.age = age;
+
+		// 	this.jiao = function () {}
+		// }
+
+		// var objLdh = new Person('刘德华', 21);
+		// console.log(objLdh);
+
+		// var objZxy = new Person('张学友',  19);
+		// console.log(objZxy);
+		
+		function Gou (uname,age) {
+
+			this.uname = uname;
+			this.age = age;
+
+			this.jiao = function () {
+				console.log('汪汪叫');
+			}
+
+			this.tiao = function () {
+				console.log('跳起来');
+			}
+
+		}
+
+		var obj = new Gou('大黄',2);
+		obj.jiao();
+	</script>
+</body>
+</html>

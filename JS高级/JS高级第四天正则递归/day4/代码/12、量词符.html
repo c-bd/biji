@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+
+		// [aabbcc]
+		// var reg = /^[a-z]*$/;
+		// console.log( reg.test('abcd') );// true
+		// console.log( reg.test('') );// true
+		// console.log( reg.test('a') );// true
+		// console.log( reg.test('ab') );// true
+
+		// var reg = /^[a-z]+$/;
+		// console.log(reg.test(''));// false
+		// console.log(reg.test('a'));// true
+		// console.log(reg.test('ab'));// true
+		// console.log(reg.test('K'));// false
+
+		// var reg = /^[a-z]?$/;
+		// console.log(reg.test('K'));// false
+		// console.log(reg.test(''));// true
+		// console.log(reg.test('a'));// true
+		// console.log(reg.test('ab'));// false
+
+
+		// var reg = /^[a-z]{6}$/;
+		// console.log(reg.test('a'));// false
+		// console.log(reg.test('ab'));// false
+		// console.log(reg.test('aabc'));// false
+		// console.log(reg.test('aaabbc'));// true
+		// console.log(reg.test('aabcdadsas'));// false
+		
+
+		// var reg = /^[a-z]{6,}$/;
+		// console.log(reg.test('aabbc'));// false
+		// console.log(reg.test('aabbcc'));// true
+		// console.log(reg.test('adaskdasd'));// true
+		// console.log(reg.test('abcabcabcabca'));// true
+		
+
+		var reg = /^[a-z]{6,9}$/;
+		console.log(reg.test('abcde'));// false
+		console.log(reg.test('abcdef'));// true
+		console.log(reg.test('abcabcabc'));// true
+		console.log(reg.test('abcabcabcd'));// false
+	</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="js/jedate/css/jedate.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jedate/js/jedate.js"></script>
+    <script src="js/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="js/tinymce/js/tinymce_setup.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="common_title">
+            文章编辑
+        </div>
+        <div class="container-fluid common_con">
+            <form class="form-horizontal article_form">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
+                    <div class="col-sm-10">
+                        <input name="title" type="email" class="form-control" id="inputEmail3" value="文章标题文字">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
+                    <div class="col-sm-10">
+                        <img src="" class="article_cover">
+                        <input name="cover" type="file" id="exampleInputFile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="categoryId">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">发布时间：</label>
+                    <div class="col-sm-4">
+
+                        <div class="input-group">
+                            <input name="date" type="text" class="form-control" id="dateinput">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"
+                                    onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
+                                        class="iconfont icon-icondate"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="rich_content" placeholder="文章内容">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        ///////////////////////////////////////////////////////////////////////////
+        /////////////获取地址栏的id，根据id获取一篇文章，并设置表单各项的默认值/////////////
+        //////////////////////////////////////////////////////////////////////////
+        // var id = location.search.replace(/\D/g, ''); // 210
+        // var url = new URL('aadfa.html?id=111&categoryId=223');
+        var url = new URL('aadfa.html' + location.search, 'http://www.sfsf.com');
+        // console.log(url.searchParams.get('categoryId'));
+        var id = url.searchParams.get('id'); //  // 得到地址栏的文章id
+        var categoryId = url.searchParams.get('categoryId'); //  // 得到地址栏的分类id
+        // 调用接口，获取一篇文章
+        $.get('http://localhost:8080/admin/article/search', {id: id}, function (res) {
+            console.log(res);
+            // 设置表单各项的默认值
+            $('#inputEmail3').val(res.data.title); // 设置标题
+            $('.article_cover').attr('src', res.data.cover); // 设置图片
+            // 文章类别
+            $('#dateinput').val(res.data.date); // 设置发布时间
+            $('#rich_content').val(res.data.content);
+        }, 'json');
+    </script>
+
+    <script src="./js/template-web.js"></script>
+    <script id="category" type="text/html">
+        {{each arr}}
+        <option value="{{$value.id}}" {{if $value.id == categoryId}} selected {{/if}}>{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <script>
+        ///////////////////////////////////////////////////////////////////////////
+        /////////////  查询所有的类别，并渲染到页面中  /////////////
+        //////////////////////////////////////////////////////////////////////////
+        $.get('http://localhost:8080/admin/category/list', function (res) {
+            var str = template('category', {
+                arr: res.data,
+                categoryId: categoryId
+            });
+            // 把str 放到select中
+            $('select').html(str);
+        }, 'json');
+    </script>
+
+    <script>
+        // 点击 修改 的时候，提交表单数据到编辑文章的接口
+        // 和添加几乎一样
+        /*********************************************************/
+        /************************ 编辑文章 **************************/
+        /*********************************************************/
+        // 给修改 添加单击事件
+        $('.btn-success').click(function (e) {
+            e.preventDefault();
+            // 获取表单数据
+            // var formdata = new FormData(表单的DOM对象);
+            var formdata = new FormData($('form')[0]);
+
+            // 单独加入一个id
+            formdata.append('id', id);
+            // 单独加入 content 
+            formdata.append('content', tinyMCE.activeEditor.getContent());
+            
+            // console.log(tinyMCE.activeEditor.getContent()); // 测试可用
+            // 调用发布文章的接口，实现添加文章即可
+            $.ajax({
+                processData: false, // 不让jQuery将data处理成字符串
+                contentType: false, // 不让jQuery自动设置Content-Type
+                type: 'POST',
+                url: 'http://localhost:8080/admin/article/edit',
+                data: formdata,
+                dataType: 'json',
+                success: function (res) {
+                    // console.log(res);
+                    alert(res.msg);
+                    if (res.code === 200) {
+                        location.href = 'article_list.html';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+			var obj = {
+				name : '李寻欢',
+				age : 22,
+				message : {
+					sex : '男',
+					score : 3
+				},
+				color : ['red','qing','purple']
+			};
+			var newObj = {};
+
+
+			// 遍历对象
+			function bianli (newObj,obj) {
+
+				for ( key in obj ) {
+					// 对象.属性 = 值;
+					// newObj[key] = obj[key];
+					// 判断判断是不是数组，判断是不是对象，判断是不是属性
+					if (obj[key] instanceof Array) {//是数组
+						// 按照数组拷贝
+						// obj[key]==>newObj
+						newObj[key] = [];
+						// obj[key]==>继续遍历，遍历给newObj[key]
+						bianli(newObj[key],obj[key]);
+					} else if (obj[key] instanceof Object) {//是对象
+						// 按照对象
+						newObj[key] = {};
+						bianli(newObj[key], obj[key])
+					}else{
+						newObj[key] = obj[key];
+					}
+
+				}
+
+			}
+
+
+			
+			bianli(newObj, obj);
+
+			// 先遍历，再拷贝
+			obj.message.score = 99;
+			console.log(newObj);
+			console.log(obj);
+	</script>
+</body>
+</html>

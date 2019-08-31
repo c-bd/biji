@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 求 0-某个数 之间的随机整数；
+  // 0-10 随机整数返回给我；
+  // [0,10]
+
+
+  // 1.随机数范围 [0,1)
+  var res = Math.random();
+  console.log(res);
+
+
+  // 2. [0,1)*10 = [0,10);
+  // res = res * 10;
+  // console.log(res);
+
+  // 2.1 [0,1)*11 =  [0,11);
+  res = res * 11;
+
+
+  // 3.随机小数 [0,10)，涉及到取整；
+  // 向上取整
+  // var a = Math.ceil(0);
+  // console.log(a);
+
+  // [0, 10)----->9.000001
+  // res = Math.ceil(res);
+  // // 向上取整
+  // console.log(res);
+  // 得到的数据范围[0,10];
+
+
+
+  // 向下取整
+  // res 取值之前 [0,10)
+  // 向下取整:  9.9999999------>9;
+  // 向下取整:  0.9999999------>0;
+  // res:取值范围 [0,9]
+
+  // res 取值之前 [0,11)
+  // 向下取整:  10.9999999------>10;
+  // 向下取整:  0.9999999------>0;
+  // res:取值范围 [0,10]
+  // res = Math.floor(res);
+
+
+
+
+
+
+  // 4.封装函数，配置参数；
+  // function get_random(m) {
+  //   var res = Math.random();
+  //   res = res * m;
+  //   // 
+  //   res = Math.ceil(res);
+  //   return res;
+  // }
+
+
+  // var a = get_random(10);
+  // console.log(a);
+
+
+
+
+
+
+
+  // Math.floor();
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<input type="button" value="点击">
+	<script type="text/javascript">
+		// var lis = document.querySelectorAll('li');
+		// for (var i = 0; i < lis.length; i++) {
+		// 	lis[i].index = i;
+		// 	lis[i].onclick = function () {
+		// 		console.log(this.index);
+		// 	}
+		// }
+
+		// this：当前
+		// btn.onclick = function () {this}
+		class Star {
+
+			constructor () {
+				// 属性
+				this.id = id;
+				this.btn = document.querySelector('btn');
+				this.btn.onclick = this.say;
+			}
+
+			say () {
+				console.log(this);
+			}
+
+		}
+
+		var obj = new Star();
+
+
+
+
+
+
+		var btn = document.querySelector('input');
+		this.btn.onclick = this.say;
+
+		btn.onclick = function say () {this}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 作用：有重复的思想在里面，用到循环；
+
+
+  // 条件表达式：true,下面会一直执行；不会停，死循环；
+  // while (true) {
+  //   // 循环体：代码会一次又一次的执行
+  //   // console.log(1);
+  //   // document.write("1</br>");
+  //   alert(1);
+  // }
+
+  // 条件表达式：false,下面一次都不会执行；
+  // while (false) {
+  //   alert(1);
+  // }
+
+
+
+  // 执行过程：
+  // while (true) {
+  //   console.log(1);
+  // }
+
+
+
+  // 第一次:先看条件表达式 true ,执行循环体一次；
+  // 第二次：看一下条件表达式 true，执行循环体一次；
+
+
+
+  // 需要有个变化的过程：比如说让你执行10次；
+
+  // 初始化声明变量
+  var a = 1;
+
+  // 条件表达式：判断条件
+  while (a <= 10) {
+    // a 参与运算 1；
+    console.log(a);
+
+    // 为了让循环退出；
+    a++;
+  }
+
+  console.log('-----------------------------------------');
+  console.log(a);
+
+
+  // 第一次：1<=10,返回true,循环体执行一次；a:2;
+  // 第二次：2<=10,返回true,循环体执行一次；a:3;
+  // ...
+  // 第十次：10<=10,返回true,循环体执行一次；a:11;
+  // 第十一次：11<=10,返回false,不会执行循环体；
+</script>
+
+</html>

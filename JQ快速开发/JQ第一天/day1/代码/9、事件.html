@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	
+	<input type="button" value="点击">
+	<div></div>
+
+	<script type="text/javascript">
+
+
+	$('input').click(function () {
+
+		// $('div').hide(1000);
+		// $('div').show(1000);
+		$('div').toggle(1000);
+
+	});
+
+		
+		// $('input').click(function () {
+		// 	alert('哇哈哈');
+		// });
+
+		// $('input').mouseover(function () {
+		// 	console.log(123);
+		// });
+
+
+	</script>
+</body>
+</html>

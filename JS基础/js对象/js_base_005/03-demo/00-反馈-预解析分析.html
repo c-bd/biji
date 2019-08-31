@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 1.先把全局的变量预解析提升为当前作用域的最顶部；
+  var a;
+
+  function demo() {
+    console.log(a);
+    var a = 2;
+  }
+
+
+
+
+
+
+  // 打印的是全局的a;
+  console.log(a);
+
+  // 全局的a进行赋值为1；
+  a = 1;
+
+  // 调用函数：
+  demo();
+</script>
+
+</html>

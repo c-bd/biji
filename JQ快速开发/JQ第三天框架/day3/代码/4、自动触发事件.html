@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	
+	<!-- <input type="button" value="点击"> -->
+	<input type="text">
+	
+	<script type="text/javascript">
+
+	$('input').focus(function () {
+		console.log('你好');
+	})
+
+
+	// $('input').focus();
+	$('input').triggerHandler('focus');
+		
+		// $('input').click(function () {
+		// 	alert('执行啦');
+		// })
+
+
+		// // 基本
+		// // $('input').click();
+		// // $('input').trigger('click');
+		// $('input').triggerHandler('click');
+
+	</script>
+
+</body>
+</html>

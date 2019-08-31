@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/nprogress.css">
+</head>
+<body>
+
+    <input type="button" value="发送请求">
+    
+    <script src="./assets/jquery.js"></script>
+    <script src="./assets/nprogress.js"></script>
+
+    <script>
+
+        // 使用ajax的全局事件，统一设置提示
+        // 全局事件，要设置在所有ajax请求之前
+        $.ajaxSetup({
+            beforeSend: function () {
+                NProgress.start();
+            },
+            complete: function () {
+                NProgress.done();
+            }
+        });
+
+        // 页面刷新，就发送一次请求
+        $.ajax({
+            url: '/big-data',
+            success: function (res) {
+                console.log(res.length);
+            }
+        });
+
+        // 点击按钮，发送一次请求
+        $('input').click(function () {
+            $.get('/big-data', function (res) {
+                console.log(res.length);
+            });
+        });
+    </script>
+</body>
+</html>

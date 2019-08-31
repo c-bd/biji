@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 笑话：[0,6]
+  var arr = [
+    "啊哈哈~~我是笑话1，你就笑笑把~",
+    "啊哈哈~~我是笑话2，你就笑笑把~",
+    "啊哈哈~~我是笑话3，你就笑笑把~",
+    "啊哈哈~~我是笑话4，你就笑笑把~",
+    "啊哈哈~~我是笑话5，你就笑笑把~",
+    "啊哈哈~~我是笑话6，你就笑笑把~",
+    "啊哈哈~~我是笑话7，你就笑笑把~",
+  ];
+
+
+  // 随机：意思你随便给我个笑话
+  // index：随机给我个整数 数学上写法 [0,6]
+  // arr[index]
+
+
+  // JS：提供一些方法，获取随机数的方法；
+  // var r = Math.random();
+
+  // 随机范围 小数 包括0~1 数学上写法 [0,1)
+  // console.log(r);
+
+
+
+  // 想要：0-6直接的随机数
+  var r = Math.random() * arr.length;
+
+  // r: 数学上写法 [0,1)
+  // * 6 之后：
+  // 范围：数学上写法 [0,6) 小数拿到；
+  // 小数取整：向下取整；
+  // 范围：数学上写法r:[0,5]
+  // 但是 我们想要[0,6]
+
+  // 一开始 不是 * 6 ，而是*7   最大随机值：6.99999999999999999999
+  // 向下取整；[0,6]
+
+  console.log(r);
+
+
+  var xia = Math.floor(r);
+  // 随机下标
+  console.log(xia);
+
+  alert(arr[xia])
+</script>
+
+</html>

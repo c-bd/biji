@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input type="button" value="点击发送信息">
+	<input type="text">
+	
+	<script type="text/javascript">
+		
+		// var obj = {name : '假冰冰'}
+		// function fn (a, b) {
+		// 	console.log(this);
+		// 	console.log(a,b);
+		// }
+
+		// var n = fn.bind(obj,1,2);
+		// n();
+		// // fn.apply(obj);
+
+
+		var btn = document.querySelector('input');
+
+		// 注册事件
+		btn.onclick = function () {
+
+			// disabled：true,false
+			this.disabled = true;// this==>btn
+
+			window.setTimeout(function () {
+
+				this.disabled = false;// this==>window
+
+			}.bind(this),2000);
+
+		}
+
+
+	</script>
+	
+</body>
+</html>

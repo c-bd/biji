@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="button" value="发送请求" id="btn">
+    
+    <script>
+        // 点击按钮的时候，才发送ajax请求
+        document.getElementById('btn').onclick = function () {
+            // 发送 ajax 请求 （4个步骤）
+            var xhr = new XMLHttpRequest();
+            // xhr.open('GET', '/time?id=' + Math.random());
+            xhr.open('GET', '/time?id=' + Date.now());
+            xhr.send();
+            xhr.onload = function () {
+                console.log(this.response);
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 
+
+  // console.log([] + 0);
+
+  // console.log(null + 0);
+
+
+
+  // 若：先发现有+：其中有非数字项(复杂类型{} []优先)，非数字项转字符串，如果可以形成拼接，就直接拼接；
+  // 其他项 转字符串 toString();
+  console.log([] + {});
+
+  console.log({} + {});
+
+  console.log({} + []);
+
+  console.log([] + []);
+
+  console.log(0 + {});
+
+  console.log({} + 0);
+
+  console.log(0 + []);
+
+  console.log([] + 0);
+
+
+  console.log(true + []);
+
+  console.log([] + true);
+
+
+  console.log(null + {});
+
+  console.log({} + null);
+
+
+
+  console.log(undefined + {});
+  console.log({} + undefined);
+
+
+  // 特别null 没有toString方法 直接转数字
+  console.log(null + 0);
+  console.log(0 + null);
+
+  // 特别null 没有toString方法 直接转数字
+  console.log(undefined + 0);
+  console.log(0 + undefined);
+
+
+  //==:给除了复杂类型的 类型：不同。转数字；同：看值；
+  console.log('----------------------');
+
+
+  // 若：先发现为除了+的运算符，要转为数字，参加运算
+  console.log([] - {});
+
+  console.log({} - {});
+
+  console.log({} - []);
+
+  console.log([] - []);
+
+  console.log(null - []);
+
+  console.log(null - {});
+</script>
+
+</html>

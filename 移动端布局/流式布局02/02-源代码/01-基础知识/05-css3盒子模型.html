@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    /* 
+      传统的盒子模型
+        盒子大小：内容 + padding + border
+      痛点：若盒子要保持原来的大小，需要自己计算width和height
+   */
+    .box1 {
+      /* 内容区域  */
+      width: 160px;
+      height: 60px;
+      background: red;
+      /* 内边距 */
+      padding: 10px;
+      /* 边框 */
+      border: 10px solid blue;
+      margin-bottom: 20px;
+    }
+
+
+    /*
+      css3盒子模型：内容（内容 + padding + border）
+      优点：盒子的内容区域会自动适应模型的变化
+    */
+    .box2 {
+      width: 200px;
+      height: 100px;
+      background: hotpink;
+      /* 内边距 */
+      padding: 10px;
+      /* 边框 */
+      border: 10px solid blue;
+      /* 启用css3盒子模型 -默认是传统方式*/
+      box-sizing: content-box;
+      /* 启用css3盒子模型 -css3方式*/
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  // 
+  for (var index = 2; index <= 200; index++) {
+    // 每个数过一次；
+
+    // 先假设开始的时候，每个数都是素数；
+    var key = true;
+
+
+    // 如何是素数呢？只能被自己和1整除；
+    // 那意思，就是能整除 中间的数，它就不是素数；
+    // 中间的数，也得一个个的过一次；7 [2-6]
+    for (var jndex = 2; jndex <= index - 1; jndex++) {
+      // 不是素数，没有循环的必要
+      if (index % jndex == 0) {
+
+        // 只要遇见能除进行的，循环结束的时候，我标示为当前这个index不是素数 false;
+        key = false;
+
+        break;
+      }
+    }
+
+
+    // 经过上面的 for循环，我可以知道key的值；
+    // 如何：key = true;
+    if (key) {
+      console.log("素数" + index);
+    }
+  }
+</script>
+
+</html>

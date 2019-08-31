@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      max-width: 600px;
+      min-width: 320px;
+      width: 100%;
+      height: 500px;
+      border: 1px solid;
+      margin: 100px auto;
+      /* 设置为flex，表示该盒子为弹性盒子 */
+      display: flex;
+ 
+
+
+
+    }
+
+    div span {
+      /*  */
+      flex: 1;
+      height: 150px;
+      background: greenyellow;
+      border: 1px solid red;
+    }
+    div span:nth-child(2) {
+      flex: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+</body>
+
+</html>

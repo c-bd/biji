@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+		.error {
+			color: red;
+		}
+		.right {
+			color: #27BD1D;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<input type="text">
+	<span></span>
+
+	<script type="text/javascript">
+		
+		// onblur：失去焦点
+		// onfocus：获得焦点
+		var txt = document.querySelector('input');
+
+		txt.onblur = function () {
+
+			// 正则表达式
+			var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+			if (reg.test(this.value)) {
+				// 写对啦
+				this.nextElementSibling.innerHTML = '<b>对啦</b>';
+				this.nextElementSibling.className = 'right';
+			} else {
+				// 写错啦
+				this.nextElementSibling.innerHTML = '<b>错啦</b>';
+				this.nextElementSibling.className = 'error';
+			}
+
+		}
+
+	</script>
+
+
+</body>
+</html>

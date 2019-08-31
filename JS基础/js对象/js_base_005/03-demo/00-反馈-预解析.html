@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 遇见 变量的声明，函数的声明，都会把刚才这些声明提升到 当前的作用域顶部；
+  console.log(a, '外面');
+
+
+  // 声明；
+  var a = 1;
+
+  demo();
+
+  function demo() {
+    console.log(a, '里面');
+    var a = 2;
+  }
+
+
+  // 如果：局部声明一些变量，要提升到当前局部作用域的对顶端；
+  // function demo() {
+  //   var a;
+  //   打印的a:是你局部的a变量；
+  //   console.log(a, '里面');
+  //   a = 2;
+  // }
+
+  // 当前函数内部没有任何声明，不需要提升到你当前的作用域；
+  // 执行函数体：
+  // 遇见a：全局作用域的a,原因就是因为作用域是全局的，全局：在写的脚本内部，任何地方，包括你函数的内部；
+  // function demo() {
+  //   console.log(a, '里面');
+  //   a = 2;
+  // }
+</script>
+
+</html>

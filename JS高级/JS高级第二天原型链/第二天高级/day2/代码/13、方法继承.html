@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		
+		function Father () {
+		}
+		Father.prototype.chang = function () {
+			console.log('唱歌');
+		}
+
+
+		var f = new Father();
+
+// ##################################################################################
+
+		function Son () {
+			// Father.call(this)
+		}
+
+		// 父构造函数方法
+		Son.prototype = new Father();
+
+		Son.prototype.constructor = Son;
+
+		// 自己的方法
+		Son.prototype.score = function () {
+			console.log('考试99');
+		}
+
+
+		var s = new Son();
+		// console.log(s.__proto__);
+		s.chang();
+		s.score();
+
+
+		// console.log(Father.prototype);
+		console.log(Son.prototype);
+		console.log(Father.prototype);
+
+	</script>
+
+</body>
+</html>

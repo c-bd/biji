@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      width: 225px;
+      height: 137px;
+      float: left;
+      margin-right: 10px;
+      /* 溢出的部分不可见 */
+      overflow: hidden;
+    }
+    /* 
+      核心需求：
+        1. 鼠标进入li，放大li中的图片
+        2. 图片放大时，放大的部分不会溢出
+        3. 图片放大有过渡
+    */
+    li img {
+      transition: all 0.5s;
+    }
+    li:hover img{
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><img src="images/scale.jpg" alt=""></li>
+    <li><img src="images/scale.jpg" alt=""></li>
+    <li><img src="images/scale.jpg" alt=""></li>
+  </ul>
+</body>
+</html>

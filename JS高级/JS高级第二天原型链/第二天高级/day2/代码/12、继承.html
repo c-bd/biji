@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		function Father (uname, age) {
+			this.uname = uname,
+			this.age = age;
+		}
+
+		function Son (uname,age,score) {
+			// Father(uname,age);
+			Father.call(this,uname,age);
+			this.score = score;
+		}
+
+		var obj = new Son('张三丰',22,99);
+		console.log(obj);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 函数声明，配置两个参数：
+  function tell_story(name_1, name_2) {
+    // 函数更严谨的写法；
+    // 判断一下name_1, name_2是否为undefined;
+    // if (name_1 == undefined) {
+    //   name_1 = "大哥";
+    // }
+
+    // 配置对参数的默认值；
+    // if (name_2 == undefined) {
+    //   name_2 = "二哥";
+    // }
+
+
+    // 三元表达式；
+    // 表达式1?表达式2:表达式3;
+    // name_1 = name_1 == undefined ? "大哥" : name_1;
+    name_1 = name_1 ? name_1 : "大哥";
+
+    // name_1没有传值 undefined
+    // undefined ？name_1："大哥";
+    // false ？name_1："大哥";
+
+
+    // name_1 传入值 "张三"
+    // "张三" ？name_1："大哥";
+    // true?name_1："大哥";
+
+    // 严谨写法：三元表达式；
+    name_2 = name_2 ? name_2 : "二哥";
+
+
+
+
+    // 函数体；
+    console.log("山上有庙");
+    console.log("庙有" + name_1 + "," + name_2);
+    console.log(name_1 + "说事");
+    console.log(name_1 + "对" + name_2 + "说：");
+  }
+
+  // 调用:传入两个真实的数据
+  // tell_story("熊大", "熊二");
+
+
+
+  // 传入：赋值，不传入，函数内部默认给undefined；
+  // tell_story("熊大");
+  // tell_story();
+
+  // ---------------------------------------------------------------
+
+  // 定义函数的时候：内部声明的这个变量：形参；
+  // 形参：形式上，背后还没有数据传入；
+  // function tell_story(name_1, name_2) {
+
+  //   // name_1, name_2:形参；
+  //   // 函数体；
+  //   console.log("山上有庙");
+  //   console.log("庙有和尚");
+  //   console.log(name_1 + "说事");
+  //   console.log(name_1 + "对" + name_2 + "说：");
+  // }
+
+
+  // 调用的时候传入：实参；
+  // 实参：实际上参与运算的这些数据；
+  // tell_story("大哥", "二哥");
+  // "大哥", "二哥"：实参；
+
+
+  // ---------------------------------------------------
+  // 声明函数，没有执行；
+  function demo(x, y) {
+    x = x + y;
+    console.log(x, y);
+  }
+
+  // 调用时，函数执行
+  var a = 10;
+  var b = 20;
+
+  // a/b 背后代表的值传入了！！！
+  demo(a, b);
+
+  // a，b 把值传入，传入后，和a,b没有任何关系；
+  console.log(a, b);
+</script>
+
+</html>

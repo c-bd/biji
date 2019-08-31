@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 变量背后代表的是一个函数；
+  // var fn = function() {
+  //   console.log(1);
+  // };
+
+  // 函数类型；
+  // console.log(typeof fn);
+
+
+  // 回调函数：
+  function demo_1(a, fn) {
+    a = a + 1;
+
+    // 形参:需要传入一个函数；
+    fn();
+  }
+
+  // 声明个函数；
+  var demo_2 = function() {
+    console.log(1);
+  }
+
+  // 当我们实参是有函数，传入，这个函数叫回调函数；
+  demo_1(10, demo_2);
+
+
+  demo_1(20, function() {
+    console.log("我是匿名函数，作为参数进行传入");
+  })
+</script>
+
+</html>

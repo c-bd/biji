@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+
+		// var str = /^abc$/;
+		// console.log( str.test('aabbcc') );
+		// console.log( str.test('abcabcabc') );
+		// console.log( str.test('abcabcabc') );
+		// console.log( str.test('abc') );
+		
+
+
+		// var str1 = /^abc/;// 以abc开头
+		// console.log( str1.test('ababc') );// false
+		// console.log( str1.test('abdabc') );// false
+		// console.log( str1.test('abcabc') );// true
+
+
+		var str1 = /^abc$/;// 精确abc
+		console.log( str1.test('abc1') );// false
+		console.log( str1.test('abc2') );// false
+		console.log( str1.test('abcdabc') );// false
+		console.log( str1.test('abc') );// true
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background:hotpink;
+      /* 调用 */
+      /* 指定动画的名称 */
+      animation-name: move; 
+      /* 指定动画持续的时长*/
+      animation-duration: 2s;
+      /* 动画的运动曲线 */
+      /* animation-timing-function: ease; */  /*缓冲*/
+      animation-timing-function: linear;      /*匀速*/
+      /* 动画延迟 */
+      /* animation-delay: 3s; */
+      /* 动画的次数 */
+      /* animation-iteration-count: 2; */
+      /* animation-iteration-count: infinite;  */ /*无数次 */
+      /* 动画是否可以逆向播放 */
+      /* animation-direction: alternate; */
+      /* 动画是否保持结束后的状态 */
+      animation-fill-mode: forwards;
+    }
+
+    /* 鼠标进入div时，暂停动画 */
+    div:hover {
+     animation-play-state: paused;
+    }
+
+    /* 定义动画 顺序没有影响*/
+    @keyframes move {
+      0% {
+        /* 动画开始时 */
+        transform: translate(0px);
+        width:100px; 
+      }
+      100% {
+        /* 动画结束时 */
+        transform: translate(800px);
+        width:200px; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

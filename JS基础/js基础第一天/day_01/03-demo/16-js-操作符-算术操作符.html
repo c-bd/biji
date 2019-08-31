@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // + - * / %
+
+
+  // 1.常规操作：数字类型
+  // var a = 1;
+  // 运算操作。优先级比赋值操作符高。
+  // a = a + 1;
+
+  // console.log(a);
+
+  // 2.非常规：字符、布尔、null、undefined；
+
+
+  // 字符串
+  var a = "abc" + 1;
+  // 字符串遇见+，临近 的类型 变为字符串，拼接；
+
+
+  console.log(a, 1);
+
+  // 
+  var a = 1 + 1 + "abc" + 1;
+  // 1+1+"abc" + 1;
+  // 2 + "abc" + 1;
+  // "2abc" + 1
+  // "2abc1"
+  // console.log(a);
+
+  // 只要字符串不遇见+,确认参与运算。
+  // 要求数字类型
+  // 不是数字类型，隐式转化的过程；
+  // var a = "我" - 1;
+  // "我" - 1;
+  // NaN-1;
+  // console.log(a);
+
+  // var a = "1000" - 1;
+  // console.log(a);
+
+
+  // true 、null 、undefined;
+  // var a = true + 1;
+  // console.log(a);
+
+  // var a = null + 1;
+  // console.log(a);
+
+  // var a = "null" * 3;
+  // console.log(a);
+
+  // var a = true + false + "null" * 3;
+  // console.log(a);
+
+
+
+  // ---------------------------------------------------------------------
+  // var a = 1;
+  // a++;
+  // a = a + 1;
+  // console.log(a);
+
+  // ++a;
+  // a = a + 1;
+  // console.log(a);
+
+  // ++ 
+  // var b = a++ + 1;   ---->2
+  // 过程：
+  // 1. a + 1 运算结果赋值给b--->2;
+  // 2. a++;  a---->2
+
+  // var b = ++a + 1;
+  //过程：
+  // 1. ++a;  a----------->2
+  // 2. 2+1 结果赋值给b  b------------>3
+  // console.log(b);
+
+  // 记忆：位置写在前面还是后面，
+  // 写在前面写自增一次，把自增的结果参与运算；
+  // 位置在后面的话，先要参与运算，再次自增一次；
+
+
+
+  // ----------------------------------------------------
+  // 算术：常规：要数字类型
+  // 常规：
+  // var a = 1 - 1;
+  // var b = 10 / 2;
+  // var c = 5 * 4;
+  // var d = 7 % 3;
+
+
+  // 不常规：
+
+  // 字符串遇见+：左右临近的类型都会转换为字符串；
+  // 字符串遇见- / * %：参与运算，我们要的数据类型，字符串隐式转换为数字类型
+  //   数字  "1000"
+  //   NaN   "abc"  "null"
+
+  // null 隐式转数字 0
+  // Boolean 隐式转数字 0 或者1
+  // undefined 隐式转数字 NaN
+
+
+  // ---------------------------------------------------
+  // ++ 
+  // var a = 1;
+  // var b = a++ * 3;
+  // b:先发现a++,++写在a的后面，后参与运算；
+  // 1 * 3 把结果给了赋值给b------->3
+  // a++;  a------->2;
+  // console.log(b, a);
+
+  // var a = 1;
+  // var b = ++a * 3;
+  // b: 先发现++a,++写在a的前面，++a先算；
+  // a:2;
+  // 2 * 3  b------------------>6
+  // console.log(b);
+
+
+  // --:同理++，先看位置在变量的前还是后；
+
+
+
+  // var a = 1;
+  // var b = a++ + ++a;
+  // 分析：
+  // ++a :a--->2
+  // 2 + 2  ----4---->b
+  // a++; a--->3
+  // console.log(b);
+
+
+  //
+</script>
+
+</html>

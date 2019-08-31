@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* ----------------------------------------------------------第一个方案 */
+    /* 在PC端比较常用 */
+    
+    .box_1 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #000;
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 100px;
+    }
+    
+    .box_1 .left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    
+    .box_1 .mid {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+    }
+    
+    .box_1 .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+    /* ---------------------------------------------------------------------方案2 flex */
+    /* 移动端 flex */
+    
+    .box_2 {
+      margin: 10px 0;
+      width: 100%;
+      height: 100px;
+      border: 1px solid #000;
+      /* flex  */
+      display: flex;
+      /* 默认主轴：水平方向 */
+      /* flex-direction: row; */
+    }
+    
+    .box_2 .left {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    
+    .box_2 .mid {
+      flex: 1;
+      /* auto 变为 拉伸 */
+      background-color: #ccc;
+    }
+    
+    .box_2 .right {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+    /* ------------------------------------------------------------------------方案3 */
+    
+    .box_3 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #000;
+      position: relative;
+    }
+    
+    .box_3 .left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    
+    .box_3 .mid {
+      /* 宽度不设置，设置margin值 往内挤 */
+      /* width: 100%; */
+      height: 100px;
+      margin: 0 100px;
+      background-color: #ccc;
+    }
+    
+    .box_3 .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box_1">
+    <div class="left"></div>
+    <div class="mid"></div>
+    <div class="right"></div>
+  </div>
+
+  <div class="box_2">
+    <div class="left"></div>
+    <div class="mid"></div>
+    <div class="right"></div>
+  </div>
+
+
+  <!--  -->
+
+  <div class="box_3">
+    <div class="left"></div>
+    <div class="mid"></div>
+    <div class="right"></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 使用let声明的变量不能再次声明
+        let a = 1;
+        // let a = 2; // 报错了，a已经声明了
+        
+        // 2. 具有块级作用域
+        {
+            let c = 2;
+            console.log(c);
+        }
+
+        for (let i = 1; i <= 3; i++) {
+            
+        }
+        // console.log(i); // 报错，因为i使用let声明的，只能在for循环内部使用
+
+        // 3.没有变量提升，必须先定义再使用
+        // console.log(d); // 报错，因为使用let声明的d，涉及不到变量提升
+        let d = 123;
+
+
+
+        // 4. let声明的变量不会压到window对象中，是独立的
+        var aa = 123;
+        function aaa () {
+
+        }
+        console.log(window.aa);
+
+        let bb = 456;
+        console.log(window.bb);
+
+    </script>
+</body>
+</html>

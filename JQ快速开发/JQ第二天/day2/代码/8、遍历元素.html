@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	
+
+	<script type="text/javascript">
+			
+	var arr = ['red','blue','yellow'];
+	var obj = {name:'张三',age:22}
+
+	$.each(obj,function (i,elm) {
+		console.log(i,elm);
+	});
+
+	// $(arr).each(function (i,elm) {
+	// 	console.log(i,elm);
+	// });
+
+
+
+
+	// $.each($('div'),function (i,elm) {
+	// 	console.log(i,elm);
+	// });
+
+
+
+
+	// 求和思想：定义一个变量：专门用来保存总和
+	// var sum = 0;
+	// $('div').each(function (i,elm) {
+	// 	sum = sum + parseInt( $(elm).text() );
+	// });
+	// console.log( sum );
+
+
+
+
+	// $('div').css('background', arr[2]);
+	// $('div')==>【div,div,div】
+	// $('div').each(function (i,elm) { // 第一个参数：索引值
+	// 	// console.log(i);
+	// 	// console.log(elm);
+	// 	$(elm).css('background',arr[i]);
+	// });
+
+
+
+
+	</script>
+
+</body>
+</html>

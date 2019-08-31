@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 测试数据；
+  // var str = "1,1,1,1";
+  var str = prompt("输入求和数据")
+
+  // 字符串.split(分隔符)
+  // 返回：数（数据）组；里面的元素都是字符串
+  var a = str.split(",");
+
+  // 如何数组里直接都是数字。求和；
+  var sum = 0;
+  for (var index = 0; index < a.length; index++) {
+    // console.log(a[index]);
+
+    // 每个元素是字符串
+    // + ： 字符串拼接，不是我们想要的加法；
+    // 类型转换：数字类型，能运算
+    // parseFloat():可以把"10.1abc"---->10.1
+    // 字符串*1:只能用于单独字符串里面是纯数据的形式
+    sum = sum + parseFloat(a[index]);
+  }
+  // 
+  console.log(sum);
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	
+	<script type="text/javascript">
+		class Star {
+			constructor (uname, age) {
+				this.uname = uname;
+				this.age = age;
+				// 属性设置好，调用chang方法
+				// this.chang();
+			}
+
+			chang () {
+				console.log(this.uname + '唱歌');
+				this.say();
+			}
+
+
+			say () {
+				console.log('说话');
+			}
+
+
+		}
+		class Son{
+			constructor(uname,age){
+				Star.super(this,uname,age)
+			}
+		}
+
+		// var n = new Star('李寻欢', 22);
+		var p=new Son('你爸爸','52');
+		console.log(p);
+		
+		
+		// console.log( n.uname );
+		// n.chang();
+		n.chang();
+
+	</script>
+
+</body>
+</html>

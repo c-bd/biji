@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.c1 {
+			background: yellow;
+		}
+		
+		.c2 {
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" class="btn" value="点击">
+	<div class="c1"></div>
+
+	<script type="text/javascript">
+		
+		$('input').click(function () {
+
+			// $('div').addClass('c1');
+			// $('div').removeClass('c1');
+			$('div').toggleClass('c2');
+
+		});
+
+
+
+	</script>
+</body>
+</html>

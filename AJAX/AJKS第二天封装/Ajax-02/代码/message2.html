@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>留言板</title>
+  <link rel="stylesheet" href="./assets/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="display-1">留言板</h1>
+    <hr>
+    <!-- <div id="loading">正在拼命加载数据.....</div> -->
+    <ul id="messages" class="list-unstyled">
+
+    </ul>
+    <hr>
+    <div class="form-group">
+      <label for="txt_name">称呼：</label>
+      <input class="form-control" id="txt_name" name="xxx" type="text">
+    </div>
+    <div class="form-group">
+      <label for="txt_content">留言：</label>
+      <textarea class="form-control" id="txt_content" cols="80" rows="10"></textarea>
+    </div>
+    <button type="button" id="btn_send" class="btn btn-primary">提交</button>
+  </div>
+
+  <script src="./assets/template-web.js"></script>
+
+  <!-- 定义模板 -->
+  <script id="moban" type="text/html">
+    {{each girls}}
+    <li class="media">
+      <img class="mr-3" src="avatar.png" alt="{{$value.name}}">
+      <div class="media-body">
+        <h4>{{$value.name}}</h4>
+        <p>{{$value.content}}</p>
+      </div>
+    </li>
+    {{/each}}
+  </script>
+
+  <script>
+    /////////////////////////////////////////////////
+    // 刷新页面，向 /getMsg 接口发送 GET方式的Ajax请求
+    var xhr = new XMLHttpRequest();
+
+    function loadData() {
+      xhr.open('GET', '/getMsg');
+      xhr.send();
+      xhr.onload = function () {
+        // console.log(this.response);
+        var data = JSON.parse(this.response);
+        console.log(data);
+        // 拼接字符串
+        var str = template('moban', {
+          girls: data
+        });
+        // 把变量后，拼接好的str放到 id为 messages 的ul中
+        document.getElementById('messages').innerHTML = str;
+      }
+    }
+
+    // 先调用一次loadData，保证刷新页面之后有数据
+    loadData();
+  </script>
+
+  <!-- <li class="media">
+      <img class="mr-3" src="avatar.png" alt="张三">
+      <div class="media-body">
+        <h4>张三</h4>
+        <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      </div>
+    </li> -->
+  <script>
+    /////////////////////////////////////////////////////////
+    // 添加留言
+    // 点击提交按钮的时候，获取输入框的值，向接口 /addMsg 发送请求。
+    document.getElementById('btn_send').onclick = function () {
+      // 获取输入框的DOM对象
+      var username = document.getElementById('txt_name');
+      var content = document.getElementById('txt_content');
+      // 发送Ajax请求
+      // 前面的script中已经创建了xhr对象了，这里不用再次创建
+      xhr.open('POST', '/addMsg');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send('name=' + username.value + '&content=' + content.value);
+      xhr.onload = function () {
+        if (this.response === 'true') {
+          // 添加成功
+          // location.reload(); // 刷新页面
+          loadData(); // 调用loadData，从新获取数据，页面不会刷新，因为获取数据也是ajax请求
+          // 清空输入框的值
+          username.value = content.value = '';
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

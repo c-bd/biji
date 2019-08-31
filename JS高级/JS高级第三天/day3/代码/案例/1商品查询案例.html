@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+        
+        input {
+            width: 50px;
+        }
+        
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button class="search-price">搜索</button> 按照商品名称查询:
+        <select name="" id="sele">
+            <option value="0">--请选择商品名称--</option>
+            <option value="1">小米</option>
+            <option value="2">oppo</option>
+            <option value="3">荣耀</option>
+            <option value="4">华为</option>
+            <option value="5">苹果</option>
+        </select>
+
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+			<!-- <tr><td>1</td><td>1</td><td>1</td></tr> -->
+			
+        </tbody>
+    </table>
+    <script>
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }, {
+            id: 5,
+            pname: '苹果',
+            price: 6999
+        }, ];
+        // var data = [{},{},{}];
+
+
+        // 获取元素
+        var tbody = document.querySelector('tbody');
+        var btn = document.querySelector('.search-price');
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var sele = document.querySelector('#sele');
+
+
+
+        // forEach封装
+        function bianli (data) {
+             data.forEach(function (ele, i) {
+                // console.log(ele);
+                var tr = '<tr><td>' + ele.id + '</td><td>' + ele.pname + '</td><td>' + ele.price + '</td></tr>';
+                // 添加内容
+                tbody.insertAdjacentHTML('beforeend',tr);
+            });
+        }
+
+
+
+        // 1、展示商品
+       bianli(data);
+
+        // 2、点击搜索
+        btn.onclick = function () {
+            // 遍历数组
+            var reArr = data.filter(function (ele, i) {
+
+                // 查找所有商品，看看商品的价格是否符合要求
+                return start.value <= ele.price && ele.price <= end.value;
+
+            });
+
+            tbody.innerHTML = '';
+
+            bianli(reArr);
+
+        }
+
+
+        // 3、下拉选择
+        // 选择商品的value，根据这个value值查找对应的id值，把这个对应的id值的商品展示出来既可
+        sele.onchange = function () {
+
+            // 获取value值
+            var val = sele.value;
+            var arr = [];
+            // 遍历数组【去data数组里面找有没有对应的id值和val相同，找到后放入页面中】
+            data.some(function (ele, i) {
+
+                // ele==>{id,name,jiage}
+                if (val == 0) {
+                    arr = data;
+                    return true;
+                }else if (ele.id == val) {
+                    arr.push(ele);// arr = [ele];
+                    return true;
+                }
+
+            });
+
+
+            tbody.innerHTML = '';
+            // 遍历
+            bianli(arr)
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // var tbody = document.querySelector('tbody');
+        // data.forEach(function (ele,  i) {
+        // 	// console.log(ele);
+        // 	var tr = '<tr><td>' + ele.id +'</td><td>' + ele.pname + '</td><td>' + ele.price + '</td></tr>';
+        // 	tbody.insertAdjacentHTML('beforeend',tr);
+
+        // });
+
+        // var btn = document.querySelector('.search-price');
+        // var start = document.querySelector('.start');
+        // var end = document.querySelector('.end');
+        // btn.onclick = function () {
+        // 	var reArr = data.filter(function (ele, i) {
+        // 		return start.value <= ele.price && ele.price <= end.value;
+        // 	});
+        // 	tbody.innerHTML = '';
+        // 	reArr.forEach(function (ele) {
+        // 	var tr = '<tr><td>' + ele.id +'</td><td>' + ele.pname + '</td><td>' + ele.price + '</td></tr>';
+        // 	tbody.insertAdjacentHTML('beforeend',tr);
+        // });
+        // };
+
+        
+        // var sele = document.getElementById('sele');
+        // sele.onchange = function () {
+       	// 	var n = [];
+        // 	var id = sele.value;
+        // 	data.some(function (ele) {
+        // 		if (id == 0) {
+        // 			n = data;
+        // 			return true;
+        // 		}else if (ele.id == id) {
+        // 			n.push(ele);
+        // 			return true;
+        // 		}
+        // 	});
+        	
+        // 	tbody.innerHTML = '';
+	       //  	n.forEach(function (ele, i) {
+	       //  	// console.log(ele);
+	       //  	var tr = '<tr><td>' + ele.id +'</td><td>' + ele.pname + '</td><td>' + ele.price + '</td></tr>';
+	       //  	tbody.insertAdjacentHTML('beforeend',tr);
+       	// 	 });
+        // }
+
+    </script>
+</body>
+
+</html>

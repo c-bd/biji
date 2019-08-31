@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      font-size: 80px;
+      line-height: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 什么样的是正方形 -->
+  <!-- ○○○○○○<br>
+  ○○○○○○<br>
+  ○○○○○○<br>
+  ○○○○○○<br>
+  ○○○○○○<br>
+  ○○○○○○<br> -->
+</body>
+<script>
+  // 第一个版本
+  // document.write('○○○○○○<br>');
+  // document.write('○○○○○○<br>');
+  // document.write('○○○○○○<br>');
+  // document.write('○○○○○○<br>');
+  // document.write('○○○○○○<br>');
+  // document.write('○○○○○○<br>');
+
+  // 发现有重复的代码
+  // 第二个版本 —— 改成for循环的方式
+  // for(var i =1; i <= 6; i++){
+  //   document.write('○○○○○○<br>');
+  // }
+
+
+  // 把每一行也用循环来实现
+  // 版本3
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+  // document.write('○');
+
+  // 把重复的代码交给循环解决
+  // for(var j = 1; j <= 8; j++){
+  //   document.write('○');
+  // }
+
+
+  // 最终版本
+  // 把刚才的输出一行的，放到一个循环里面
+  for (var i = 1; i <= 10; i++) {
+    // 
+    for (var j = 1; j <= i; j++) {
+      document.write('○');
+      // if (j % 2 == 0) {
+      //   document.write('○');
+      // } else {
+      //   document.write('<span style="color:red">o</span>');
+      // }
+
+
+    }
+    document.write('<br>');
+  }
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/getXML');
+        xhr.responseType = 'document'; // 设置服务器返回数据的类型
+        xhr.send();
+        xhr.onload = function () {
+            console.log(this.response); // response属性，会根据responseType属性，自动将结果处理
+            // console.log(this.responseXML)
+            console.log(document);
+
+            // 服务器返回的xml格式的数据，和document对象一样。所以处理方式也是一样的
+            // 比如，要获取到 “成功”
+            var msg = this.response.getElementsByTagName('msg')[0]; // 先找到msg节点
+            var text = msg.childNodes[0]; // 找到成功这两个字的文本节点
+            console.log(text.nodeValue); // 输出，文本节点的值
+        }
+    </script>
+</body>
+</html>

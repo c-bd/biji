@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* let arr = [2, 4, 1, 8];
+        let a = arr[0];
+        let b = arr[1]; */
+
+        // let 模式 = 数组;
+        // 1. 基本的解构
+        // let [a, b, c] = ['7zA', '你好', '靳晓豪'];
+        // console.log(a);
+        // console.log(b);
+        // console.log(c);
+
+        // 2. 变量多，值少
+        // let [a, b, c] = ['7zA', '你好'];
+        // console.log(a, b, c); // 7zA 你好 undefined
+
+        // 3. 变量少，值多
+        // let [a, b] = ['7zA', '你好', '靳晓豪'];
+        // console.log(a, b); // 7zA 你好
+
+        // 4. 按需取值
+        // let [a, , b] = ['7zA', '你好', '靳晓豪'];
+        // console.log(a, b); // 7zA 靳晓豪
+
+        // 5. 剩余值
+        // let [a, b, ...c] = ['7zA', '你好', '靳晓豪', '霸道车间主任爱上你'];
+        // console.log(a, b); // 7zA 你好
+        // console.log(c); // ["靳晓豪", "霸道车间主任爱上你"]
+
+        // 6. 复杂的情况
+        let [, , [a, b]] = ['aa', 'bb', ['cc', 'dd'], 'ee'];
+        console.log(a, b); // cc dd 
+    </script>
+</body>
+</html>

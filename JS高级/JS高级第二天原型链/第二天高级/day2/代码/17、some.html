@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+
+		var arr = [100,200,300,400,500,600];
+
+		var n;
+
+		var re = arr.some(function (ele, i) {
+			console.log(i);
+			// return ele == 300;
+			if ( ele == 300 ) {
+				// return false;
+				n = ele;
+				return true;
+			}
+		});
+
+
+
+		// console.log(re);
+		console.log(n);
+
+
+
+
+	</script>
+</body>
+</html>

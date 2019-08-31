@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+
+		// var arr = new Array();
+		// var arr = [1,2,3];
+
+
+		// var arr = [1,2,3];
+		// arr.push('a');
+		// console.log(arr);
+		// var arr1 = ['6',6,6];
+		// arr1.push(9);
+		// console.log(arr1);
+
+
+		// var arr = new Array();
+		// console.log( Array.prototype );
+
+		var arr = [1,2,3,4,5];
+		var arr1 = [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6];
+
+		var arr2 = [567,78,34,567,345,43]
+
+
+		// 写一个方法：专门就用来求和
+		// arr.sum();
+		// arr1.sum();
+		// arr2.sum();
+		Array.prototype.sum = function () {
+			// 求和
+			var sum = 0;
+			// 遍历数组
+			for (var i = 0; i < this.length; i++) {
+				sum += this[i];
+			}
+			return sum;
+		}
+
+		console.log( arr.sum() );
+		console.log( arr1.sum() );
+		console.log( arr2.sum() );
+		console.log( Array.prototype );
+
+
+
+		// class Father {}
+		// class Son extends Father {}
+	</script>
+</body>
+</html>

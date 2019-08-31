@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 需求：求一个班的平均成绩；
+  // 分析：
+  // 平均成绩：总成绩 / 人数；
+  // 总成绩：每个人的成绩加起来；
+
+  // 数组：里面就放了整个班的所有成绩；
+  // 总成绩：遍历数组，对每个元素加到一个变量上，求和；
+
+  var arr = [80, 80, 80, 80, 80];
+  var sum = 0;
+  for (var index = 0; index < arr.length; index++) {
+    sum += arr[index];
+  }
+  // 
+  console.log(sum);
+  // 
+  var pin_jun = sum / arr.length;
+  console.log(pin_jun);
+</script>
+
+</html>

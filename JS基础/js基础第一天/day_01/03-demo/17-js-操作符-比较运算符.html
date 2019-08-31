@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 比较运算符：> < >= <=
+
+
+  // 常规操作：比数字类型
+  // 返回:这个比较后的结果状态 Boolean；
+
+  // 比较操作符 优先级高于 赋值操作符
+  // var a = 4 >= 4;
+  // console.log(a);
+
+  // var a = 3 > 4;
+  // console.log(a);
+
+  // 非常规：
+  // 比较运算符：两边都是需要数字类型；
+  // 不是数字类型， 隐式转化 为 数字类型；
+
+
+  // 1.字符串
+  // var a = "abc" > 1;
+  // 比较运算符：需要数字类型；
+  // 不是数字类型，隐式转化为数字类型；
+  // NaN > 1;
+  // console.log(a);
+
+
+  // 2.Boolean
+  // var a = true > 0;
+  // 比较运算符：需要数字类型；
+  // 不是数字类型，隐式转化为数字类型；
+  // 1 > 0
+  // console.log(a);
+
+
+  // 3.null
+  // var a = null > 6;
+  //
+  // console.log(a);
+
+
+
+  // ----------------------------------------------------------
+  // == ===
+  // ==:
+
+  // ==:比较运算符，优先级高于 赋值运算符；
+  // 先看类型:
+  // 1.若类型相同，比值；
+  // 2.若类型不同，隐式转化 数字类型
+
+  // var a = 1 == 1;
+  // console.log(a);
+
+  // console.log("1" == 1);
+
+  // console.log("abc" == "abc");
+  // console.log(false == false);
+
+  // NaN:泛指，不是某个数；
+  // console.log(NaN == NaN);
+
+
+  // ===：直接比类型，
+  // 先看类型:
+  // 1.如果类型相同，比值；
+  // 2.如果类型不同，直接false;
+  console.log("1" == 1);
+  console.log("1" === 1);
+
+
+  // != !==：和上面是同理，只不过是判断数据的值不等；
+</script>
+
+</html>

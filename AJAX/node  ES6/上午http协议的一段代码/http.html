@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax请求遵循http协议的</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        // open方法体现了请求行
+        xhr.open('POST', '/query-post');
+
+        // setRequestHeader方法体现了请求头，可以设置
+        xhr.setRequestHeader('Content-Type', 'appliction/x-www-form-urlencoded');
+        xhr.setRequestHeader('Accept', 'text/*');
+
+        // send方法体现了请求体
+        xhr.send('id=111&age=222');
+        xhr.onload = function () {
+            // 获取响应行的状态码及状态描述信息
+            console.log(this.status); // 状态码
+            console.log(this.statusText); // 状态描述信息
+
+            // 获取响应头的信息
+            console.log(this.getAllResponseHeaders());
+            console.log(this.getResponseHeader('content-type'));
+
+            // 获取响应体的信息
+            console.log(this.response);
+        }
+    </script>
+</body>
+</html>

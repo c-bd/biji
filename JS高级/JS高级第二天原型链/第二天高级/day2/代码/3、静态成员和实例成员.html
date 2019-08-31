@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	
+	<script type="text/javascript">
+		
+
+	// var obj = {
+	// 	name : '张三丰',
+	// 	age : 22,
+	// 	taiji : function () {alert('打太极')}
+	// };
+	// obj.taiji();
+	
+	// 属性，键值对，成员
+
+
+
+		function Star (uname,age) {
+			this.uname = uname;
+			this.age = age;
+		}
+
+
+		// 静态成员：不需要new直接用的属性
+		// 实例成员：必须new之后在调用的属性
+
+
+		// var obj = new Star('张三丰',22);
+		// console.log(obj.uname);
+
+
+		// 直接往构造函数上添加一个score属性
+		Star.score = 99;
+
+		console.log(Star.score);
+
+
+
+
+
+	</script>
+
+</body>
+</html>

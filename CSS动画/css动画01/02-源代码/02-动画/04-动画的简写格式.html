@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background:hotpink;
+      /* animation: 动画的名称 动画持续的时间 运动的曲线 延迟时间 动画的次数 是否可以逆播 是否保持结束状态; */
+      animation: move 5s linear 2s 2 alternate forwards;
+    }
+
+    /* 鼠标进入div时，暂停动画 */
+    div:hover {
+     animation-play-state: paused;
+    }
+
+    /* 定义动画 顺序没有影响*/
+    @keyframes move {
+      0% {
+        /* 动画开始时 */
+        transform: translate(0px);
+        width:100px; 
+      }
+      100% {
+        /* 动画结束时 */
+        transform: translate(800px);
+        width:200px; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

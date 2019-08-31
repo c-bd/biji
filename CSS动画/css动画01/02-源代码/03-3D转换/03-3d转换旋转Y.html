@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+      /* 视距 */
+      perspective: 300px;
+    }
+
+    img {
+      width: 300px;
+      margin-top: 100px;
+      transition: 2s;
+    }
+
+    img:nth-child(1):hover {
+
+      transform: rotateY(-145deg);
+      /* 
+        左手法则：
+          大拇指指向y的正值方向→下
+          其他手指弯曲的方向就是正值方向
+       */
+    }
+
+  </style>
+</head>
+
+<body>
+  <img src="./images/y.png" alt=""><br>
+</body>
+
+</html>

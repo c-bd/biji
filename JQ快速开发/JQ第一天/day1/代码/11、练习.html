@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	
+		<input type="button" value="点击1">
+		<input type="button" value="点击2">
+		<input type="button" value="点击3">
+		<input type="button" value="点击4">
+		<input type="button" value="点击5">
+		<input type="button" value="点击6">
+		<input type="button" value="点击7">
+		<input type="button" value="点击8">
+		<input type="button" value="点击9">
+	
+
+	<script type="text/javascript">
+		
+		// 点谁让谁的背景颜色改变为红色，其他的不准改变
+		$('input').click(function () {
+
+			// $(this).css('background','red');
+			// $(this).siblings().css('background','');
+			$(this).css('background','red').siblings().css('background','');
+
+
+
+		})
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+	class Hero {
+
+		constructor (uname, age, wuqi) {
+			this.uname = uname;
+			this.age = age;
+			this.wuqi = wuqi;
+		}
+
+		gongji () {
+			console.log('打打打，在攻击');
+		}
+
+		taopao () {
+			console.log(this.uname + '跑跑跑，eq二连跑，df二连接着跑，鞭炮边和哇哈哈');
+		}
+
+	}
+
+	var huangzi = new Hero('皇子', 22, "长枪");
+	// console.log(huangzi.uname);
+	// huangzi.gongji();
+	// huangzi.taopao();
+	
+
+	var tmo = new Hero('蘑菇', 9, '竹子');
+	// console.log(tmo);
+	tmo.taopao();
+
+
+	</script>
+</body>
+</html>

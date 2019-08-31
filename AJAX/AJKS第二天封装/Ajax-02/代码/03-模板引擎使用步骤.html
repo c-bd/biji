@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./assets/template-web.js"></script>
+
+    <!-- 1. 定义模板 -->
+    <script id="test" type="text/html">
+        <h1>{{title}}</h1>
+    </script>
+
+    <script>
+        // 2. 调用template函数
+        var html = template('test', {
+            title: '基本例子'
+        });
+        // 得到的html，就是模板标签和数据组合好的结果
+        console.log(html);
+        document.body.innerHTML = html;
+    </script>
+</body>
+</html>

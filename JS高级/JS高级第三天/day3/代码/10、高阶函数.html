@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		// var fn = function () {
+		// 	console.log('123');
+		// }
+		// fn();
+
+
+
+
+		// function fun ( wahaha ) {
+		// 	/*
+		// 		var wahaha = function () {
+		// 			console.log('abcd');
+		// 		}
+		// 	 */
+		// 	// console.log(wahaha);
+		// 	wahaha();
+
+		// }
+
+		// // function () {}
+		// // var fn = function () {console.log('abcd');};
+		// fun( function () {console.log('abcd');} );
+
+
+
+		function fun () {
+			return function () {console.log('函数');};
+		}
+
+		// fn = ƒunction () {console.log('函数');}
+		var fn = fun();
+
+		// console.log(fn);
+		fn();
+	</script>
+
+</body>
+</html>

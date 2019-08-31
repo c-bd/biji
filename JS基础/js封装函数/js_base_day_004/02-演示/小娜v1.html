@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>小娜v1.0</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  var list = [
+    "为什么结婚都喜欢选好日子，因为结婚后都没有好日子。",
+    "为什么超人都喜欢穿紧身衣，因为救人要紧",
+    "火柴有个问题想不懂，然后就挠头，自己燃烧了自己",
+    "包子跑步，为什么在路上消失了，因为太饿自己把自己吃了",
+    "自己的事情自己做，函数也能调用自己"
+  ];
+
+  isOver = false;
+
+  while (!isOver) {
+    var msg = prompt("你好，我是传智小娜，你的语音助手~~~~~~~\n" +
+      "输入《编号》或《关键词》选择功能，输入q退出聊天\n" +
+      " 1.计算《总和》\n" +
+      " 2.获取《时间》\n" +
+      " 3.讲个《笑话》\n");
+
+    switch (msg) {
+      case "1":
+      case "总和":
+        var nums = prompt('请输入你想求各的各个数字，请使用“逗号”分隔，如"1,2,3,4"');
+        var sps = nums.split(',');
+        var sum = 0;
+        for (var i = 0; i < sps.length; i++) {
+          sum += parseFloat(sps[i]);
+        }
+        alert('总和计算好了，结果是：' + sum);
+        break;
+      case "2":
+      case "时间":
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        if (month < 10) {
+          month = "0" + month;
+        }
+        var day = date.getDate();
+        if (day < 10) {
+          day = "0" + day;
+        }
+        var hour = date.getHours();
+        if (hour < 10) {
+          hour = "0" + hour;
+        }
+        var minutes = date.getMinutes();
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        var seconds = date.getSeconds();
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+        var format = year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
+        alert('当前的时间是：' + format);
+        break;
+      case "3":
+      case "笑话":
+        var index = Math.floor(Math.random() * list.length);
+        alert(list[index]);
+        break;
+      case "q":
+        isOver = true;
+        alert("你已经不爱小娜了吗？");
+        break;
+      default:
+        alert('小娜还小，你说的小娜还不能理解，对不起');
+        break;
+    }
+  }
+</script>

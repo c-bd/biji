@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>初体验</h2>
+    <img src="./avatar.png" alt="">
+    <script>
+        // console.log(123);
+        // 发送一次Ajax请求
+        // 1. 创建 XMLHttpRequest 对象
+        var xhr = new XMLHttpRequest();
+        // 2. 调用 open 方法，设置 请求方式 和 url
+        xhr.open('GET', 'http://localhost:4000/time');
+        // 3. 调用 send 方法，发送请求
+        xhr.send();
+        // 4. 准备一个函数，用于接收服务器响应的结果
+        // 当ajax请求完毕的时候，触发下面的事件
+        xhr.onload = function () {
+            // 接收服务器响应的结果
+            console.log(xhr.response);
+        }
+    </script>
+</body>
+</html>

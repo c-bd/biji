@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 求：数组中的最大值；
+  // 假设：第一个数据，arr[0] max 最大值；
+  // 其他数据：不服，每个数据a 都要和这个假设比较，如果  a > max  max =  a; 
+  //                                           如果  a < max; 
+
+  // var arr = [10, 15, 78, 99, 56, 85];
+
+  // 选了第一个数据；
+  // var max = arr[0];
+
+
+  // 和每个数据进行比较
+  // for (var index = 0; index < arr.length; index++) {
+  //   // console.log(arr[index]);
+
+  //   // 如果  每个数 > max  max =  a; 
+  //   if (arr[index] > max) {
+  //     max = arr[index];
+  //   }
+
+  // }
+
+  // 比完了
+  // console.log(max);
+
+
+  // -------------------------------------------------------------
+  // 需求：数组中的最大值，最大值的索引多少；
+  // 随机指定个同学是最大，
+  // 数组中：随机指定，索引；
+
+
+  var arr = [10, 15, 78, 99, 56, 85];
+  var max_index = 0;
+  var max = arr[max_index];
+
+  // 遍历：每个数据都要上来比一下
+  for (var index = 0; index < arr.length; index++) {
+    // console.log(arr[index]);
+
+    // 如何每个数比你指定的这个max还大；
+    if (arr[index] > max) {
+      // 
+      max_index = index;
+      max = arr[max_index];
+    }
+
+
+  }
+
+
+  console.log(max, max_index);
+</script>
+
+</html>

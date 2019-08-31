@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 取值：
+  // 储存：arr[5] = 1;
+
+
+  // 班里的所有同学的成绩
+  var arr = [60, 61, 62];
+  console.log(arr);
+
+
+  // 求总成绩
+  // var sum = arr[0] + arr[1] + arr[2];
+  // console.log(sum);
+
+
+  // 求成绩，一个一个取出来，对我们不友好；
+  // 遍历：
+  // 循环：索引下标；变化过程是有规律的；
+  // 
+
+
+  var sum = 0;
+  // 下标:从0开始；到2结束；
+  // for (var index = 0; index <= 2; index++) {
+  //   // 打印下标；
+  //   // console.log(index);
+
+  //   // 目标：把数组里的每个数据，取出来；
+  //   // console.log(arr[index]);
+
+  //   // 让每个元素加在sum就可以了；
+  //   // sum = sum + arr[index];
+  //   sum += arr[index];
+  // }
+
+
+  // 数组长度：数组内的数据个数；
+  console.log(arr.length);
+
+  // index:下标
+  // 数组共有100个数据，最后这个下标99；
+  // 数组共有110个数据，最后这个下标109；
+  // for (var index = 0; index <= arr.length - 1; index++) {
+
+
+  // <= :index 能取到 arr.length - 1
+  // index < 10;
+  // <:index 当到了后面值，不进行循环；
+  // 数组的长度100，最后的下标99
+  // index<100;
+  // 0 到不了 arr.length
+  //   到了 arr.length-1
+  for (var index = 0; index < arr.length; index++) {
+    // 打印下标；
+    // console.log(index);
+
+    // 目标：把数组里的每个数据，取出来；
+    // console.log(arr[index]);
+
+    // 让每个元素加在sum就可以了；
+    // sum = sum + arr[index];
+    sum += arr[index];
+  }
+
+
+
+
+
+
+
+  // console.log(sum);
+</script>
+
+</html>

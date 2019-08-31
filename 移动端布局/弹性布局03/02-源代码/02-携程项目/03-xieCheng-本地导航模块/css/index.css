@@ -1,0 +1,122 @@
+/* 样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+ul {
+  list-style: none;
+}
+img {
+  vertical-align: middle;
+}
+body {
+  max-width: 540px;
+  min-width: 320px;
+  margin:0 auto;
+  font:normal 14px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;
+  color: #000;
+  background: #f2f2f2;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  height: 2000px;
+}
+
+/* -----------顶部模块样式---------- */
+.search-index {
+  height: 44px;
+  display: flex;
+  padding-left: 10px;
+  position: fixed;
+  width: 100%;
+  /* 固定定位的元素未来百分比设置的大小，参照的是浏览器 */
+  max-width: 540px;
+  min-width: 320px;
+  background: #f2f2f2;
+}
+/* 右侧我的 */
+.search-index .user {
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  color: deepskyblue;
+}
+.search-index .user::before {
+  display: block;
+  content: '';
+  width: 23px;
+  height: 23px;
+  background: url(../images/sprite.png) no-repeat -59px -194px;
+  background-size: 104px auto;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+/* 左侧搜索 */
+.search-index .search {
+  position: relative;
+  flex: 1;
+  height: 28px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  margin-top: 8px;
+  color: #666;
+  line-height: 28px;
+  padding-left: 40px;
+
+}
+.search-index .search::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top:7px;
+  left: 10px;
+  background: url(../images/sprite.png) no-repeat -58px -279px;
+  background-size: 104px auto;
+}
+
+/* -----------广告模块样式-------------- */
+.focus {
+  padding-top: 44px;
+}
+.focus img {
+  width: 100%;
+}
+
+/* -----------本地模块样式-------------- */
+.local-nav {
+  height: 53px;
+  background: #FFF;
+  border-radius: 8px;
+  display: flex;
+  margin: 5px 0;
+}
+.local-nav a {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  /* 设置主轴方向为y */
+  flex-direction: column;
+  align-items: center;
+}
+.local-nav a [class^=icon] {
+  width: 32px;
+  height: 32px;
+  background: url(../images/localnav_bg.png) no-repeat;
+  background-size: 32px auto;
+}
+.local-nav a .icon2 {
+  background-position: 0 -32px;
+}
+.local-nav a .icon3 {
+  background-position: 0 -64px;
+}
+.local-nav a .icon4 {
+  background-position: 0 -96px;
+}
+.local-nav a .icon5 {
+  background-position: 0 -128px;
+}

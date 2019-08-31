@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+
+		// var obj = {name : '李寻欢'};
+
+		// function fn (a,b,c) {
+		// 	console.log(this);// this->window==>obj
+
+		// 	console.log(a,b,c);
+		// }
+		// // fn();
+
+		// // fn.call(obj,a,b);
+		
+		// fn.apply(obj, [1, 2, 3]);
+
+
+		var arr = [324,56,32,657,34,67,43];
+		
+		var n = Math.max.apply(null,arr);
+
+		console.log(n);
+
+
+
+
+		// var Math = {
+
+		// 	max : function () {
+
+		// 		var n = arguments[0];
+		// 		for (var i = 0; i < arguments.length; i++) {
+		// 			if (n < arguments[0]) {
+		// 				n = arguments[0];
+		// 			}
+		// 		}
+		// 		return n;
+		// 	}
+		// }
+
+		// Math.max.apply(null, arr);
+
+		Math.max.apply(null, arr)
+
+		fn.call(obj);
+
+	</script>
+</body>
+</html>

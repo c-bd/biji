@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		function fn1 () {
+			var n = 2;
+
+			return function () {
+				console.log(n);
+			};
+
+			// function fn2 () {
+			// 	console.log(n);
+			// }
+			// fn2();
+		}
+
+		// var re = function () {
+		// 		console.log(n);
+		// 	};
+		 var re = fn1();
+
+		 re();
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="user"><br>
+    <input type="password" id="pwd"><br>
+    <input type="file" id="pic"><br/>
+    <input type="button" id="btn" value="提交">
+    
+    <script>
+        // 点击按钮的时候，收集表单各项的值，然后提交给服务器 /fd 接口
+        document.getElementById('btn').onclick = function () {
+            // 1. 先实例化空的FormData
+            var formdata = new FormData();
+            // 2. 调用append方法，向formdata对象中追加内容
+            // formdata.append('key', 'value');
+            formdata.append('username', document.getElementById('user').value);
+            formdata.append('password', document.getElementById('pwd').value);
+            // 如果是文件的话，需要添加文件对象 formdata.append('key', 文件对象);
+            // 找到文件对象？
+            var file = document.getElementById('pic');
+            console.dir(file);
+            var fileObj = file.files[0]; // 得到文件对象
+            formdata.append('mypic', fileObj);
+
+
+            // 发送ajax请求，将formdata提交给 /fd 接口
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/fd');
+            xhr.send(formdata);
+            xhr.onload = function () {
+                console.log(JSON.parse(this.response));
+            }
+        }
+    </script>
+
+</body>
+</html>

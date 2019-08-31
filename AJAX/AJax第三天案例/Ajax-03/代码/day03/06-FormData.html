@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="fm">
+        <input type="text" name="user"><br>
+        <input type="password" name="pwd"><br>
+        <input type="radio" name="sex" value="男" checked>男
+        <input type="radio" name="sex" value="女">女<br>
+        <input type="file" name="pic"><br/>
+        <input type="button" id="btn" value="提交">
+    </form>
+
+    <script>
+        // 点击按钮的时候，将表单中的数据，提交给 /fd 接口
+        document.getElementById('btn').onclick = function () {
+            // 使用 FormData 来收集表单数据
+            // 1. 找到表单的DOM对象
+            var form = document.getElementById('fm');
+            // 2. 实例化FormData，传递表单进去，得到的对象中就会包含所有的表单项的值
+            var formdata = new FormData(form);
+            // console.log(formdata);
+            // console.log(formdata.get('sex'));
+            // 写Ajax代码，完成数据提交
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/fd');             
+            xhr.responseType = 'json';
+            // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(formdata);
+            xhr.onload = function () {
+                console.log(this.response);
+            }
+        }
+    </script>
+</body>
+</html>

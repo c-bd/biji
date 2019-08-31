@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 20px;
+      height: 17px;
+      border: 1px solid red;
+      /* 背景图 */
+      background: url(img/jd-sprites.png) no-repeat -81px 0;
+      background-size: 200px 200px;
+      /* 兼容模式-私有前缀-兼容webkit内核 */
+      -webkit-border-radius:17px;
+      /* 标准的方式-css3样式属性 */
+      border-radius: 17px;
+    }
+    /* 
+      1. 什么时候用背景图 ?
+        精灵图一定使用背景图
+      2. 什么时候使用插入图片 img标签？
+        非精灵图时，可以选择使用插入图片
+     */
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

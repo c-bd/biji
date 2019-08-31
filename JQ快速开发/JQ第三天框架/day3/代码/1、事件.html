@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		div {
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div>哇哈哈</div>
+
+
+	<script type="text/javascript">
+
+		$('div').on({
+
+			// 属性名：属性值,
+			click : function () {
+				console.log('click');
+			},
+			mouseover:function () {
+				console.log('mouseover');
+			},
+			mouseout : function () {
+				console.log('mouseout');
+			}
+
+		});
+		// $('div').off();
+		$('div').off('click');
+
+		// $('div').on('click mouseover mouseout',function () {
+		// 	console.log(123);
+		// });
+
+
+	 	// $('div').click(function () {
+	 	// 	console.log('click');
+	 	// });
+
+	 	// $('div').mouseover(function () {
+	 	// 	console.log('mouseover');
+	 	// });
+
+
+	</script>
+</body>
+</html>

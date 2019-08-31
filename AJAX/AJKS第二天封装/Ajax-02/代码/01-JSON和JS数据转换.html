@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定义一些JS变量
+        var js_a = ['西施', '张飞'];
+        var js_o = {name: '曹操', age: 35};
+        var js_b = true;
+
+        // 转成JSON数据
+        var json_a = JSON.stringify(js_a);
+        var json_b = JSON.stringify(js_b);
+        var json_o = JSON.stringify(js_o);
+        console.log(json_a);
+        console.log(json_b);
+        console.log(json_o);
+
+        // 把JSON转成JS数据
+        console.log(JSON.parse(json_a));
+        console.log(JSON.parse(json_b));
+        console.log(JSON.parse(json_o));
+
+        console.log(JSON.parse('["张飞", "赵云"]["asf"]')); // 转换的数据不是一个完整的JSON，会报错
+    </script>
+</body>
+</html>

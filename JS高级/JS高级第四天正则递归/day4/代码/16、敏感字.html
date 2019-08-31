@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<textarea id="txt" cols="60" rows="10"></textarea>
+	<input type="button" value="点击发布信息">
+	<ul></ul>
+	
+
+
+	<script type="text/javascript">
+		
+		var btn = document.querySelector('input');
+		var txt = document.getElementById('txt');
+		var ul = document.querySelector('ul');
+
+		btn.onclick = function () {
+
+			var newLi = document.createElement('li');
+
+			var val = txt.value;
+
+			val = val.replace(/搞基/g,'**');
+
+			newLi.innerText = val;
+
+			ul.appendChild(newLi)
+
+		}
+	</script>
+</body>
+</html>

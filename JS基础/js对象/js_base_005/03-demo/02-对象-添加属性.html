@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  // 1.声明对象
+  var obj = {};
+
+
+  // 2.添加属性（特征）
+  // 语法：对象.属性的名称 = 属性值（特征的值）
+  // 属性的名称：根据你的业务需求自己命名的；
+  obj.name = "狗蛋";
+
+  // 
+  // console.log(obj);
+
+
+  // 3.添加方法：
+  // 语法 对象.方法名 = 函数(匿名函数)
+  // 函数什么时候才会执行？调用的时候才会执行；
+  obj.say_name = function() {
+    console.log(obj.name);
+  }
+
+  // 对象.方法名();
+  obj.say_name();
+
+
+
+  // 先声明空数组，再进行添加数据
+  // var arr = [];
+  // arr[0] = 1;
+
+  // var arr = [10, 10, 10, 10];
+
+  // 如果一开始，你知道对象内部的属性和方法，初始化声明
+  var obj = {
+    // 语法：属性名:属性值
+    // 多个属性名和值之间用, 隔开；
+    name: "狗蛋",
+    // 
+    age: 12,
+    // 方法名:函数
+    sayName: function() {
+      console.log(obj.name);
+    }
+  };
+
+
+
+  // 声明方式：键值对的方式声明；
+  // 语法：对象["属性名"]  = 属性值；
+
+  var obj = {};
+
+  obj["name"] = "狗蛋";
+  obj["age"] = 45;
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./assets/jquery.js"></script>
+    <script>
+        // $.ajax(JS对象);
+        $.ajax({
+            // 属性: 值
+            type: 'GET', // 请求方式
+            url: '/big-data',
+            // data: 'id=111&age=222&name=zs',
+            data: {id: 333, age: 666, name: 'zs'}, // 发送给接口的数据，可以写成对象，jQuery内部会自动将对象转成字符串
+            dataType: 'json', // 如同 responseType。
+            success: function (res) {
+                console.log(res);
+            },
+            cache: false, // 表示不缓存
+            // contentType: false // jQuery默认设置的Content-Type为x-www-form-urlencoded，这里false表示不让jQuery去设置请求头
+            timeout: 1000, // 请求超时时间，1秒
+            beforeSend: function () {
+                // 类似 onloadstart事件
+            },
+            complete: function () {
+                // 类似 onloadend 事件
+            },
+            error: function () {
+                // 请求过程中出错，会触发
+            },
+            // processData: false // 处理发送给服务器的数据，默认会将对象类型的数据，转成字符串
+        });
+    </script>
+</body>
+</html>

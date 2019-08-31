@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 发送一次POST请求
+        // 1. 创建 xhr 对象
+        var xhr = new XMLHttpRequest();
+        // 2. 设置请求方式和请求url
+        xhr.open('POST', '/query-post');
+        // 3. 设置请求头，浏览器告诉服务器，给你提交的数据是什么格式
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // 4. 发送请求
+        // xhr.send('提交的数据');
+        xhr.send('id=111&age=222&name=zs');
+        // 5. 等ajax请求响应过程结束，然后接收服务器响应的结果
+        xhr.onload = function () {
+            console.log(this.response);
+        }
+    </script>
+</body>
+</html>

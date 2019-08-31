@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象 Tab</title>
+    <link rel="stylesheet" href="./styles/tab.css">
+</head>
+
+<body>
+
+    <main>
+        <h4>
+            Js 面向对象 动态添加标签页
+        </h4>
+        <div class="tabsbox" id="tab">
+            <!-- tab 标签 -->
+            <nav class="fisrstnav">
+                <ul>
+                    <li class="liactive"><span>测试1</span><span class="iconfont icon-guanbi"></span></li>
+                    <li><span>测试2</span><span class="iconfont icon-guanbi"></span></li>
+                    <li><span>测试3</span><span class="iconfont icon-guanbi"></span></li>
+
+                </ul>
+                <div class="tabadd">
+                    <span>+</span>
+                </div>
+            </nav>
+
+            <!-- tab 内容 -->
+            <div class="tabscon">
+                <section class="conactive">测试1</section>
+                <section>测试2</section>
+                <section>测试3</section>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- <script src="js/tab.js"></script> -->
+    <script type="text/javascript">
+
+        var that;
+        // 因为可能有若干个tab切换，传递谁，就可以让谁切换效果
+        class Tab {
+            constructor (id) {
+               that = this;
+                // this.id = id
+               this.mainTab = document.querySelector(id);
+               this.lis = this.mainTab.querySelectorAll('li');// this.lis = [li,li,li]
+               this.sections = this.mainTab.querySelectorAll('.tabscon section');
+               this.tabadd = this.mainTab.querySelector('.tabadd');
+               this.ul = this.mainTab.querySelector('.fisrstnav ul');
+               this.tabscon = this.mainTab.querySelector('.tabscon');
+               // 调用init添加事件
+               this.init();
+            }
+            // 写一个方法，添加事件
+            init () {
+                // this.lis = [li,li,li]
+                for (var i = 0; i < this.lis.length; i++) {
+                    // 遍历的时候，就要给每一个li添加一个索引值，根据这个索引值可以找到对应的section
+                    this.lis[i].index = i;
+                    this.lis[i].onclick = this.toggleTab;
+                }
+                this.tabadd.onclick = this.tianjia;
+            }
+            // 切换方法
+            toggleTab () {
+                // 再添加className之前要把所有的className清除
+                that.clearClass();
+                // console.log(123);
+                // 切换li的className，给当前点击li添加liactive类
+                this.className = 'liactive';
+                // 让对应的section显示出来
+                that.sections[this.index].className = 'conactive';
+            }
+
+            // 清除类方法，用来清除类样式
+            clearClass () {
+                this.lis = this.mainTab.querySelectorAll('li');// this.lis = [li,li,li]
+                this.sections = this.mainTab.querySelectorAll('.tabscon section');
+                // 我们需要把所有的li的className清除，把所有section的className也要清除
+                for (var i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = '';
+                    this.sections[i].className = '';
+                }
+            }
+            // 添加方法
+            tianjia () {
+                that.clearClass();
+                var neirong = prompt('请输入内容');
+                var li = '<li class="liactive"><span>' + neirong + '</span><span class="iconfont icon-guanbi"></span></li>';
+                // 高级方法
+                that.ul.insertAdjacentHTML('beforeend',li);
+                var section = '<section class="conactive">哇哈哈</section>';
+                that.tabscon.insertAdjacentHTML('beforeend',section);
+            }
+        }
+
+
+        new Tab('#tab');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // var that;
+        // class tab {
+        //     constructor (id) {
+        //         that = this;
+        //         this.mainTab = document.querySelector(id);
+        //         this.lis = this.mainTab.querySelectorAll('li');
+        //         this.sections = this.mainTab.querySelectorAll('section');
+        //         this.tabadd = this.mainTab.querySelector('.tabadd');
+        //         this.ul = this.mainTab.querySelector('.fisrstnav ul');
+        //         this.tabscon = this.mainTab.querySelector('.tabscon');
+        //         this.init();
+        //     }
+
+        //     init () {
+        //         for (var i = 0; i < this.lis.length; i++) {
+        //             this.lis[i].index = i;
+        //             this.lis[i].onclick = this.toggleTab;
+        //         }
+        //         this.tabadd.onclick = this.addTab;
+        //     }
+
+        //     toggleTab () {
+                
+        //         // 清除className;
+        //         that.clearClass();
+        //         this.className = 'liactive';
+        //         that.sections[this.index].className = "conactive";
+        //     }
+
+        //     clearClass () {
+        //         that.lis = that.mainTab.querySelectorAll('li');
+        //         that.sections = that.mainTab.querySelectorAll('section');
+        //         for (var i = 0; i < this.lis.length;i++) {
+        //             this.lis[i].className = '';
+        //             this.sections[i].className = '';
+        //         }
+        //     }
+
+        //     addTab () {
+        //         that.clearClass();
+        //         var n = window.prompt('内容');
+        //         var li = '<li class="liactive"><span>' + n + '</span><span class="iconfont icon-guanbi"></span></li>';
+        //         that.ul.insertAdjacentHTML('beforeend', li);
+        //         var se = '<section class="conactive">测试123</section>';
+        //         that.tabscon.insertAdjacentHTML('beforeend',se);
+        //     }
+
+        // }
+        // new tab('#tab');
+
+
+
+    </script>
+</body>
+
+</html>

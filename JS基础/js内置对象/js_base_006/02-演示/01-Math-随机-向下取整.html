@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100%;
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  function getRandom() {
+    return Math.floor(Math.random() * (255 + 1));
+  }
+  //
+  function getRandomColor() {
+    var r = getRandom();
+    var g = getRandom();
+    var b = getRandom();
+    var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+    return color;
+  }
+
+
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+  document.write(`<div style='background:${getRandomColor()}'></div>`)
+</script>
+
+</html>

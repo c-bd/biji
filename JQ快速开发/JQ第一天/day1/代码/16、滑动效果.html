@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	<input type="button" value="点击slideDown" id="btn1">
+	<input type="button" value="点击slideUp" id="btn2">
+	<input type="button" value="点击slideToggle" id="btn3">
+	<div></div>
+
+
+	<script type="text/javascript">
+		
+		// 点击上滑
+		$('#btn2').click(function () {
+			$('div').slideUp(2000,'linear',function () {
+				console.log('1223');
+			});
+		});
+
+		// 点击下滑
+		$('#btn1').click(function () {
+			$('div').slideDown(2000,'linear',function () {
+				console.log('123');
+			});
+		});
+
+		// 点击切换
+		$('#btn3').click(function () {
+			$('div').slideToggle(1000);
+		})
+
+
+
+	</script>
+</body>
+</html>

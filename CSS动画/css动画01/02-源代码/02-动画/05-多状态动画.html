@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background:hotpink;
+      /* 调用 */
+      animation: move 5s linear infinite;
+    }
+
+    /* 定义动画 顺序没有影响*/
+    /* 0%-100% 是对动画时长的划分 */
+    @keyframes move {
+     0% {
+       transform: translate(0,0);
+     }
+     25% {
+      transform: translate(800px,0);
+     }
+     50% {
+      transform: translate(800px,200px);
+     }
+     75% {
+      transform: translate(0,200px);
+     }
+     100% {
+      transform: translate(0,0);
+     }
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

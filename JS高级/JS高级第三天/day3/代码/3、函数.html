@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		// 函数1
+		// function fn () {
+		// 	console.log('函数');
+		// }
+		// fn();
+
+
+		// 函数2
+		// var fn = function () {console.log(123);}
+		// fn();
+		// (function (a) {
+		// 	console.log('aaa');
+		// 	console.log(a);
+		// })(1);
+
+
+		// 函数3
+		var fn = new Function('a','b','console.log(a + b)');
+		fn(1,2);
+		console.log( Function.prototype );
+		console.log( fn.__proto__ );
+	</script>
+</body>
+</html>

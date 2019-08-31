@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  // var arr = [1, 2, 1, 3];
+
+  // concat:不操作原数组，创建新数组返回；
+  // var res_1 = arr.concat("abc", "45");
+  // console.log(res, arr);
+
+  // 
+  // var res_2 = arr.concat(["a", "b"]);
+  // console.log(res_2, arr);
+
+  // 截取：不对原数组操作，返回新数组
+  // 
+  var arr = ["a", "b", "c", "d", "f"];
+
+  // 截取：包左不包右；
+  // 第一个参数：截取的左下标；（包括）
+  // 第二个参数：截取的右下标；(不包括)
+  var res_1 = arr.slice(1, 4);
+  console.log(res_1, arr);
+
+
+  // 第二个参数省略，默认为数字的长度；
+  var res_2 = arr.slice(1);
+  console.log(res_2, arr);
+
+
+  // 两个参数全部省略，第一个默认为0，第二个默认为length
+  var res_3 = arr.slice()
+  console.log(res_3, arr);
+</script>
+
+</html>

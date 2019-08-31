@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* 1  xs */
+    
+    @media screen and (min-width:0) {
+      .container {
+        width: 100%;
+      }
+    }
+    /* 2 s */
+    
+    @media screen and (min-width:768px) {
+      .container {
+        width: 750px;
+      }
+    }
+    /* 3. M */
+    
+    @media screen and (min-width:992px) {
+      .container {
+        width: 970px;
+      }
+      .md-1 {
+        width: 10%;
+      }
+      .md-2 {
+        width: 20%;
+      }
+      .md-3 {
+        width: 30%;
+      }
+      .md-4 {
+        width: 40%;
+      }
+      .md-6 {
+        width: 60%;
+      }
+      .md-5 {
+        width: 50%;
+      }
+      .md-7 {
+        width: 70%;
+      }
+      .md-8 {
+        width: 80%;
+      }
+      .md-9 {
+        width: 90%;
+      }
+      .md-10 {
+        width: 100%;
+      }
+    }
+    /* 4. L */
+    /* L  子元素各占一半 */
+    
+    @media screen and (min-width:1200px) {
+      .container {
+        width: 1170px;
+      }
+      /* 提前写好的宽度分配，到时候用就行 */
+      .lg-1 {
+        width: 10%;
+      }
+      .lg-2 {
+        width: 20%;
+      }
+      .lg-3 {
+        width: 30%;
+      }
+      .lg-4 {
+        width: 40%;
+      }
+      .lg-5 {
+        width: 50%;
+      }
+      .lg-6 {
+        width: 60%;
+      }
+      .lg-7 {
+        width: 70%;
+      }
+      .lg-8 {
+        width: 80%;
+      }
+      .lg-9 {
+        width: 90%;
+      }
+      .lg-10 {
+        width: 100%;
+      }
+      /* .s_1 {
+        width: 50%;
+      }
+      .s_2 {
+        width: 50%;
+      } */
+    }
+    
+    .container {
+      height: 300px;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+    
+    .container div {
+      float: left;
+      height: 30px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="md-2 lg-5"></div>
+    <div class="md-8 lg-5"></div>
+  </div>
+</body>
+
+</html>

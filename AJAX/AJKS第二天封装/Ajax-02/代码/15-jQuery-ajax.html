@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./assets/jquery.js"></script>
+    <script>
+        // $.ajax(JS对象);
+        $.ajax({
+            // 属性: 值
+            type: 'GET', // 请求方式
+            url: '/query-get',
+            // data: 'id=111&age=222&name=zs',
+            data: {id: 333, age: 666, name: 'zs'}, // 发送给接口的数据，可以写成对象，jQuery内部会自动将对象转成字符串
+            dataType: 'json', // 如同 responseType。
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    </script>
+</body>
+</html>

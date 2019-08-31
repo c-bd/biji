@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p style="display: none;">玩命加载中...</p>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        // 当数据正在接收的时候，会触发。它可能会触发多次
+        xhr.onprogress = function () {
+            // 此时，ajax的状态值为 3
+            // console.log(this.response.length);
+            console.log('正在下载数据，请稍后');
+        }
+
+        // 当数据完全接收后，会触发
+        xhr.onload = function () {
+            console.log('接收完毕，成功接收了所有的数据');
+        }
+
+        // 当ajax请求开始的时候，会触发
+        xhr.onloadstart = function () {
+            document.querySelector('p').style.display = 'block';
+            console.log('请求开始了');
+        }
+
+        // 当ajax请求结束的时候，会触发
+        xhr.onloadend = function () {
+            document.querySelector('p').style.display = 'none';
+            console.log('结束了，也不知道请求成功了还是失败了');
+        }
+
+        // 这里调用 /big-data 接口，它返回100万次时间戳
+        xhr.open('GET', '/big-data');
+        xhr.send();
+    </script>
+</body>
+
+</html>

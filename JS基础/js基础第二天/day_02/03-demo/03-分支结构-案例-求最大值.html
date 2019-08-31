@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 要求用户可以输入：
+  var a = prompt("请输入第一个数字");
+  var b = prompt("请输入第二个数字");
+
+
+  // 返回的字符类型，转化为数字类型；
+  a = parseFloat(a);
+  b = parseFloat(b);
+
+  // 其他类型 与 数字类型 比较
+
+  // a b 字符类型
+  // 字符与字符比较：不能用昨天规律  
+  // "a":字符编码
+
+  // 多个状态判断
+  if (a > b) {
+    alert("最大值是：" + a);
+  }
+  // a ==b
+  else if (a == b) {
+    alert("他两一样大");
+  }
+  // a < b
+  else {
+    alert("最大值是：" + b);
+  }
+
+  // 求最大值
+  // 如果真的是a>b 
+  // if (a > b) {
+  //   alert("最大值是：" + a);
+  // }
+  // // a<=b 执行下面的代码
+  // else {
+  //   alert("最大值是：" + b);
+  // }
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  var str = "abc";
+
+  // 返回新的字符串；
+  var res = str.concat("dfg", "ghj");
+
+  // 
+
+  var str_1 = "我爱北京天安门的红旗";
+
+  // substring:两个参数都为下标，包左不包右的截取，
+  // 不对原字符串进行操作，返回新的字符串；
+  var res_1 = str_1.substring(2, 5);
+  // console.log(res_1, str_1);
+
+  // 参数为负数的时候，要和字符串的长度进行相加；
+  // 不对原字符串进行操作， 返回新的字符串；
+  var res_2 = str_1.slice(-6, 9);
+  // console.log(res_2, str_1);
+
+  // 参数：第一个为下标，第二个截取的长度；
+  //  不对原字符串进行操作，返回新的字符串；
+  var res_3 = str_1.substr(2, 3);
+  console.log(res_3);
+</script>
+
+</html>

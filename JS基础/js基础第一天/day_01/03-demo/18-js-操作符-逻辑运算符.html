@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // && 且 ：全部满足 
+  // 常规：需要Boolean值进行逻辑判断；
+  // 返回：把最后一个满足的结果，返回过来；
+  // console.log(true && true);
+
+  // 返回：当遇见不满足情况，直接就把不满足结果返回；
+  // console.log(false && true);
+
+  // 遇见：非Boolean值；转换为布尔值参与逻辑判断；
+  console.log(1 && 2);
+  // true  true  返回最后那个是true判断的结果；
+
+  // console.log(null && 1);
+  // 转化 只是去参与比较:false true;
+  // 返回：原来位置上的数据；
+
+
+
+  // 接受：用户输入的用户名和密码
+  // 全部正确（admin 123456）的时候，才算登录
+  // var user_name = prompt('用户名：');
+  // var password = prompt('密码：');
+  // 验证：你刚才输入是不是 admin 和 123456
+  // && ：且，左右两边要同时满足
+
+  // 判断：你输入的用户名是不是我后台设置的admin
+  // user_name == "admin"：是比较运算符，返回值Boolean类型，输入正确的时候，返回true；
+  // password == "123456"：是比较运算符，返回值Boolean类型，输入正确的时候，返回true；
+  // console.log(user_name == "admin" && password == "123456");
+  // true && true;
+  // 会把最后一个判断为true的结果返回；
+
+
+
+  // ---------------------------------------------------------
+  // || 或：满足一个条件即可；
+  // 案例：年级小于5岁 或 身高 小于120cm 免费乘坐；
+  var age = prompt('请输入你的年龄');
+  var hight = prompt('请输入你的身高');
+  console.log(age < 5 || hight < 120);
+  // 把比较运算符的结果Boolean类型结果，返回给你；
+  // 返回：Boolean值；
+
+
+  // !:取对立面 取反；
+  var a = true;
+  a = !a;
+</script>
+
+</html>

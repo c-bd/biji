@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    img {
+      width: 100%;
+      /* 图片要叠加在一起 */
+      position: absolute;
+      border: 1px solid #ccc;
+      /* 过渡 */
+      transition: all 2s;
+      /* 设置图片旋转的源点 重点 */
+      transform-origin: right bottom;
+    }
+
+
+    /* 核心需求： */
+    /* 鼠标进入div时，要旋转div中每一个图片 */
+    /* 旋转的中心点：右下角 */
+    /* 每一个图片选中的角度不一样 */
+    /* 旋转的方式是顺时针 */
+    /* 要过渡展开 */
+
+    /* 第1张图片  重点*/
+    div:hover img:nth-child(1) {
+      transform: rotate(10deg);
+    }
+
+    /* 第2张图片 重点 */
+    div:hover img:nth-child(2) {
+      transform: rotate(20deg);
+    }
+
+    /* 第3张图片 重点*/
+    div:hover img:nth-child(3) {
+      transform: rotate(30deg);
+    }
+
+    /* 第4张图片 重点 */
+    div:hover img:nth-child(4) {
+      transform: rotate(40deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <img src="images/02.png" alt="">
+    <img src="images/02.png" alt="">
+    <img src="images/02.png" alt="">
+    <img src="images/02.png" alt="">
+  </div>
+</body>
+
+</html>

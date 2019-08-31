@@ -1,0 +1,129 @@
+// 
+// @import './common';
+
+// 当前的设计稿750px 属于最后一个档位
+// 算页面元素是多少rem值；
+// 找分母：1rem背后是代表
+@base:75;
+
+
+// 计算比例：把所有的px属性，/ 75
+
+body {
+  // 负责 页面能缩小的最小的值；
+  min-width: 320px;
+
+  // 第一步：原稿实现
+  width: 750rem/@base;
+  margin: 0 auto;
+
+  font-size: 24rem/@base;
+}
+
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+
+// --------------------------------------------------------搜区区
+header {
+  height: 88rem/@base;
+  display: flex;
+  // 默认主轴
+  background-color: #FFC001;
+
+  // 固定定位
+  position: fixed;
+  // 没有默认的100%;
+  // 不是相对body HTML 
+  width: 750rem/@base;
+
+  min-width: 320px;
+
+
+
+  .left {
+    width: 40rem/@base;
+    height: 70rem/@base;
+    margin: 9rem/@base 15rem/@base;
+    background: url('../imgs/classify.png') no-repeat;
+    // 相对于当前的盒子的宽度 
+    background-size: 100%;
+  }
+  .mid {
+    flex: 1;
+    background-color: #fff;
+    margin: 10rem/@base 0;
+    border-radius: (88-20)/2rem/@base;
+    line-height: 68rem/@base;
+    padding-left: 35rem/@base;
+  }
+  // 右侧
+  .right {
+    width: 88rem/@base;
+    height: 88rem/@base;
+    color: #fff;
+    line-height: 88rem/@base;
+    text-align: center;
+  }
+}
+
+
+
+// -----------------------------------------------------------banner
+.banner {
+  a {
+    display: block;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+
+// --------------------------------------------------------ads
+.ads {
+  display: flex;
+  // 默认主轴：行
+  a {
+    flex: 1;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+// --------------------------------------------------------nav
+nav {
+  height: 280rem/@base;
+  display: flex;
+  // 默认不换行
+  flex-wrap: wrap;
+
+  a {
+    flex: 20%;
+    height: 140rem/@base;
+    // 整体a flex布局
+    display: flex;
+    // 确认主轴
+    flex-direction: column;
+    // 侧轴居中
+    align-items: center;
+    img {
+      width: 82rem/@base;
+      margin: 10rem/@base 0;
+    }
+    span {
+      color: #666;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 数组的复制；
+  var arr = [1, 2, 4, 5, 6];
+
+  // 复制？
+  // var new_arr = arr;
+
+
+  // 数组，类型是对象；
+  // 
+  // new_arr[0] = "abc";
+  // console.log(new_arr, arr);
+
+
+  // 如何复制一个数组；
+  var new_arr_1 = [];
+  for (let index = 0; index < arr.length; index++) {
+    new_arr_1[index] = arr[index];
+  }
+
+
+  // forEach : 变量
+  var new_arr_2 = [];
+  arr.forEach(function(item, index) {
+    new_arr_2.push(item);
+  });
+
+
+  // filter:数组过滤：满足条件返出来，返每个元素，返到新数组；
+  var new_arr_3 = arr.filter(function(item, index) {
+    return true;
+  });
+
+
+  // concat: 不对原数组操作，返回是一个新的数组；
+  var new_arr_4 = arr.concat();
+  // console.log(new_arr_4);
+
+  // slice :截取 不对原数组操作，返回是一个新的数组；
+  var new_arr_5 = arr.slice();
+</script>
+
+</html>

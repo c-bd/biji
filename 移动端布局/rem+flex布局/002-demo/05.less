@@ -1,0 +1,74 @@
+
+// 在less 写CSS
+// div {
+//   width: 100px;
+//   height: 100px;
+// }
+
+// a {
+//   font-size: 20px;
+// }
+
+
+// 变量
+@color:#222;
+
+header {
+  background-color: @color;
+}
+
+.box_1 {
+  color: @color;
+}
+
+.box_2 {
+  border:2px solid @color;
+}
+
+
+// 嵌套 更好管理你的代码，更符合逻辑上思考
+.box {
+  width: 100px;
+  background-color: @color;
+  .son {
+    width: 100%;
+    height: 50px;
+    a {
+      background-color: red;
+      // &:hover {
+      //   background-color: #222;
+      // }
+      // &::before {
+      //   content:"";
+      // }
+    }
+    a::before {
+      content:"1";
+    }
+
+  }
+}
+
+
+
+// 运算
+div {
+  width: 268/16rem;
+  width: 50+50px;
+  height: 50-17px;
+
+  //单位：不参与运算，
+  // 选择： 两个不同的单位，取第一个单位；
+  height: 50rem/16px;
+  // 
+  background-color: #666-#222;
+}
+
+
+
+// 要求：不是大纲 
+// 工作中：不是直接写CSS 习惯写less; 
+
+
+
+

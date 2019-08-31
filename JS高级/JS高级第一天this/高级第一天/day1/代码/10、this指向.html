@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input type="button" value="点击" id="btn1">
+	<input type="button" value="点击" id="btn2">
+	<input type="button" value="点击" id="btn3">
+	<input type="button" value="点击" id="btn4">
+
+	<script type="text/javascript">
+		
+		class Btn {
+
+			constructor (id) {
+				// var btn = document.querySelector('#btn1');
+				this.anniu = document.querySelector(id);
+				// this.anniu.onclick = function () {
+				// 	alert(123);
+				// }
+				// 如果添加事件：注意方法不准带括号
+				this.anniu.onclick = this.wahaha;// 此时wahaha里面的this是<input>
+				console.log(this);
+			}
+
+			wahaha () {
+				// console.log('哇哈哈');
+				console.log(this);
+			}
+
+
+		}
+
+
+		var n = new Btn('#btn1');
+		// n.wahaha();// this代表的是n这个实例对象
+		// console.log(n);
+		// n.wahaha();
+
+
+
+
+		// class Star {
+		// 	constructor (uname) {
+		// 		this.uname = uname;
+		// 	}
+		// }
+		// new Star('张三丰');
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 配置参数：把你要替换的部分，配置为参数
+  // 参数：是函数内部的一个变量
+  // 这个直接在()内，不需要var 声明；
+  // 配置一个参数；
+  // function tell_story(name) {
+  //   // 函数体；
+  //   console.log("山上有庙");
+  //   console.log("庙有和尚");
+  //   console.log("和尚说事");
+  //   console.log("老和尚对" + name + "说：");
+
+
+  //   // var a = name * 3;
+  // }
+
+
+
+  // 在函数调用的时候：传入一个实际要参与的变量值；
+  // tell_story("二和尚");
+
+
+  // 传值的过程：
+  // 传入"二和尚"
+  // 内部：name = "二和尚";
+  // 下面就是字符串拼接；console.log("老和尚对" + name + "说：");
+
+
+  // ------------------------------------------------------
+  // 函数声明，配置两个参数：
+  function tell_story(name_1, name_2) {
+    // 函数体；
+    console.log("山上有庙");
+    console.log("庙有和尚");
+    console.log(name_1 + "说事");
+    console.log(name_1 + "对" + name_2 + "说：");
+  }
+
+
+
+
+  // 调用函数
+  // tell_story("铁头", "熊大");
+  var x = "铁头";
+  var y = "熊大";
+  // 真实调用时候，我传入的参数，是实际要参与的数据’
+  tell_story(x, y);
+
+  // tell_story("铁头", "熊大")
+  // 内部：
+  // name_1 = "铁头"
+  // name_2 = "熊大"
+
+  // 执行内部执行逻辑；
+  // console.log("山上有庙");
+  // console.log("庙有和尚");
+  // console.log(name_1 + "说事");
+  // console.log(name_1 + "对" + name_2 + "说：");
+
+
+
+
+
+  // 如何去配置参数：
+  // 根据你的业务需求，把一些你要抽象的数据，配置为参数。
+  // 记得：在函数的()内，写上你配置的变量名；
+  // 在声明函数的，内部的变量才算是声明了。
+</script>
+
+</html>

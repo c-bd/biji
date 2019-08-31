@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+
+		function Star (uname) {
+			this.uname = uname;
+		}
+		Star.prototype.chang = function () {console.log('唱歌');}
+
+		// ##################
+		var obj = new Star('张三丰');
+		console.log(obj.__proto__);
+
+		console.log(Star.prototype);
+		console.log(Star.prototype == obj.__proto__);
+
+
+		function FN (){}
+
+		var n = new Obj()
+
+		Star.prototype.fangfa = function () {}
+
+	</script>
+</body>
+</html>

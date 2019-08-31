@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  // 数组的变量
+  // var arr = [0, 10, 10, 10, 20];
+
+
+  // item:当前遍历的一个数据
+  // index：当前数据的下标
+  // arr:当前的循环的数组
+  // var sum = 0;
+  // arr.forEach(function(item, index, arr) {
+  //   // console.log(index, item, arr);
+  //   sum += item;
+  // });
+  // 数组过滤：循环的思想在里面
+  // var res = arr.filter(function(item, index, arr) {
+  //   // 后面是需要写条件，条件表达式，需要Boolean值，
+  //   // 当为true 把符合true的数据返回；
+  //   // return item;
+
+  //   // false时，当前的item不会返回；
+  //   // return 0;
+
+  //   // return item;
+
+
+
+  // });
+
+
+
+  // 把数组中 下标为偶数 的数据挑出来；
+  var arr = [0, 10, 15, 20, 60];
+
+
+  // console.log(arr, res);
+  // var new_arr = [];
+  // for (var index = 0; index < arr.length; index++) {
+  //   // 找 下标为偶数
+  //   if (index % 2 == 0) {
+  //     // 从后添加数据
+  //     new_arr.push(arr[index])
+  //   }
+  // }
+  // console.log(new_arr);
+
+
+
+
+  // 筛选出 满足条件的数组
+  var res = arr.filter(function(item, index, arr) {
+    // return 后面要跟一个筛选的条件；
+    // 条件成立时，返回item到新数组里；
+    return index % 2 == 0;
+  });
+
+
+  // console.log(res);
+</script>
+
+</html>

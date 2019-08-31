@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello</p>
+    <script>
+
+        console.log(111);
+
+        // 发送一次异步的ajax请求
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/big-data'); // 接口返回 100万次时间戳
+        xhr.send();
+        xhr.onload = function () {
+            console.log(this.response.length);
+        }
+
+        // 再发送一次异步的ajax请求
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open('GET', '/time'); // 接口返回 100万次时间戳
+        xhr2.send();
+        xhr2.onload = function () {
+            console.log(this.response.length);
+        }
+
+        console.log(222);
+    </script>
+</body>
+</html>

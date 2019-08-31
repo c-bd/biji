@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+  // 返回值：表达式有返回值；
+  // 函数也有返回值
+
+
+  // 需求:任意算两个数的和
+  // var a = 10;
+  // var b = 20;
+  // var sum = a + b;
+  // console.log(sum);
+
+
+  // 定义函数：参数，可以在内部参与运算
+  // function qiu_he(x, y) {
+  //   var sum = x + y;
+  //   // console.log(sum);
+
+  //   // return:返回值，必须后面跟一个值；即将要作为函数执行完后，返回的值；
+  //   return sum;
+  // }
+
+  // 调用函数：传入实参
+  // 想要获取到结果 
+  // var sum = qiu_he(12, 12);
+  // // 默认返回是undefined；
+  // console.log(sum, '外面的函数返回值');
+
+  //-------------------------------------------------------------
+  // 作用2：终止函数的执行
+  function demo() {
+    console.log("1111111111111");
+    console.log("2222222222222");
+    // 终止函数的执行,函数内部下面的代码不执行了
+    return;
+    console.log("3333333333333");
+  }
+
+
+  // 
+  var res = demo();
+
+  // 看下：return后面没有值的时候，返回的是啥？
+  console.log(res);
+</script>
+
+</html>

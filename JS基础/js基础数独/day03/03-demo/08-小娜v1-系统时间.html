@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 得到系统时间
+  // 字符串转数组
+  // JS给我们提供的工具，给我们时间；
+
+  // 构造函数：返回给我们一个需要的东西（工具）
+  // 工具：有关时间的一个工具
+  var date = new Date();
+
+  // 获取当前的年份，返回的是一个数字
+  var year = date.getFullYear();
+  console.log(year);
+  // 人类：1-12
+  // 计算机：0-11
+  var month = date.getMonth() + 1;
+  console.log(month);
+
+  // 单位数
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  // 日期 :约会 have a date;
+  var day = date.getDate();
+  console.log(day);
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+
+
+  // 时
+  var hour = date.getHours();
+  console.log(hour);
+
+  if (hour < 10) {
+    hour = "0" + hour;
+  }
+
+  // 分
+  var minute = date.getMinutes();
+  console.log(minute);
+
+  if (minute < 10) {
+    minute = "0" + minute;
+  }
+
+  // 秒
+  var second = date.getSeconds();
+  console.log(second);
+
+  if (second < 10) {
+    second = "0" + second;
+  }
+
+
+  alert(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
+</script>
+
+</html>·

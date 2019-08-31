@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+      配置视口 
+        未来告诉浏览器，布局视口要和视觉视口一致
+  -->
+  <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    img {
+      width: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 这个50px的素材图片，未来在从50像素放大2倍时，可能会失真 -->
+   <img src="img/apple50.jpg" alt="">
+  <!-- 这个100px的素材图片，未来在从50像素放大2倍时，不会失真 -->
+   <img src="img/apple100.jpg" alt="">
+</body>
+</html>

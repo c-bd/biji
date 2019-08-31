@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- multiple 表示多选的意思 -->
+    <!-- accept 表示可以选择什么类型的文件
+        accept=".jpg,.png"
+        accept="image/*"
+    -->
+    <input type="file" id="pic" multiple accept="image/*">
+    <input type="button" value="查看文件域的信息" id="btn">
+
+    <script>
+        // 点击按钮的时候，查看文件域的内容
+        document.getElementById('btn').onclick = function () {
+            var a = document.getElementById('pic');
+            console.dir(a);
+        }
+    </script>
+</body>
+</html>

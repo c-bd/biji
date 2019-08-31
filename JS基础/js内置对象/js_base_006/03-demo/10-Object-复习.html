@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 对象如何复制？
+  // 
+  var obj = {
+    name: "abc",
+    age: 19,
+    sayHi: function() {
+      console.log(1);
+    }
+  };
+
+  // JS 浅拷贝；
+  var new_obj = {};
+  for (var key in obj) {
+    // console.log(key, obj[key]);
+    new_obj[key] = obj[key];
+  }
+</script>
+
+</html>

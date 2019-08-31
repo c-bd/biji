@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		function Star (uname) {
+			this.uname = uname;
+			// this.say = function () {}
+		}
+
+		Star.prototype.sing = function () {console.log(123);}
+
+
+
+		// console.log(Star.prototype.constructor);
+		// console.log(Star);
+
+		var obj = new Star('张三丰');
+
+		console.log(obj.constructor);
+
+
+
+
+	</script>
+</body>
+</html>

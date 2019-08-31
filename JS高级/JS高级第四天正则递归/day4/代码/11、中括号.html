@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		// var reg = /^[a-z]$/;
+		// console.log( reg.test('') );// false
+		// console.log( reg.test('a') );// true
+		// console.log( reg.test('ab') );// fasle
+		// console.log( reg.test('b') );// fasle
+		// console.log( reg.test('c') );// true
+		// console.log( reg.test('_') );// false
+		// console.log( reg.test('Q') );// false
+		// console.log( reg.test('ab') );// false
+		
+
+		// var reg = /^[a-zA-Z0-9_-]$/;
+		// // console.log( reg.test('a') );// true
+		// // console.log( reg.test('ab') );// false
+		// // console.log( reg.test('K') );// true
+		// // console.log( reg.test('6') );// false
+
+		// // console.log( reg.test('AA') );// false
+		// // console.log( reg.test('M') );// true
+		// // console.log( reg.test('9') );// true
+		// // console.log( reg.test('66') );// false
+		// console.log( reg.test('_') );// true
+		// console.log( reg.test('-') );// true
+		
+
+		var reg = /^[^a-z]$/;// 取反：a-z取反
+
+		console.log( reg.test('a'));// false
+		console.log( reg.test('A'));// true
+		console.log( reg.test('-'));// true
+	</script>
+</body>
+</html>

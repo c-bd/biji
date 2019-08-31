@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		
+		var obj = {
+			name : '李寻欢',
+			age : 22,
+			message : {
+				sex : '男',
+				score : 3
+			},
+			color : ['red','qing','purple']
+		};
+		var newObj = {};
+
+		Object.assign(newObj, obj);
+
+		console.log(newObj);
+
+
+		// newObj.name = obj.name
+		// // 遍历对象
+		// for ( key in obj ) {
+		// 	// 对象.属性 = 值;
+		// 	newObj[key] = obj[key];
+
+		// }
+
+
+		// // obj.name = '宇智波鼬'
+		// console.log(newObj);
+		
+		// for (属性名 in 对象) {}
+
+
+	</script>
+</body>
+</html>

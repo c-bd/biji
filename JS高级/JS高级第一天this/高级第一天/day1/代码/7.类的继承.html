@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	
+	<script type="text/javascript">
+			
+		class Father {
+			constructor (uname, age) {
+				this.uname = uname;
+				this.age = age;
+			}
+
+			say () {
+				console.log( '说话' );
+			}
+
+			qian () {
+				console.log('一个亿');
+			}
+		}
+
+		// 子类
+		class Son extends Father {
+
+			constructor (uname, age, score) {
+				super(uname, age);
+				// this.uname = uname;
+				// this.age = age;
+				this.score = score;
+			}
+
+			qian () {
+				super.qian();
+				// console.log('儿子赚钱10');
+			}
+
+		}
+
+		var obj = new Son('张三', 23, 99);
+		obj.qian();
+		// console.log( obj );
+		// console.log( obj.uname );
+		// obj.qian();
+
+
+
+	</script>
+
+</body>
+</html>

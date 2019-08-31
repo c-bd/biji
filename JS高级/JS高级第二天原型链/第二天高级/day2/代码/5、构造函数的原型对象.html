@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+			
+			function Star (uname) {
+				this.uname = uname;
+
+				// this.say = function () {}
+
+			}
+			// console.log( Star.prototype );
+			// Star.prototype.score = 99;
+			Star.prototype.say = function () {
+				console.log( this.uname + 'wahhaS');
+			}
+
+
+			var zsf = new Star('张三丰');
+			zsf.say();
+			var lxh1 = new Star('李新欢');
+			var lxh2 = new Star('234');
+			var lxh3 = new Star('李234欢');
+
+
+	</script>
+</body>
+</html>

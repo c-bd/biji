@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // var zhangSan_Math = {
+  //   random: function() {
+  //     console.log("我不会算");
+  //   },
+  // };
+
+  // console.log(zhangSan_Math);
+
+  // Math JS内置的对象
+  // console.log(Math);
+
+
+  // 需求：求一个 n-m 随机整数反给我；
+
+  // 1.写实际过程
+  // 过程实现出来：0-10；
+
+
+
+  // var res = Math.random() * 11;
+  // res = Math.floor(res);
+  // console.log(res);
+
+
+  // 过程实现出来：10-50；随机数怎么变；
+  // [10,50]   11 23 45 46
+  // 在10的基础上，进行 [0,40]
+
+
+  // [0,41)
+  // var res = Math.random() * (40 + 1);
+  // // 向下取整 [0,40]
+  // res = Math.floor(res);
+
+
+  // // res [0,40];  加10之前；
+  // res = res + 10;
+
+  // // res [10,50];
+  // console.log(res);
+
+
+
+
+
+
+  // 2.封装函数，配置参数
+
+  // n-m
+  // 10-50 [0,40] 40 = 50-10;
+  // 20-80 [0,60] 60 = 80-20;
+  function getRandom(n, m) {
+    var res = Math.random() * (m - n + 1);
+    // 向下取整 [0,m-n]
+    res = Math.floor(res);
+
+
+    // res [0,40];  加10之前；
+    res = res + n;
+
+    // res [10,50];
+    // console.log(res);
+    // 
+    return res;
+  }
+
+
+  // 3.拓展Math新的方法
+  Math.getRandom = function(n, m) {
+    var res = Math.random() * (m - n + 1);
+    // 向下取整 [0,m-n]
+    res = Math.floor(res);
+
+
+    // res [0,40];  加10之前；
+    res = res + n;
+
+    // res [10,50];
+    // console.log(res);
+    // 
+    return res;
+  }
+
+
+  // 4.把归集于一个对象，
+
+
+
+
+
+  // 4.测试使用
+  // Math.getRandom();
+
+  // console.log();
+  // alert(Math.getRandom(10, 20));
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      /* 透视 */
+      perspective: 600px;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      /* border: 1px solid; */
+      margin: 100px auto;
+      position: relative;
+      /* 重点：必须加！box在旋转时，里面的子盒子要保持立体效果 */
+      transform-style: preserve-3d;
+      /* 调用动画 */
+      animation: rotate 5s linear infinite;
+
+    }
+
+    .box div {
+      width: 200px;
+      height: 200px;
+      font: bold 50px/200px '微软雅黑';
+      text-align: center;
+      position: absolute;
+    }
+
+    /* 前 */
+    .box .before {
+      background: hotpink;
+      z-index: 1;
+      /* 位移 */
+      transform: translateZ(200px);
+    }
+
+    /* 后 */
+    .box .after {
+      background: greenyellow;
+      transform: translateZ(-200px) rotateY(180deg);
+    }
+
+    /* 左 */
+    .box .left {
+      background: green;
+      transform: rotateY(-90deg) translateZ(200px);
+    }
+
+    /* 右 */
+    .box .right {
+      background: blue;
+      transform: rotateY(90deg)  translateZ(200px);
+    }
+
+    .box:hover {
+      animation-play-state: paused;
+    }
+
+
+    
+
+    @keyframes rotate {
+      form {
+        transform: rotateY(0deg)
+      }
+      to{
+        transform: rotateY(360deg)
+      }
+    }
+
+    /* 
+        核心需求：
+          1. 前后两个盒子要叠在一起-定位
+          2. 前盒子：要向前移动100px
+          3. 后盒子：要向后移动100px,后面盒子需要绕着旋转180deg，便于在和前面盒子颠倒位置时，可以看到正面的文字
+          4. 给body设置透视，因为盒子box未来要旋转也需要近大远小。
+          5. 鼠标进入box时，box要绕着y轴旋转
+          注意：
+            1. 子盒子实现了近大远小的立体效果。
+            2. 问题：若父盒子旋转或其他操作，则子盒子的立体效果不会保持。
+            3. 解决方案：给父盒子设置 transform-style: preserve-3d;
+          
+          6. 若旋转了盒子，盒子的正面会发生变化，此时位移中的tranlateZ要以正面为准。
+       */
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="before">前</div>
+    <div class="after">后</div>
+    <div class="left">左</div>
+    <div class="right">右</div>
+  </div>
+</body>
+
+</html>

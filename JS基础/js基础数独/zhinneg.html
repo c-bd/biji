@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function newyear(month,seconds){
+        if (month<10) {
+           month="0"+month;
+        }
+    }
+    // 需求是制作一个智能弹窗
+    // 1.要求无限循环
+    // 输入q的时候退出
+    // 设置为true则会一直循环，
+    // 如果输入q则退出
+while (true) {
+    var a=prompt("你好，我是小娜，请输入下面的数字，决定你要干什么。\n输入q退出\n1-计算综合，\n2-获取时间,\n3-讲个笑话'")
+    if (a=="q") {
+        alert("你不爱小娜了吗")
+        break;
+    }
+    // 如果输入一时会计算数据相加的结果
+    // 首先有一个弹框定义一下格式
+    // 然后将输入的字符串转为数组格式参加运算
+    else if (a=="1") {
+        var sta=prompt("请输入要求和的数字，以逗号隔开，例如： 1,2,3,4");
+        var arr=sta.split(",")
+        var sum=0;
+        for (var index = 0; index < arr.length; index++) {
+            // 现在是数组但是相加还得变为数字才可以相加 所以要转换一下格式才可以；
+                sum+=parseFloat(arr[index]);
+                
+        }
+        // 输出的结果在外面显示
+        alert("想加的结果为"+sum);
+        
+    }
+    // 如果输入为3的时候 随机出现一个笑话
+    else if (a=="3") {
+        // 定义一个随机数的函数为
+        var list=[ 
+          "为什么结婚都喜欢选好日子，因为结婚后都没有好日子。",
+          "为什么超人都喜欢穿紧身衣，因为救人要紧",
+          "火柴有个问题想不懂，然后就挠头，自己燃烧了自己",
+          "包子跑步，为什么在路上消失了，因为太饿自己把自己吃了",
+          "自己的事情自己做，函数也能调用自己"]
+        var r=Math.random();
+        r*=list.length;
+        r=Math.floor(r);
+        alert(list[r]);
+
+    }
+    
+    // 如果输入的是2则输出实时时间
+   else if (a=="2") {
+       var date=new Date()
+    //    获取年
+       var year=date.getFullYear();
+    
+    //    获取月
+       var month=date.getMonth()+1;
+      newyear();
+    //    获取日
+       var day=date.getDate();
+       newyear(day);
+    //    获取时
+       var hours=date.getHours();
+       newyear(hours);
+    //    获取分
+       var minutes=date.getMinutes();
+       newyear(minutes);
+    //    获取秒
+       var seconds=date.getSeconds();
+       newyear(seconds);
+       alert(`现在的时间为${year}-${ month}-${ day} ${hours}:${minutes}:${seconds}`);
+   }
+   
+   
+}
+
+
+
+// 输入1时 随机输入数字算出相加结果；
+
+
+</script>
+</html>

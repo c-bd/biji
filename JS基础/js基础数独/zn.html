@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    function shiJian(time) {
+        if (time<10) {
+           time="0"+time;
+        }
+    }
+// 要求：做一个智能小娜助手
+// 是一个无限循环
+// 定义为正确时 则开始无限循环
+while (true) {
+    var a=prompt("你好，我是小娜，请输入下面的数字，决定你要干什么。\n输入q退出\n1-计算综合，\n2-获取时间,\n3-讲个笑话\n4-开个玩笑\n5-澳门赌场");
+    
+    // 如果输入q则退出
+    if (a=="q") {
+        alert("你不爱小娜了吗？");
+        break;
+
+    }
+    // 如果输入一的话 则求和
+    else if (a=="1") {
+    //     // 输入的数字为
+
+        var sta=prompt("请输入要求和的数字，以逗号隔开，例如： 1,2,3,4");
+    //     // 把字符串变成数组
+        var arr=sta.split(",");
+        var sum=0;
+    //     // 用数组参加循环 计算数字相加的和
+        for (var index = 0; index < arr.length; index++) {
+    //         // 输出结果 但是得把数组里的字符串换成数字才可以
+            sum=sum+parseFloat(arr[index]);
+           
+        }
+        alert("输出的和为"+sum);
+        }
+    else if (a=="4") {
+        prompt("你想干嘛");
+        var api=0;
+        if (api<10) {
+            alert("干你呀");
+            api++;
+        }
+    }
+        // 如果输入二话打出现在的实时时间
+    else if (a=='2') {
+    //     // 先定义一个构造函数
+           var date=new Date()
+    //     // 随后顶各个
+    //     // 年
+       
+    var year=date.getFullYear();
+    
+    //    获取月
+       var month=date.getMonth()+1;
+       shiJian(month);
+       console.log(month);
+       
+    //    获取日
+       var day=date.getDate();
+       shiJian(day);
+    //    获取时
+       var hours=date.getHours();
+       if (hours<10) {
+           hours="0"+hours;
+        }
+    //    获取分
+       var minutes=date.getMinutes();
+       if (minutes<10) {
+           minutes="0"+minutes;
+        }
+    //    获取秒
+       var seconds=date.getSeconds();
+       shiJian("seconds"),
+       alert(`现在的时间为${year}-${ month}-${ day} ${hours}:${minutes}:${seconds}`);
+        }
+    else if (a=="3") {
+        
+        var list=[
+          "为什么结婚都喜欢选好日子，因为结婚后都没有好日子。",
+          "为什么超人都喜欢穿紧身衣，因为救人要紧",
+          "火柴有个问题想不懂，然后就挠头，自己燃烧了自己",
+          "包子跑步，为什么在路上消失了，因为太饿自己把自己吃了",
+          "自己的事情自己做，函数也能调用自己"
+        ]
+        // 定义一个随机函数取值范围0到1 我们有几组笑话 让他定义为数组的索引数
+        var r=Math.random()*list.length;
+        // 因为r可以取小数 所以我们给r定义为整数 取下;
+
+        r=Math.floor(r);
+        alert(list[r]);
+
+    }
+};
+
+</script>
+</html>

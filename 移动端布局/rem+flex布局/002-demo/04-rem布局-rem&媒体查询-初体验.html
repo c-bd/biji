@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 档位划分：媒体查询，里面设置 要变化的内容 */
+    /* 里面设置：HTML字体大小 设置rem单位背后的值 */
+    
+    @media screen and (min-width:0) {
+      html {
+        font-size: 16px;
+      }
+    }
+    
+    @media screen and (min-width:540px) {
+      html {
+        font-size: 20px;
+      }
+    }
+    
+    @media screen and (min-width:700px) {
+      html {
+        font-size: 30px;
+      }
+    }
+    
+    .box {
+      width: 5rem;
+      height: 5rem;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>

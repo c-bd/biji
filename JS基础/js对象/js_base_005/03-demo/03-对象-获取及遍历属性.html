@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var obj = {};
+
+  // 点方式的赋值属性和值’
+  obj.name = "张三";
+  obj["age"] = 12;
+  obj["key"] = "这个是刚好是key的属性值";
+
+
+  // 获取：点的方式；
+  // console.log(obj.name);
+  // 键的方式
+  // console.log(obj["name"], obj.age);
+
+
+  // 添加属性和获取属性的语法方式不同，不是说哪个方式的添加就必须用哪个方式的获取；
+
+
+  // console.log(obj);
+
+  // 补充：打印一个对象上没有的属性名，返回值undefined；
+
+
+  // 遍历：数组遍历（循环）
+  // 遍历：对象遍历（对象上这些属性方法一个个过一次，也是某种意义上的循环）
+  // key：泛指 代表对象上的每对键值对的键；
+  for (var key in obj) {
+    // console.log(key);
+
+    // 获取方式：
+    // 点方式：obj.key 为什么会输出 undefined；
+    // 把obj.key 这个key 当做一个属性名；
+    // console.log(obj.key);
+
+    // 对象["属性名"]
+    console.log(obj[key]);
+
+    // console.log(key, obj[key]);
+
+  }
+</script>
+
+</html>

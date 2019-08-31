@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+      /* 视距 */
+      perspective: 300px;
+    }
+
+    img {
+      width: 300px;
+      margin-top: 100px;
+      transition: 2s;
+    }
+
+    img:nth-child(1):hover {
+      /* 
+        顺时针：正值
+        逆时针：负值
+       */
+      transform: rotateZ(-145deg);
+    }
+
+  </style>
+</head>
+
+<body>
+  <img src="./images/z.jpg" alt=""><br>
+</body>
+
+</html>

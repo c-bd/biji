@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 30px;
+      background-color: #0a0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</body>
+<!-- 使用zepto的第一步：先在最前面引入js文件 -->
+<script src="./js/zepto.js"></script>
+<script>
+  // zepto 获取DOM 返回伪数组；
+  var boxs = $(".box");
+
+  // console.log(boxs);
+  // 注册事件：返回的伪数组，.on 已经把里面的每个DOM节点注册事件封装；
+  boxs.on("click", function() {
+    // console.log(1);
+
+    // 伪数组下面的所有节点都样式改变：
+    boxs
+      .css("width", "500px")
+      .append("<span>我是span标签</span>");
+    // 
+    // boxs;
+
+  });
+
+  // 原生的JS
+  // var box = document.querySelector("#box");
+
+  // var span = document.createElement("span");
+  // span.innerText = "asdasdasd";
+
+  // box.appendChild(span);
+</script>
+
+</html>

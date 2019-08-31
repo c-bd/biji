@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .abc {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+    
+    .bg-red {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" id="btn" value="添加类名到box里面">
+  <div id="box" class="abc "></div>
+</body>
+<script>
+  // 1.获取DOM节点；
+  var dom_btn = document.getElementById("btn");
+  var dom_div = document.getElementById("box");
+
+  // 2.注册事件：
+  dom_btn.onclick = function() {
+    // 3.点击之后：获取 div DOM节点的类名
+    // var class_name = dom_div.className;
+    // console.log(class_name);
+
+    // 重新赋值；会把原来的值覆盖掉；
+    // dom_div.className = class_name + "bg-red";
+
+    // 简写：
+    dom_div.className = dom_div.className + "bg-red";
+  }
+</script>
+
+</html>

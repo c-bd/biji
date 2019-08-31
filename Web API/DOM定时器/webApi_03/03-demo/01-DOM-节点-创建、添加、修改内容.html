@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn">
+  <ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+
+  </ul>
+</body>
+<script>
+  var ul = document.querySelector("ul");
+
+  // // 把内部的HTML结构返回
+  // console.log(ul.innerHTML);
+
+
+  // // 设置：设置HTML结构；覆盖；
+  // ul.innerHTML = '<li>新的</li>';
+
+
+  // 获取内部的文本信息
+  // console.log(ul.innerText);
+
+
+  // // 设置：把你写的全部当做字符串，不会解析HTML结构；
+  // ul.innerText = "<li>新的</li>";
+
+
+
+  // 
+  var btn = document.querySelector("#btn");
+  btn.onclick = function() {
+    var newLI = document.createElement("li");
+    newLI.innerText = "我是新的LI  " + Math.random();
+
+    // 不会加在HTML结构上，创建出来了；
+    // console.log(newLI);
+
+
+    // 添加到HTML结构；
+    // 从后添加：DOM节点 放入DOM节点’
+    // ul.appendChild(newLI);
+
+
+    // 从前插入DOM节点
+    var cankao = document.querySelector("ul li:nth-child(1)");
+    ul.insertBefore(newLI, cankao);
+
+  }
+</script>
+
+</html>

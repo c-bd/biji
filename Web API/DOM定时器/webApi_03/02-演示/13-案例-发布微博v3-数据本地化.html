@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>微博发布效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .weibo {
+      width: 600px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      padding: 10px;
+    }
+    
+    .weibo-text {
+      width: 590px;
+      height: 140px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+    
+    .weibo-text:focus {
+      border-color: #f60;
+    }
+    
+    .weibo-btn {
+      width: 80px;
+      height: 30px;
+      background-color: #f90;
+      color: #fff;
+      border: 0 none;
+      margin-top: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: 0 none;
+    }
+    
+    .weibo-list {
+      padding-top: 10px;
+    }
+    
+    .weibo-list li {
+      font-size: 14px;
+      line-height: 30px;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+    }
+    
+    .weibo-list li p {
+      float: left;
+    }
+    
+    .weibo-list li span {
+      float: right;
+      cursor: pointer;
+    }
+    
+    .weibo-list li input {
+      height: 24px;
+      line-height: 24px;
+      width: 300px;
+      font-size: 14px;
+      border: 0 none;
+    }
+    
+    .time {
+      margin-right: 10px;
+      font-style: normal;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+      <!-- <li>
+        <p class="content">快来收了这九款用上就停不下来的应用吧！！</p>
+        <span class="time"></span>
+        <span class="del">删除</span>
+      </li> -->
+    </ul>
+  </div>
+</body>
+<script>
+  function patchZero(v) {
+    return v < 10 ? '0' + v : v;
+  }
+
+  function formatDate() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+    var h = now.getHours();
+    var mm = now.getMinutes();
+    var s = now.getSeconds();
+    return y + '-' + patchZero(m) + '-' + patchZero(d) + ' ' + patchZero(h) + ":" + patchZero(mm) + ':' + patchZero(s);
+  }
+
+
+  /*
+    效果：
+    1.一开始就会有一些微博的数据，这些数据是以前发布的
+    2.点击发布，会把新发布的数据，也存储起来，下次刷新，还在
+    3.点击删除，把某一条微博删除，刷新，就没有这条被删除的微博了
+
+    思路：
+      效果1：
+        1.要刷新也不会丢失数据，就需要先把数据存储起来，存储在localStorage里面
+        2.每次打开页面，或者刷新页面的时候，就从localStorage里面读取出来，以创建元素的方式展示在列表里面
+      效果2：
+        1.点击按钮的时候，把文本域里面的数据获取，动态生成一个li，房子ul里面
+        2.为了下次刷新数据还在，把数据存储到localStorage里面
+      效果3：
+        1.点击删除的时候，要把删除按钮对应的li移除，与此同时，要把对应的数据从localStorage里面删除
+
+    步骤：
+      效果1:
+
+      效果2：
+        1 获取按钮，获取文本域，获取ul
+        2 注册点击事件
+        3 创建li，放到ul里面
+        4 要把对应的数据，存储到localstorage里面
+
+  */
+
+  // 先声明一个数组，数组里面把所有的数据先存储起来
+  var data = [];
+
+  // 先实现点击按钮发布的效果
+  // 2.1 获取元素
+  var btn = document.querySelector('.weibo-btn');
+  var ul = document.querySelector('.weibo-list');
+  var text = document.querySelector('.weibo-text');
+
+  // console.log(localStorage.getItem('a'));
+  var arr;
+  // 正面本地化有这个数据，存在，已存储；
+  if (localStorage.getItem('wbshuju') != null) {
+    arr = localStorage.getItem('wbshuju');
+    arr = JSON.parse(arr);
+  }
+  // 没有存
+  else {
+    arr = []
+  }
+
+  // 列表显示
+  var li = null;
+  arr.forEach(function(ele, index) {
+    li = document.createElement('li');
+    li.innerHTML = '<p class="content">' + ele.content + '</p>' +
+      '<span data-id="" class="del">删除</span>' +
+      '<em class="time">' + ele.time + '</em>';
+
+    // 2.5 插入到ul里面
+    ul.appendChild(li);
+  });
+
+
+
+  // 2.2 发布注册事件
+  btn.onclick = function() {
+
+    // 2.3 获取文本域的内容
+    var content = text.value;
+    // 2.3.2 准备一个发布时间
+    var time = formatDate();
+
+
+
+    // 2.4 创建新的li
+    var li = document.createElement('li');
+    // 2.4.2 把ul里面也生成
+    li.innerHTML = '<p class="content">' + content + '</p><span data-id="1557655950236" class="del">删除</span><em class="time">' + time + '</em>';
+    // 2.5 插入到ul里面
+    ul.insertBefore(li, ul.children[0]);
+
+
+
+    // 2.6 把数据，存储到localStorage里面
+    var obj = {
+      content: content,
+      time: time
+    };
+    // 从前放入
+    arr.unshift(obj);
+
+
+    // 2.7 把数据转换为json格式的字符串
+    var arr_str = JSON.stringify(arr);
+    localStorage.setItem('wbshuju', arr_str);
+
+    // 把文本域清空
+    text.value = '';
+  }
+</script>
+
+</html>

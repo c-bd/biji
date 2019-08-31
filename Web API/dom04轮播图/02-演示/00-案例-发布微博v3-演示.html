@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>微博发布效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .weibo {
+      width: 600px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      padding: 10px;
+    }
+    
+    .weibo-text {
+      width: 590px;
+      height: 140px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+    
+    .weibo-text:focus {
+      border-color: #f60;
+    }
+    
+    .weibo-btn {
+      width: 80px;
+      height: 30px;
+      background-color: #f90;
+      color: #fff;
+      border: 0 none;
+      margin-top: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: 0 none;
+    }
+    
+    .weibo-list {
+      padding-top: 10px;
+    }
+    
+    .weibo-list li {
+      font-size: 14px;
+      line-height: 30px;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+    }
+    
+    .weibo-list li p {
+      float: left;
+    }
+    
+    .weibo-list li span {
+      float: right;
+      cursor: pointer;
+    }
+    
+    .weibo-list li input {
+      height: 24px;
+      line-height: 24px;
+      width: 300px;
+      font-size: 14px;
+      border: 0 none;
+    }
+    
+    .time {
+      margin-right: 10px;
+      font-style: normal;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+
+
+
+    </ul>
+  </div>
+</body>
+<script>
+  function patchZero(v) {
+    return v < 10 ? '0' + v : v;
+  }
+
+  function formatDate() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+    var h = now.getHours();
+    var mm = now.getMinutes();
+    var s = now.getSeconds();
+    return y + '-' + patchZero(m) + '-' + patchZero(d) + ' ' + patchZero(h) + ":" + patchZero(mm) + ':' + patchZero(s);
+  }
+  // -------------------------------------------------------1.列表
+  // 1.把写的这些HTML里面数据，抽象为一个对象（arr、Obj）
+  // var arr = [
+  //   // 对一条微博的描述
+  //   {
+  //     content: "快来收了这九款用上就停不下来的应用吧！！",
+  //     time: "2019-7-26 15:25:56",
+  //   },
+  //   // 对一条微博的描述
+  //   {
+  //     content: "快来收了这九款用上就停不下来的应用吧！！",
+  //     time: "2019-7-27 15:25:56",
+  //   },
+  //   // 对一条微博的描述
+  //   {
+  //     content: "快来收了这九款用上就停不下来的应用吧！！",
+  //     time: "2019-7-28 15:25:56",
+  //   },
+  // ];
+
+  // 进浏览器
+  // 把抽象的数据，转为JSON格式
+  // var str = JSON.stringify(arr);
+  // 储存
+  // localStorage.setItem("list", str);
+
+
+  // 读取；本地数据读取出来
+  var str = localStorage.getItem("list");
+  var arr;
+
+
+  // 优化
+  // 如果本地没有数据
+  if (str == null) {
+    arr = [];
+  }
+  // 有数据，转化为对象，
+  else {
+    arr = JSON.parse(str);
+  }
+
+
+  // ------------------------------------------------列表初始化
+
+  // 2.把你写的HTML结构，用JS全部渲染；
+  var ul = document.querySelector("ul");
+
+  // 循环数据
+  for (var i = 0; i < arr.length; i++) {
+    // console.log(arr[i]);
+    // 1.新增DOM节点
+    var li = document.createElement("li");
+
+    // 2.内容的填充
+    li.innerHTML = `
+     <p class="content">${arr[i].content}</p>
+     <span class="del">删除</span>
+     <span class="time">${arr[i].time}</span>`;
+
+    // 3.获取第一个
+    // var cankao = ul.children[0];
+
+    // 4.
+    // ul.insertBefore(li, cankao);
+    // 从后添加
+    ul.appendChild(li)
+  }
+
+
+
+  // -----------------------------------------------------------发布
+  // 1.获取DOM
+  var btn = document.querySelector(".weibo-btn");
+  var ipt = document.querySelector(".weibo-text");
+
+  // 2.注册事件
+  btn.onclick = function() {
+
+
+    // ---------------------------------------------DOM节点操作
+    // 3.点击之后；
+    // 3.1 获取文本域的内容
+    var value = ipt.value;
+    var time = formatDate();
+
+    // 3.2 创建新的DOM；
+    var newLI = document.createElement("li");
+
+    // 3.3.新的DOM修改内容；
+    newLI.innerHTML = `
+    <p>${value}</p>
+    <span>删除</span>
+    <span class="time">${time}</span>
+    `;
+
+    // 3.4 从前插入：ul 参考；
+    var cankao = ul.children[0];
+    ul.insertBefore(newLI, cankao);
+
+    // 3.5优化：
+    ipt.value = "";
+
+
+    // --------------------------------------------------数据本地化
+    // 抽象为一个数据，操作
+    var obj = {
+      nr: value,
+      time: time
+    };
+    // 一条数据的格式
+    //   {
+    //     content: "快来收了这九款用上就停不下来的应用吧！！",
+    //     time: "2019-7-26 15:25:56",
+    //   }
+    // 数据列表对象
+    arr.unshift(obj);
+
+    // 本地化；
+    var str_arr = JSON.stringify(arr);
+    // 把初始化的数据覆盖掉；
+    localStorage.setItem("list", str_arr);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+</script>
+
+</html>

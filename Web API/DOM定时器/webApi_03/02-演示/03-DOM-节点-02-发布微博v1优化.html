@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>微博发布效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .weibo {
+      width: 600px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      padding: 10px;
+    }
+    
+    .weibo-text {
+      width: 590px;
+      height: 140px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+    
+    .weibo-text:focus {
+      border-color: #f60;
+    }
+    
+    .weibo-btn {
+      width: 80px;
+      height: 30px;
+      background-color: #f90;
+      color: #fff;
+      border: 0 none;
+      margin-top: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: 0 none;
+    }
+    
+    .weibo-list {
+      padding-top: 10px;
+    }
+    
+    .weibo-list li {
+      font-size: 14px;
+      line-height: 30px;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+    }
+    
+    .weibo-list li p {
+      float: left;
+    }
+    
+    .weibo-list li span {
+      float: right;
+      cursor: pointer;
+    }
+    
+    .weibo-list li input {
+      height: 24px;
+      line-height: 24px;
+      width: 300px;
+      font-size: 14px;
+      border: 0 none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+      <li>
+        <p>快来收了这九款用上就停不下来的应用吧！！</p>
+        <span>删除</span>
+      </li>
+      <li>
+        <p>超级详细的云南大理自助游攻略</p>
+        <span>删除</span>
+      </li>
+      <li>
+        <p>外国最近很火的舞蹈，舒服简单自然，太棒了！</p>
+        <span>删除</span>
+      </li>
+    </ul>
+  </div>
+</body>
+<script>
+  /*
+    需求：
+      点击发布按钮，把写在文本域里面的内容，作为ul的内容存在
+
+    思路：
+      给按钮注册点击事件，得到用户输入的内容，创建一个新的li，把用户输入的内容作为li的新内容，追加到ul里面
+    步骤：
+    1. 获取元素 - 按钮,ul,文本域
+    2. 注册点击事件
+    3. 在点击事件的处理程序里面
+      3.1 获取文本域的内容
+      3.2 创建一个新的li，作为ul的子元素
+        3.2.1 因为原来的内容还在，所以使用document.createElemenet创建新的li
+        3.2.2 新的li要有内容，使用innerHTml设置新建的li的内容
+      3.3 把新建的li使用insertBefore的方式插入到最前面
+  */
+  // 1 获取元素
+  var btn = document.querySelector('.weibo-btn');
+  var ul = document.querySelector('.weibo-list');
+  var text = document.querySelector('.weibo-text');
+  // 2 注册点击事件
+  btn.onclick = function() {
+    // 3.1 获取内容 - 注意： 表单元素的内容使用value获取
+    var content = text.value;
+    // console.log(content);
+    // 3.2 创建一个新的li，设置它的内容是一个p标签和一个span标签
+    var li = document.createElement('li');
+    li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+    // 3.3 使用insertBefore 把新建的li放到最前面
+    // 3.3.1 先得到ul的第一个子元素
+    //   var first = document.querySelector('ul > li:first-child');
+    // console.log(first);
+    ul.insertBefore(li, ul.children[0]);
+    // 3.4 把文本域的内容清空
+    text.value = '';
+  }
+</script>
+
+</html>

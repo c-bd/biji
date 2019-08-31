@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="close">关闭</button>
+
+
+  <div class="box" id="div" style="background-color: red"></div>
+
+</body>
+
+
+
+
+
+<script>
+  // 获取元素对象:DOM节点；
+  // get Element By Id
+  var box = document.getElementById("close");
+
+  // 把HTML结构打印出来，打印不是字符串；
+  // console.log(box);
+
+  // 注册事件：注册给谁上面？DOM节点(不是特指)
+  // 机制：触发-响应；
+  // 语法：触发DOM，点击行为，响应一个什么事情；
+  box.onclick = function() {
+    console.log(1);
+  }
+
+  // 获取DOM节点：
+  var dom_div = document.getElementById("div");
+  // console.log(dom_div);
+  // 注册事件完成；
+  dom_div.onclick = function() {
+    // 响应的内容；
+    // alert(1);
+    // 页面的背景色变色；
+    // var dom_body = document.body;
+    // 拓展：
+    // dom_body.style.backgroundColor = "#666";
+    dom_div.style.backgroundColor = "#666";
+  };
+  // 用户点击的时候才触发；执行这个函数；
+
+  // style:对象，行内样式的对象；
+  // var div_style = dom_div.style;
+  // console.log(div_style.backgroundColor);
+
+  // 获取：行内样式；
+  // console.log(dom_div.style.backgroundColor);
+  // 设置
+  // var obj = {};
+  // obj.name = "asd";
+  // dom_div.style.backgroundColor = "#000";
+</script>
+
+</html>

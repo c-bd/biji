@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .yeye {
+      width: 400px;
+      height: 400px;
+      background-color: green;
+    }
+    
+    .fuqin {
+      width: 300px;
+      height: 300px;
+      background-color: pink;
+      position: relative;
+    }
+    
+    .erzi {
+      /* position: absolute; */
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+      /* top: 500px; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="yeye">
+    <div class="fuqin">
+      <div class="erzi"></div>
+    </div>
+  </div>
+</body>
+<script>
+  var yeye = document.querySelector('.yeye');
+  var baba = document.querySelector('.baba');
+  var erzi = document.querySelector('.erzi');
+
+  yeye.addEventListener('click', function() {
+    console.log('我是你爷爷');
+  });
+  baba.addEventListener('click', function() {
+    console.log('我是你爸爸');
+  });
+  // 要阻止冒泡，需要先得到事件对象，给处理程序添加一个形参就行
+  erzi.addEventListener('click', function(e) {
+    // 调用阻止事件冒泡的方法进行阻止
+    e.stopPropagation();
+    console.log('我是你儿子');
+  });
+
+  /*
+    stop  - 停止
+    Propagation - 传播
+
+    我们希望，点击儿子，爷爷和爸爸不执行他们的函数
+
+    就需要阻止冒泡的传播
+
+      事件对象.stopPropagation()
+  */
+</script>
+
+</html>

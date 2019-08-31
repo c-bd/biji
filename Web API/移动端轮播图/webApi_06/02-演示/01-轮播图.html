@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    header{
+      height: 150px;
+    }
+    .main {
+      overflow: hidden;
+    }
+    ul {
+      list-style: none;
+      width: 800%;
+      display: flex;
+    }
+    li {
+      flex: 1;
+    }
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <div class="main">
+    <ul>
+      <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+    </ul>
+  </div>
+</body>
+<script src="./mytouch.js"></script>
+<script>
+var ul = document.querySelector('.main > ul');
+var main = document.querySelector('.main');
+
+var currentIndex = 1;
+var imgWidth = main.clientWidth;
+
+var target = -currentIndex * imgWidth;
+ul.style.transform = 'translate(' + target + 'px)';
+setTimeout(function(){
+  ul.style.transition = 'transform 300ms';
+});
+
+swipeEvent(main,function(e,dir){
+  if(dir === 'left'){
+    currentIndex++;
+  }else {
+    currentIndex--;
+  }
+  target = -currentIndex * imgWidth;
+  ul.style.transform = 'translate('+ target +'px)';
+})
+
+ul.addEventListener('transitionend',function(){
+  console.log(1);
+  if(currentIndex === 0){
+    currentIndex = ul.children.length - 2;
+  }else if(currentIndex === ul.children.length - 1){
+    currentIndex = 1;
+  }
+  target = -currentIndex * imgWidth;
+  ul.style.transition = 'transform 0s';
+  ul.style.transform = 'translate('+ target +'px)';
+  setTimeout(function(){
+    ul.style.transition = 'transform 300ms';
+  },10)
+})
+
+</script>
+</html>

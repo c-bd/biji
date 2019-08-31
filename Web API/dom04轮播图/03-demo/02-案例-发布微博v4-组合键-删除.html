@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>微博发布效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .weibo {
+      width: 600px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      padding: 10px;
+    }
+    
+    .weibo-text {
+      width: 590px;
+      height: 140px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+    
+    .weibo-text:focus {
+      border-color: #f60;
+    }
+    
+    .weibo-btn {
+      width: 80px;
+      height: 30px;
+      background-color: #f90;
+      color: #fff;
+      border: 0 none;
+      margin-top: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: 0 none;
+    }
+    
+    .weibo-list {
+      padding-top: 10px;
+    }
+    
+    .weibo-list li {
+      font-size: 14px;
+      line-height: 30px;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+    }
+    
+    .weibo-list li p {
+      float: left;
+    }
+    
+    .weibo-list li span {
+      float: right;
+      cursor: pointer;
+    }
+    
+    .weibo-list li input {
+      height: 24px;
+      line-height: 24px;
+      width: 300px;
+      font-size: 14px;
+      border: 0 none;
+    }
+    
+    .time {
+      margin-right: 10px;
+      font-style: normal;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+
+
+
+    </ul>
+  </div>
+</body>
+<script>
+  // --------------------------------------------------------------------------
+  // 第一步：把写的HTML页面 抽象为一定的数据格式；
+  // 约定：
+  // 整个 列表：数组 []
+  // 单条数据 对象  {}
+  // {
+  //   content: "info",
+  //   time: "2019-5-6 12:45:56"
+  // }
+
+
+  // --------------------------------------------------------------------------
+  // 第二步：
+  // 本地数据读取出来
+  var list = localStorage.getItem("list");
+
+
+
+  var arr;
+  // 若没有数据：初始化；空列表；
+  if (list == null) {
+    arr = [];
+  }
+  // 有数据：返回字符串,转化为对象；
+  else {
+    arr = JSON.parse(list);
+  }
+
+
+  // 当前绝对是个列表数组，空列表，有数据列表
+  console.log(arr);
+
+
+  // ----------------------------新增:发布一条微博:
+
+  // 1.获取DOM节点;
+  var btn = document.querySelector(".weibo-btn");
+  var textarea = document.querySelector(".weibo-text");
+  var ul = document.querySelector(".weibo-list");
+
+  // 2.注册事件
+  btn.onclick = function() {
+    // -----------------------------DOM操作  发布一条信息；
+    if (textarea.value == "") {
+      alert("您不能发布空信息");
+      return;
+    }
+
+    // 插入DOM节点内部的数据
+    var value = textarea.value;
+    var time = formatDate();
+    // 唯一的值；
+    var ID = Date.now() + "" + Math.random();
+
+
+
+    // 创建LI 节点；
+    var li = document.createElement("li");
+    // 修改内容
+    li.innerHTML = `
+    <p class="content">${value}</p>
+    <span class="del" shenfen=${ID}>删除</span>
+    <em class="time">${time}</em>
+    `;
+
+    li.innerHTML = `
+    <p class="content">${value}</p>
+    <span class="del" shenfen=${ID}>删除</span>
+    <em class="time">${time}</em>
+    `;
+
+
+
+
+    // 插入到最前面；
+    // var caokao = ul.children[0];
+    ul.insertBefore(li, ul.children[0]);
+
+    // 清空文本域：
+    textarea.value = "";
+
+    // --------------------------------------------数据操作；
+    // 操作一条数据：抽象出来一条数据，看前面约定
+    // {
+    //   content: "info",
+    //   time: "2019-5-6 12:45:56"
+    // }
+    var one = {
+      ID: ID,
+      content: value,
+      time: time,
+    };
+    // 列表数组中放入一条：从前放入数据
+    arr.unshift(one);
+
+
+    // 本地储存
+    var str = JSON.stringify(arr);
+    localStorage.setItem("list", str);
+
+  }
+
+
+
+
+
+
+
+
+  // --------------------------------删除：
+  // 事件委托：
+  ul.onclick = function(e) {
+
+    // 点击的目标 点击绝对是删除按钮
+    if (e.target.nodeName == "SPAN") {
+
+      // -----------------DOM操作
+      // li 
+      var parent = e.target.parentNode;
+
+      // 删除LI
+      ul.removeChild(parent);
+
+      // ul.getAttribute
+
+      // -----------------数据操作；
+      var ID = e.target.getAttribute("shenfen");
+      // console.log(ID);
+
+
+      // 数据剔除：一个一个的过；
+      // break: for while do 
+      for (var i = 0; i < arr.length; i++) {
+        // 我要删除那条数据对象
+        if (arr[i].ID == ID) {
+          arr.splice(i, 1);
+
+          break;
+        }
+      }
+
+
+
+      // 储存
+      var str = JSON.stringify(arr);
+      localStorage.setItem("list", str);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+  // ------------------------------列表初始化；HTML结构上的展示
+  // arr：列表数组：2 排在1 前面
+  for (var i = 0; i < arr.length; i++) {
+    // console.log(arr[i]); 每条数据 
+    // {
+    //   content: "info",
+    //   time: "2019-5-6 12:45:56"
+    // }
+
+    // --------------------DOM操作
+    var li = document.createElement("li");
+    li.innerHTML = `
+    <p class="content">${arr[i].content}</p>
+    <span class="del" shenfen=${arr[i].ID}>删除</span>
+    <em class="time">${arr[i].time}</em>
+    `;
+
+    // 放入UL 父亲；
+    // 从后：先2进去  1进入
+    ul.appendChild(li);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function patchZero(v) {
+    return v < 10 ? '0' + v : v;
+  }
+
+  function formatDate() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+    var h = now.getHours();
+    var mm = now.getMinutes();
+    var s = now.getSeconds();
+    return y + '-' + patchZero(m) + '-' + patchZero(d) + ' ' + patchZero(h) + ":" + patchZero(mm) + ':' + patchZero(s);
+  }
+</script>
+
+</html>

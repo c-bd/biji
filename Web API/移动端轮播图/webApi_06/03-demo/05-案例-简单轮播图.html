@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .box {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    ul {
+      width: 600%;
+      transition: all 300ms;
+      /* 这里没有定位 使用translate改变位置*/
+      /* transform: translate(-300px, 0); */
+      /* transform: translateX(); */
+    }
+    
+    li {
+      float: left;
+      /* 100/6 */
+      width: 16.666666%;
+    }
+    
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <!-- 结构 -->
+  <!-- li*6>a[href=#]>img[src=./images/$.jpg] -->
+  <div class="box">
+    <ul>
+      <li>
+        <a href="#"><img src="./images/1.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/2.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/3.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/4.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/5.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/6.jpg" alt=""></a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="./js/zepto.js"></script>
+<script src="./js/touch.js"></script>
+<script>
+  // 获取元素
+  var box = $(".box");
+  // 
+  var img = $('.box img');
+  var ul = $('ul');
+
+  var imgW = img.width();
+
+
+
+  // 初始化显示的图片为第1张；
+  var index = 0;
+  // 左划
+  box.on("swipeLeft", function() {
+    // console.log(1);
+    index++;
+    // 下标5：显示第6张；
+    // 下标6：按照道理显示第1张；下标回归0；
+    if (index == img.length) {
+      index = 0;
+    }
+    // 计算偏移值
+    var num = index * imgW;
+    ul.css("transform", `translateX(-${num}px)`);
+  })
+
+
+
+  // 右划
+  box.on("swipeRight", function() {
+    index--;
+
+    // 下标为0：显示第1张；
+    // 下标为-1：按照道理显示第6张；下标是5；
+    if (index == -1) {
+      index = img.length - 1
+    }
+
+    // 计算偏移值
+    var num = index * imgW;
+    ul.css("transform", `translateX(-${num}px)`);
+
+  });
+</script>
+
+</html>

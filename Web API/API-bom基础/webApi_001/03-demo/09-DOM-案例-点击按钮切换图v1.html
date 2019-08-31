@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    img {
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="图片1" id="btn_1">
+  <input type="button" value="图片2" id="btn_2">
+  <input type="button" value="图片3" id="btn_3">
+  <br>
+  <img id="img" src="./images/01.jpg" alt="">
+</body>
+<script>
+  var dom_img = document.getElementById("img");
+  // 需求：点击不同的按钮，切换不同的照片；
+  // 1.获取DOM节点：按钮
+  var btn_1 = document.getElementById("btn_1");
+
+  // 2.注册事件：
+  btn_1.onclick = function() {
+    // 3.点击之后：图片换图；
+    dom_img.src = './images/01.jpg';
+  };
+
+
+  // 2.
+  var btn_2 = document.getElementById("btn_2");
+  // 2.注册事件：
+  btn_2.onclick = function() {
+    // 3.点击之后：图片换图；
+    dom_img.src = './images/02.jpg';
+  };
+
+
+
+  var btn_3 = document.getElementById("btn_3");
+  // 2.注册事件：
+  btn_3.onclick = function() {
+    // 3.点击之后：图片换图；
+    dom_img.src = './images/03.jpg';
+  };
+
+
+
+  //
+</script>
+
+</html>

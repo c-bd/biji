@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn">
+  <ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+    <li>我是第6个li</li>
+    <li>我是第7个li</li>
+    <li>我是第8个li</li>
+    <li>我是第9个li</li>
+    <li>我是第10个li</li>
+  </ul>
+</body>
+<script>
+  // 点击按钮。每次把第一个子元素删除；
+
+
+  // 1.获取DOM
+  var btn = document.querySelector("#btn");
+  var ul = document.querySelector("ul");
+
+  // 2.事件
+  btn.onclick = function() {
+    // 点击之后 把第一个子元素  删除；
+
+    // 父亲
+    // 删除语法：
+    // 第一个怎么获取：属性
+    var frist = ul.children[0];
+
+    ul.removeChild(frist);
+
+
+
+
+
+  }
+</script>
+
+</html>

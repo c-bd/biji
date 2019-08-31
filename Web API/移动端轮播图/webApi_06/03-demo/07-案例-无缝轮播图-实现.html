@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .box {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    ul {
+      /* 把li变成8张之后，需要，把ul的宽度变宽 */
+      width: 800%;
+      /* transition: all 300ms; */
+    }
+    
+    li {
+      float: left;
+      width: 12.5%;
+    }
+    
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <!-- 结构 -->
+  <div class="box">
+    <ul>
+      <li>
+        <a href="#"><img src="./images/6.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/1.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/2.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/3.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/4.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/5.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/6.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/1.jpg" alt=""></a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="./js/zepto.js"></script>
+<script src="./js/touch.js"></script>
+<script>
+  // 获取元素
+  var box = $(".box");
+  // 
+  var img = $('.box img');
+  var ul = $('ul');
+
+  var imgW = img.width();
+
+
+
+  // 初始化显示的图片为第1张；
+  // 下标0，HTML结构第1张，图示显示为6；
+  // 下标1，HTML结构第2张，图示显示为1；
+  var index = 1;
+
+  // 此时,ul 的 translateX 0;
+  // 
+  // 计算偏移值
+  var num = index * imgW;
+  ul.css("transform", `translateX(-${num}px)`);
+
+  // 此时 ul 的 translateX -320px;
+  // 此时 CSS的过渡效果注释掉了。上面的代码是一瞬间执行完成，
+  // 再次开启过渡效果；
+  setTimeout(function() {
+    ul.css("transition", "all 300ms");
+  }, 1);
+
+
+
+
+  // 左划
+  box.on("swipeLeft", function() {
+    // console.log(1);
+    index++;
+
+
+
+    // 计算偏移值
+    var num = index * imgW;
+    ul.css("transform", `translateX(-${num}px)`);
+  })
+
+
+
+  // 右划
+  box.on("swipeRight", function() {
+    index--;
+
+
+    // 计算偏移值
+    var num = index * imgW;
+    ul.css("transform", `translateX(-${num}px)`);
+
+  });
+
+
+
+
+  // 再往左划，过渡还没有结束，
+  // 过渡结束的事件，后面函数的执行前提：刚才的过渡结束
+  ul.on("transitionend", function() {
+    // console.log('--------------');
+
+
+    // 往左划：
+    // 下标为7，HTML结构是8张，图示1；
+    if (index == img.length - 1) {
+      // 1.先把过渡效果取消；
+      ul.css("transition", "none");
+
+      // 2.一瞬间回到真实的位置
+      // 真实的位置:图示1,下标是1;
+      index = 1;
+      // 计算偏移值
+      var num = index * imgW;
+      ul.css("transform", `translateX(-${num}px)`);
+
+
+      // 3.开启过渡
+      setTimeout(function() {
+        ul.css("transition", "all 300ms");
+      }, 1);
+
+    }
+
+
+    // 往右划：
+    // 过渡结束的事件，后面函数的执行前提：刚才的过渡结束
+    // 此时下标0；
+    if (index == 0) {
+
+      // 1.取消过渡
+      ul.css("transition", "none");
+
+      // 2.到真正的位置
+      // 下标6：图示显示6；
+      index = img.length - 2;
+      // 计算偏移值
+      var num = index * imgW;
+      ul.css("transform", `translateX(-${num}px)`);
+
+
+      // 3.开启过渡
+      setTimeout(function() {
+        ul.css("transition", "all 300ms");
+      }, 1);
+    }
+  });
+</script>
+
+</html>

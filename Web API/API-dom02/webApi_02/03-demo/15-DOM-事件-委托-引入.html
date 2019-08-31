@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li {
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn">
+  <ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+  </ul>
+</body>
+<script>
+  // 需求：
+  // 1.要求所有LI都有点击事件
+  // 2.点击 btn 按钮，新增一个LI标签；
+  // 3.如果我想给新的LI，也有点击事件；
+
+  // 获取所有的li,注册事件
+  function set_click() {
+    var lis = document.querySelectorAll("li");
+    for (var i = 0; i < lis.length; i++) {
+      lis[i].onclick = function() {
+        console.log("我是LI");
+      }
+    }
+  }
+  set_click();
+
+
+  var ul = document.querySelector("ul");
+  // 
+  var btn = document.querySelector("#btn");
+  // 点击事件
+  btn.onclick = function() {
+    // 
+    // // 获取
+    // // console.log(ul.innerHTML);
+
+    // 设置：可以把以前的全部覆盖；
+    ul.innerHTML += `<li>我是第${Math.random()}个li</li>`;
+
+
+    // 在这重复获取全部LI，再注册事件；
+    set_click();
+
+
+  }
+</script>
+
+</html>

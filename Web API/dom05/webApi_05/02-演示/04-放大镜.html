@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 450px;
+      height: 450px;
+      border: 1px solid #aaa;
+      position: relative;
+      top: 100px;
+      left: 100px;
+    }
+
+    .small {
+      width: 450px;
+      height: 450px;
+      position: absolute;
+    }
+
+    .mask {
+      position: absolute;
+      background-color: rgba(255, 255, 0, .3);
+      width: 225px;
+      height: 225px;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .big {
+      width: 450px;
+      height: 450px;
+      border: 1px solid #aaa;
+      position: absolute;
+      left: 500px;
+      top: 0;
+      overflow: hidden;
+      display: none;
+    }
+
+    .big>img {
+      width: 900px;
+      height: 900px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="small">
+      <img src="./images/s.jpg" alt="">
+      <div class="mask"></div>
+    </div>
+    <div class="big">
+      <img src="./images/big.jpg" alt="">
+    </div>
+  </div>
+</body>
+<script>
+  var box = document.querySelector('.box');
+  var mask = document.querySelector('.mask');
+  var big = document.querySelector('.big');
+  var bigImg = big.querySelector('.big>img');
+
+  box.onmouseover = function () {
+    mask.style.display = 'block';
+    big.style.display = 'block';
+  }
+  box.onmouseout = function () {
+    mask.style.display = 'none';
+    big.style.display = 'none';
+  }
+
+  box.onmousemove = function (e) {
+    var x = e.pageX - mask.offsetWidth / 2 - box.offsetLeft;
+    var y = e.pageY - mask.offsetHeight / 2 - box.offsetTop;
+    x = x < 0 ? 0 : x;
+    y = y < 0 ? 0 : y;
+    var maxX = big.clientWidth - mask.offsetWidth;
+    var maxY = big.clientHeight - mask.offsetHeight;
+    x = x > maxX ? maxX : x;
+    y = y > maxY ? maxY : y;
+    mask.style.left = x + 'px';
+    mask.style.top = y + 'px';
+
+    var bigMaxX = bigImg.offsetWidth - big.clientWidth;
+    var bigMaxY = bigImg.offsetHeight - big.clientHeight;
+
+    var bigX = bigMaxX * x / maxX;
+    var bigY = bigMaxY * y / maxY;
+
+    bigImg.style.top = -bigY + 'px';
+    bigImg.style.left = -bigX + 'px';
+  }
+</script>
+
+</html>

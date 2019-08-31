@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box"></div>
+  <img src="./001.png" alt="">
+</body>
+<script>
+  // BOM ：window对象 上面的属性和方法
+
+  // 1.全局声明的变量 其实就是window上的属性；
+  var a = "abc";
+  // console.log(window);
+
+  // 2.声明函数
+  function demo() {
+
+
+
+
+
+  }
+
+  // console.log(window);
+
+
+  // 3.
+  // var obj = {};
+  // obj.abc = "asdasd";
+  // 隐式声明：相当于直接在window的属性.abc上进行赋值，不推荐大家使用，不会有变量提升（）；
+  abc = 123;
+  // console.log(window.abc);
+
+
+
+  // DOM方法其实都是归于BOM下；
+  console.log(window.document == document);
+
+
+  // ajax
+  var res = [
+    // 对第一条新闻的描述
+    {
+      title: "标题1",
+      content: '简介',
+      author: '张三',
+    },
+    // 对第2条新闻的描述
+    {
+      title: "标题1",
+      content: '简介',
+      author: '张三',
+    },
+    // 对第3条新闻的描述
+    {
+      title: "标题1",
+      content: '简介',
+      author: '张三',
+    },
+  ]
+
+
+  var div = document.createElement("div");
+  div.innerHTML = ``;
+
+
+  // JS  
+  window.onload = function() {
+    // 静态资源全部加载完成后，才执行这个函数；
+    // 对图片进行操作
+    // 等待图片下载完成后,才能进行操作;
+  }
+</script>
+
+</html>

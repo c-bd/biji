@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body p:nth-child(1) {
+      width: 400px;
+      height: 200px;
+      background-color: red;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 0;
+      transition: all 0.3s;
+    }
+    
+    body p:nth-child(2) {
+      width: 300px;
+      height: 150px;
+      background-color: blue;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 0;
+      transition: all 0.3s;
+    }
+    /*  */
+    
+    body p.pos_1 {
+      width: 400px;
+      height: 200px;
+      top: 200px;
+      left: 200px;
+      z-index: 99;
+    }
+    
+    body p.pos_2 {
+      width: 300px;
+      height: 150px;
+      top: 180px;
+      left: 500px;
+      z-index: 0;
+    }
+    
+    .btn {
+      width: 50px;
+      height: 50px;
+      background-color: #222;
+      position: absolute;
+      top: 50%;
+      right: 300px;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <p>1</p>
+  <p>2</p>
+  <div class="btn" id="btn">></div>
+</body>
+
+
+<script>
+  // 怎么有的位置；
+  var pos_arr = ["pos_1", "pos_2"];
+
+
+  // 获取到每一个P 节点 2个节点
+  var boxs = document.querySelectorAll("p");
+
+  for (var i = 0; i < boxs.length; i++) {
+    boxs[i].className = pos_arr[i];
+  }
+
+
+  // 获取btn 
+  var btn = document.querySelector("#btn");
+  // click
+  btn.onclick = function() {
+    // 点击之后
+    // 从后删除
+    var one = pos_arr.pop();
+    // 从前插入数组
+    pos_arr.unshift(one);
+
+    // pos_arr 操作后数组
+
+    // 变后的位置 重新在 赋值到DOM节点
+    for (var i = 0; i < boxs.length; i++) {
+      boxs[i].className = pos_arr[i];
+    }
+
+  }
+</script>
+
+</html>

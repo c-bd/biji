@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 500px;
+      border: 3px solid #000;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="button" value="关灯" id="close">
+    <input type="button" value="开灯" id="open">
+  </div>
+
+</body>
+
+
+<script>
+  // 需求：点击关闭按钮，页面变黑；
+  // 获取DOM节点：
+  var close = document.getElementById("close");
+  // 注册事件：给谁close
+  close.onclick = function() {
+    // 点击之后：页面变黑；
+    document.body.style.backgroundColor = "#000";
+  }
+
+
+  // 需求：点击开灯按钮，页面变白；
+
+  // 1.获取DOM节点：
+  var open = document.getElementById("open");
+  // 2.注册事件：
+  open.onclick = function() {
+    // 3.点击之后：页面变白；
+    document.body.style.backgroundColor = "#fff";
+  }
+</script>
+
+</html>

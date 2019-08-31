@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .wrapper {
+      width: 1000px;
+      height: 475px;
+      margin: 0 auto;
+      margin-top: 100px;
+    }
+    
+    .tab {
+      border: 1px solid #ddd;
+      border-bottom: 0;
+      height: 36px;
+      width: 320px;
+    }
+    
+    .tab li {
+      position: relative;
+      float: left;
+      width: 80px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 4px solid #fff;
+    }
+    
+    .tab span {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      background: #ddd;
+      width: 1px;
+      height: 14px;
+      overflow: hidden;
+    }
+    
+    .products {
+      width: 1002px;
+      border: 1px solid #ddd;
+      height: 476px;
+    }
+    
+    .products .main {
+      float: left;
+      display: none;
+    }
+    
+    .products .main.selected {
+      display: block;
+    }
+    
+    .tab li.active {
+      border-color: red;
+      border-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul class="tab">
+      <li class="tab-item active">国际大牌</li>
+      <li class="tab-item">国妆名牌</li>
+      <li class="tab-item">清洁用品</li>
+      <li class="tab-item">男士精品</li>
+    </ul>
+    <div class="products">
+      <div class="main selected">
+        <a href="###"><img src="images/guojidapai.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/guozhuangmingpin.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/qingjieyongpin.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/nanshijingpin.jpg" alt="" /></a>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  // 效果：
+  //   1.鼠标移入上面的某个分类(tab)，就会把下面的对应的商品进行切换
+  //   2.某个分类的顶部边框变得和别人不一样
+
+  // 思路：
+  //   给每个分类注册鼠标移入事件，在移入事件里面，把自己的边框变得和别人不一样，
+  //     - 给自己添加一个class - active
+  //     - 把其他的变成普通的
+  //   找到对应的商品，把对应的商品显示出来
+  //     - 要根据索引，找到对应的商品
+  //     - 把对应的商品的类名如果要显示加一个 selected，如果要隐藏，就移除selected
+  // 步骤：
+  //   1. 获取元素
+  //   2. 注册鼠标移入事件
+  //   3. 在事件处理程序里面
+  //     3.1 把自己变成有一个红色的边框 - 加一个class - active
+  //     3.2 把其他的兄弟元素变普通 - 移除class - active
+  //     3.3 找到对应的商品，显示出来 - 加一个class - selected
+  //     3.4 把其他的商品隐藏 - 移除 selected - class
+
+  // 获取元素
+  var tabs = document.querySelectorAll('.tab-item');
+  var goods = document.querySelectorAll('.main');
+  // 给所有的tab注册鼠标移入事件
+  for (var i = 0; i < tabs.length; i++) {
+    // 先通过自定义属性存起来；
+    tabs[i].setAttribute("index", i);
+
+    tabs[i].onmouseover = function() {
+      // 排他思想： 就是遇上一部分不一样，其他都一样，就使用排他思想
+      // 排他的第一步： 先把所有的都变成普通
+      for (var j = 0; j < tabs.length; j++) {
+        tabs[j].classList.remove('active');
+      }
+      // 然后把特殊的变特殊
+      // 给自己添加一个class
+      this.classList.add('active');
+
+      // 3.3 根据索引获取对应的商品
+      // console.log(this.index);
+      // 排他的设置商品的显示和隐藏
+      for (var k = 0; k < goods.length; k++) {
+        goods[k].classList.remove('selected');
+      }
+
+      var index = this.getAttribute("index");
+      // 把对应的商品显示
+      goods[index].classList.add('selected');
+    }
+  }
+</script>
+
+</html>

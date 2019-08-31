@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .box {
+      width: 322px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+    
+    .bd {
+      height: 105px;
+      transition: all 600ms;
+    }
+    
+    .box {
+      transition: all 600ms;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <span id="closeButton"></span>
+    <div class="hd" id="headPart">
+      <img src="images/t.jpg" alt="" />
+    </div>
+    <div class="bd" id="bottomPart">
+      <img src="images/b.jpg" alt="" />
+    </div>
+  </div>
+</body>
+<script>
+  // 两段动画
+  //   先让下半部分，高度逐渐变为0，当底部的高度变为0之后，再把整个盒子的宽度变为0
+  //   是以动画的形式渐变的
+  // 思路：
+  //   先给两个盒子加上渐变动画，通过js，修改高度和宽度，结合css3的动画实现
+
+  // 步骤：
+  //   1. 获取元素
+  //   2. 注册点击事件
+  //   3. 在点击之后，把下半部分的高度变为0
+  //   4. 给底部盒子，注册过渡动画结束事件
+  //   5. 在过渡动画结束之后，再把整个盒子的宽段变为0
+
+  // 
+  window.onload = function() {
+    var close = document.querySelector('#closeButton');
+    var bottomPart = document.querySelector("#bottomPart");
+    var box = document.querySelector("#box");
+
+    // 点击
+    close.onclick = function() {
+      // 点击之后
+      bottomPart.style.height = "0px";
+
+      // 当上面代码的DOM的过渡结束的时候
+      bottomPart.addEventListener("transitionend", function() {
+        box.style.width = 0;
+      });
+
+    }
+  }
+</script>
+
+</html>

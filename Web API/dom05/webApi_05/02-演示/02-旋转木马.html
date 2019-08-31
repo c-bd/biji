@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    ul {
+      list-style: none
+    }
+    
+    img {
+      border: 0;
+      vertical-align: top;
+    }
+    
+    a,
+    button {
+      cursor: pointer;
+    }
+    
+    .wrap {
+      width: 1200px;
+      margin: 100px auto;
+    }
+    
+    .slide {
+      height: 500px;
+      position: relative;
+    }
+    
+    .slide li {
+      position: absolute;
+      left: 200px;
+      top: 0;
+      transition: all 350ms;
+    }
+    
+    .slide li img {
+      width: 100%;
+    }
+    
+    .prev,
+    .next {
+      width: 76px;
+      height: 112px;
+      position: absolute;
+      top: 50%;
+      margin-top: -56px;
+      background: url(./images/prev.png) no-repeat;
+      z-index: 99;
+    }
+    
+    .next {
+      right: 0;
+      background-image: url(./images/next.png);
+    }
+    
+    .slide li.left1 {
+      width: 400px;
+      top: 20px;
+      left: 50px;
+      opacity: 0.2;
+      z-index: 2;
+    }
+    
+    .slide li.left2 {
+      width: 600px;
+      top: 70px;
+      left: 0px;
+      opacity: 0.8;
+      z-index: 3;
+    }
+    
+    .slide li.middle {
+      width: 800px;
+      top: 100px;
+      left: 200px;
+      opacity: 1;
+      z-index: 4;
+    }
+    
+    .slide li.right2 {
+      width: 600px;
+      top: 70px;
+      left: 600px;
+      opacity: 0.8;
+      z-index: 3;
+    }
+    
+    .slide li.right1 {
+      width: 400px;
+      top: 20px;
+      left: 750px;
+      opacity: 0.2;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+      <ul>
+        <li>
+          <a href="#"><img src="images/slidepic1.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic2.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic3.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic4.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic5.jpg" alt="" /></a>
+        </li>
+      </ul>
+      <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev" id="arrLeft"></a>
+        <a href="javascript:;" class="next" id="arrRight"></a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 2 把五个位置存储到了数组里面
+    var config = ['left1', 'left2', 'middle', 'right2', 'right1'];
+    // 为了展开的动画能够实现，把代码写到加载完毕事件里面
+    window.onload = function() {
+      // 1 获取元素
+      var lis = document.querySelectorAll('.slide li');
+      // 动画没出现？因为图片和样式文件加载是需要时间的，如果图片获取样式没有加载成功，看不见移动的过程，需要把所有的代码，放到图片、样式全都加载完毕之后再进行动画
+      // 3 把每个li设置为对应的位置即可
+      rotate();
+
+      // 获取左右按钮
+      var prev = document.querySelector('.prev');
+      var next = document.querySelector('.next');
+      // 4 注册点击事件
+      prev.onclick = function() {
+        // 让图片顺时针旋转
+        // 解决问题的思路： 把config数组的最后一个先取出来，然后从数组的前面放进去，此时config数组的位置，就是顺时针的位置
+        config.unshift(config.pop());
+        // 还需要再次循环的设置每张图片的位置
+        rotate();
+      }
+
+      next.onclick = function() {
+        // 把config数组从前面拿出一个，从后面放进去
+        config.push(config.shift());
+        rotate();
+      }
+
+      // 旋转的过程是可以重用的，封装称为函数
+      function rotate() {
+        lis.forEach(function(item, index) {
+          item.className = config[index];
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

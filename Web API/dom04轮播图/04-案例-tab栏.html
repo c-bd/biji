@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .wrapper {
+      width: 1000px;
+      height: 475px;
+      margin: 0 auto;
+      margin-top: 100px;
+    }
+    
+    .tab {
+      border: 1px solid #ddd;
+      border-bottom: 0;
+      height: 36px;
+      width: 320px;
+    }
+    
+    .tab li {
+      position: relative;
+      float: left;
+      width: 80px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 4px solid #fff;
+    }
+    
+    .tab span {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      background: #ddd;
+      width: 1px;
+      height: 14px;
+      overflow: hidden;
+    }
+    
+    .products {
+      width: 1002px;
+      border: 1px solid #ddd;
+      height: 476px;
+    }
+    
+    .products .main {
+      float: left;
+      display: none;
+    }
+    
+    .products .main.selected {
+      display: block;
+    }
+    
+    .tab li.active {
+      border-color: red;
+      border-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul class="tab">
+      <li class="tab-item active" index=0>国际大牌</li>
+      <li class="tab-item" index=1>国妆名牌</li>
+      <li class="tab-item" index=2>清洁用品</li>
+      <li class="tab-item" index=3>男士精品</li>
+    </ul>
+    <div class="products">
+      <div class="main selected">
+        <a href="###"><img src="images/guojidapai.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/guozhuangmingpin.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/qingjieyongpin.jpg" alt="" /></a>
+      </div>
+      <div class="main">
+        <a href="###"><img src="images/nanshijingpin.jpg" alt="" /></a>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  var lis = document.querySelectorAll(".tab-item");
+  var imgs = document.querySelectorAll(".main");
+
+  for (var i = 0; i < lis.length; i++) {
+    // const element = array[i];
+    lis[i].onmouseover = function() {
+
+      // 1. 排它思想
+      // 先把所有清空为没有当前状态；
+      for (var j = 0; j < lis.length; j++) {
+        lis[j].classList.remove("active")
+      }
+      // 自己要变为当前状态
+      this.classList.add("active");
+
+
+      // 相对于图片来说  移入第一个LI  下标0   -----》图片 第一张；0
+      var index = this.getAttribute("index");
+      console.log(index);
+
+
+      // 2.图片跟着：一一对应关系；排它思想
+
+      // 把所有图片 selected 状态去除掉
+      for (var k = 0; k < imgs.length; k++) {
+        imgs[k].classList.remove("selected")
+
+      }
+      // 找到对应的图片，当前图片加上selected
+      imgs[index].classList.add("selected");
+
+
+    }
+
+  }
+</script>
+
+</html>

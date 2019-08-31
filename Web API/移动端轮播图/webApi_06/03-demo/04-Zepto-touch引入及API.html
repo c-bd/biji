@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: #0a0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+<script src="./js/zepto.js"></script>
+<!-- 引入touch.js 手势类事件：tap 左划 右划-->
+<script src="./js/touch.js"></script>
+<script>
+  //swipe, swipeLeft, swipeRight, swipeUp, swipeDown
+
+
+  // zepto
+  var box = $(".box");
+
+  // 注册事件 tap事件
+  box.on("tap", function() {
+    console.log("tap");
+  });
+
+  // swipeLeft:手势，是移动端的事件，touch.js帮我们封装了好了；
+  box.on("swipeLeft", function() {
+    console.log(1);
+  })
+</script>
+
+</html>

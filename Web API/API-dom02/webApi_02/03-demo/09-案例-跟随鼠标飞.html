@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      height: 4000px;
+    }
+    
+    img {
+      /*  */
+      /* position: absolute; */
+      position: fixed;
+      /* transition: all 0.1s; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <img src="./images/tianshi.gif" id="img" alt="">
+</body>
+<script>
+  // 获取到：
+  var img = document.querySelector('#img');
+
+
+  // 需求：DOM节点跟着鼠标走；
+  // 鼠标走：mousemove，注册事件;注册给谁？document
+  // 跟着鼠标走：获取到鼠标的位置；
+  // 设置DOM节点跟着走：控制 top left
+
+  // 
+  document.onmousemove = function(e) {
+    // 描述鼠标移动的行为e 拿到了
+    // 相对于：当前可视窗口；
+    // console.log(e.clientX, e.clientY);
+
+    // 通过控制样式属性style  控制位置；
+    // value;
+    // className ---->classlist
+    // dateset,   setAttribute  
+    // 
+    // img.style.top = `${e.clientY}px`;
+    // img.style.left = `${e.clientX}px`;
+
+    // console.log(e.pageY, e.pageX);
+
+
+    // 相对于body 鼠标位置 ,定位方式 position: absolute;
+    img.style.top = `${e.pageY}px`;
+    img.style.left = `${e.pageX}px`;
+
+  }
+
+  //
+</script>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: #0a0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+<script>
+  var box = document.querySelector('.box');
+
+
+  /**
+   * 自己封装的tap事件
+   * @param {object} element 事件源 
+   * @param {number} juli手指抖动的最大偏移量，
+   * @param {number} time 点下的最大毫秒数，
+   * @param {function} fn 点击之后执行的函数
+   */
+
+
+
+  function EvnetTap(element, juli, time, fn) {
+
+
+    // 优化：
+    juli = juli ? juli : 10;
+    time = time ? time : 300;
+
+    // 全局的变量
+    var start_x, start_y, start_time;
+
+    // 触摸开始
+    // 记录下：触摸开始的位置，时间
+    element.addEventListener("touchstart", function(e) {
+      // console.log(e.touches[0]);
+      // 开始触摸的位置记录
+      start_x = e.touches[0].pageX;
+      start_y = e.touches[0].pageY;
+
+      // 开始时间记录下
+      start_time = Date.now();
+
+    });
+
+
+    element.addEventListener("touchend", function(e) {
+      // console.log(e.touches[0]);
+      // 结束触摸的位置记录
+      var end_x = e.changedTouches[0].pageX;
+      var end_y = e.changedTouches[0].pageY;
+
+      // 结束时间记录下
+      var end_time = Date.now();
+
+
+      // 位置要接近，时间要短
+      // 绝对值
+      if (Math.abs(end_x - start_x) < juli && Math.abs(end_y - start_y) < juli && end_time - start_time < time) {
+        // 真实要执行tap后的执行体
+        // console.log("你点击了");
+        fn();
+      };
+
+
+    });
+  }
+
+
+  // 以函数的方式封装的，所以你只能按照函数调用的方式注册事件
+  EvnetTap(box, 10, 280, function() {
+    console.log("--------------------");
+  });
+
+
+  EvnetTap(box, function() {
+    console.log("--------------------");
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
+    注册事件的目标是为了实现： 触发-响应
+  */
+  /**
+   * 自己封装的tap事件
+   * @param {object} element 事件源
+   * @param {function} callback 事件处理程序
+   * @param {number} offset 手指抖动的最大偏移量,默认是50
+   * @param {number} timeSpan 点下的最大毫秒数，默认是300
+   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function tap(element, callback, offset, timeSpan) {
+    offset = offset || 50;
+    timeSpan = timeSpan || 300;
+
+    var startX, startY, startTime;
+
+    element.addEventListener('touchstart', function(e) {
+      // 判断是否是一个手指按下
+      if (e.touches.length != 1) {
+        console.log('已经不是一个手指的操作了');
+        return;
+      }
+      // 记录开始位置
+      startX = e.touches[0].pageX;
+      startY = e.touches[0].pageY;
+      // 记录开始的时间
+      startTime = Date.now();
+    });
+
+    element.addEventListener('touchend', function(e) {
+      // 判断是否只有一个手指
+      if (e.changedTouches.length != 1) {
+        console.log('不是单击操作');
+        return;
+      }
+
+
+
+      // 记录结束位置
+      var endX = e.changedTouches[0].pageX;
+      var endY = e.changedTouches[0].pageY;
+      // 记录结束时间
+      var endTime = Date.now();
+      // 计算，判断
+      if (endTime - startTime > 300) {
+        // 不是单击，是长按
+        console.log('是长按了');
+        return;
+      }
+      // 希望开始和结束之间的距离不要超过50 - 要计算一下绝对值，因为我们滑动的方向可能不确定
+      if (Math.abs(endX - startX) >= 50 || Math.abs(endY - startY) >= 50) {
+        console.log('滑动了太多的位置');
+        return;
+      }
+
+      // 如果是一个单击tap事件，就应该调用一个函数
+      callback && callback();
+    })
+  }
+
+
+  // box.onclick = function() {}
+</script>
+
+</html>

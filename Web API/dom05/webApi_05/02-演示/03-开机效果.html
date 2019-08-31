@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .box {
+      width: 322px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .bd {
+      height: 105px;
+      transition: all 600ms;
+    }
+
+    .box {
+      transition: all 600ms;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <span id="closeButton"></span>
+    <div class="hd" id="headPart">
+      <img src="images/t.jpg" alt="" />
+    </div>
+    <div class="bd" id="bottomPart">
+      <img src="images/b.jpg" alt="" />
+    </div>
+  </div>
+</body>
+<script>
+/*
+  1.点击关闭按钮，让底部的高度为0
+  2.当底部的高度为0之后，让整个盒子的宽度为0
+*/
+// 1 获取元素
+var closeButton = document.getElementById('closeButton');
+var bottomPart = document.getElementById('bottomPart');
+var box = document.getElementById('box');
+// 2 给按钮注册点击事件
+closeButton.onclick = function(){
+  // 3 把底部的高度变为0
+  bottomPart.style.height = 0;
+  // setTimeout(function(){
+  //   box.style.width = 0;
+  // },600);
+}
+// 过渡动画结束事件实现变窄的效果
+bottomPart.addEventListener('transitionend',function(){
+  // console.log(1);
+  // 在这里，把box的宽度变为0即可
+  box.style.width = 0;
+});
+</script>
+</html>

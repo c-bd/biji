@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li {
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn">
+  <ul>
+    <p>asasdasdasd</p>
+    <p>asasdasdasd</p>
+    <p>asasdasdasd</p>
+    <p>asasdasdasd</p>
+    <p>asasdasdasd</p>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+
+  </ul>
+</body>
+<script>
+  // 点击新增
+  var ul = document.querySelector('ul');
+  var btn = document.getElementById('btn');
+  btn.onclick = function() {
+    // 给ul添加新的元素
+    ul.innerHTML += '<li>新的li</li>'
+    
+    
+  }
+
+
+  // 事件原来是注册在LI上面
+  // 事件注册在ul
+  ul.onclick = function(e) {
+    // 点谁就是谁；
+    // console.log(e.target);
+
+    // 点击的这个DOM节点的标签名 ：大写；
+    // console.log(e.target.nodeName);
+
+    // 当我们当前点击的DOM的标签名 是我们需要的
+    if (e.target.nodeName == "P") {
+      console.log("我是LI标签")
+    }
+
+
+
+    // 事件委托：
+
+
+    // 返回 事件源：ul this
+    // console.log(e.currentTarget);
+  }
+</script>
+
+</html>

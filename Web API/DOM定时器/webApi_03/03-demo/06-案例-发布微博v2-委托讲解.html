@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #222;
+    }
+    
+    .son {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <button>按钮</button>
+  <div class="box">
+    <div class="son">son</div>
+  </div>
+  <p>我是P元素</p>
+</body>
+
+
+<script>
+  // ---------------------------------单独每个注册
+  // var btn = document.querySelector("button");
+  // btn.onclick = function() {
+  //   alert("btn");
+  // }
+
+
+  // var div = document.querySelector("div");
+  // div.onclick = function() {
+  //   alert("div");
+  // }
+
+  // var p = document.querySelector("p");
+  // p.onclick = function() {
+  //   alert("p");
+  // }
+
+  // ------------------------------------注册给document
+  document.onclick = function(e) {
+    console.log(e.target.nodeName);
+
+    // 证明你现在点击的是BTN
+    if (e.target.nodeName == "BUTTON") {
+      alert("btn");
+    }
+    // 证明你现在点击的是DIV
+    else if (e.target.nodeName == "DIV") {
+      alert("div");
+    }
+    // 证明你现在点击的是P
+    else if (e.target.nodeName == "P") {
+      alert("p");
+    }
+  }
+
+
+
+  //
+</script>
+
+</html>

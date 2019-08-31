@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      padding-left: 20px;
+      margin-left: 100px;
+      border-top: 10px solid #000;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" style="font-size: 12px"></div>
+</body>
+<script>
+  // 获取元素的实际宽高：border+padding+content
+  var box = document.querySelector(".box");
+
+  // box.off
+  // console.log(box.offsetLeft);
+  // console.log(box.offsetTop);
+
+
+  // 实际宽度：返回实际的宽度，数字类型；
+  console.log(box.offsetWidth);
+  console.log(box.offsetHeight);
+</script>
+
+</html>

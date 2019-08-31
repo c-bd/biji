@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="按钮-停止弹出" id="stop">
+</body>
+<script>
+  // 语法: 一次性定时器;
+  // es6:函数写法：() => {}
+  // timeout：毫秒数
+
+  // 作用：延迟一定时间执行；
+  // var timer = setTimeout(function() {
+  //   alert(1)
+  // }, 3000);
+
+
+
+  // 返回值；返回这个定时器的ID，用于清除定时器；
+  // var btn = document.querySelector("#stop");
+  // btn.onclick = function() {
+  //   clearTimeout(timer);
+  // };
+
+
+
+  // 语法：永久定时器
+  // 不是一瞬间执行，等待1000后，开启你的定时器；
+  // 返回值：ID
+  var timer = setInterval(function() {
+    // document.write("123</br>")
+    console.log(1);
+  }, 1000);
+
+
+  // 
+  var btn = document.querySelector("#stop");
+  btn.onclick = function() {
+    clearInterval(timer);
+  };
+</script>
+
+</html>

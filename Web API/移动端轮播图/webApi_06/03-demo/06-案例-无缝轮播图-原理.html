@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    header {
+      height: 200px;
+    }
+    
+    .box {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    ul {
+      /* 把li变成8张之后，需要，把ul的宽度变宽 */
+      width: 800%;
+      display: flex;
+      transition: transform 300ms;
+    }
+    
+    li {
+      flex: 1;
+    }
+    
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <!-- 结构 -->
+  <!-- li*6>a[href=#]>img[src=./images/$.jpg] -->
+  <div class="box">
+    <ul>
+      <li>
+        <a href="#"><img src="./images/6.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/1.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/2.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/3.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/4.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/5.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/6.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="#"><img src="./images/1.jpg" alt=""></a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="./js/zepto.js"></script>
+<script src="./js/touch.js"></script>
+<script>
+  /*
+                  1.引入zepto和touch .js
+
+                  2.获取元素-box,ul
+
+                  3.注册左划事件
+
+                  3.1 让当前的索引++，算出ul应该在的位置，设置给ul
+
+                  4.注册右划事件
+
+                  4.1让当前的索引--，算出ul应该在的位置，设置给ul
+
+                  */
+  // 获取元素
+  var box = $(".box"); // 这个伪数组我们称为 zepto对象
+  var ul = $(".box > ul");
+  // 获取图片的宽度
+  var imgWidth = box.width();
+  // 定义一个全局变量，表示当前是第几张图片
+  var currentIndex = 0;
+
+  // 需要一开始就设置一下图片要显示的是用户认为的第一张
+  // var target = currentIndex * imgWidth * -1;
+  // ul[0].style.transform = 'translate(' + target + 'px)';
+  // // 在这里手动的把过渡动画加到ul身上
+  // // 这个过渡不能在一开始就加上去，需要等页面里面的很多代码都执行了之后，再加上去
+  // setTimeout(function() {
+  //   ul[0].style.transition = 'transform 300ms';
+  // }, 1);
+
+
+
+
+
+  // console.log(imgWidth);
+  // 给box注册左划事件
+  box.on('swipeLeft', function() {
+    // 让当前索引++
+    currentIndex++;
+    // 计算出ul应该在的位置 = 索引 * 图片宽度 * -1
+    var target = currentIndex * imgWidth * -1;
+    // 设置给ul
+    // 在移动端，对c3的支持更加友好，使用transform实现
+    ul[0].style.transform = 'translate(' + target + 'px)';
+    // ul.css('transform','translate('+ target +'px)');
+  });
+
+  // 右划
+  box.on('swipeRight', function() {
+    currentIndex--;
+    var target = currentIndex * imgWidth * -1;
+    ul[0].style.transform = 'translate(' + target + 'px)';
+  });
+
+
+
+  // 为了实现无缝轮播，
+  // 往左划：当第六张滑动到第一张的动画结束之后，立刻把这个最后一张切换到用户认为的第一张
+  ul[0].addEventListener('transitionend', function() {
+
+    // 当前下标为6：显示的HTML的第
+    if (currentIndex === ul[0].children.length - 1) {
+      // 先把ul的过渡动画先去掉
+      ul[0].style.transition = 'transform 0ms'
+        // 立刻切换到真正的第一张
+      currentIndex = 1;
+      var target = currentIndex * imgWidth * -1;
+      ul[0].style.transform = 'translate(' + target + 'px)';
+      setTimeout(function() {
+        ul[0].style.transition = 'transform 300ms';
+      }, 1);
+    }
+
+    // 当右划动，从第一张到第六张的时候
+    if (currentIndex === 0) {
+      ul[0].style.transition = 'transform 0ms'; //动画去掉
+      // 切换到用户认为的第六张
+      currentIndex = ul[0].children.length - 2;
+      var target = currentIndex * imgWidth * -1;
+      ul[0].style.transform = 'translate(' + target + 'px)';
+      setTimeout(function() {
+        ul[0].style.transition = 'transform 300ms';
+      }, 1);
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {}
+  </style>
+</head>
+
+<body>
+  <div id="box" class="father">div盒子</div>
+  <ul class="father">
+    <li>li标签盒子</li>
+    <li>li标签盒子</li>
+    <li>li标签盒子</li>
+  </ul>
+</body>
+<script>
+  // 单个DOM节点；
+  var box = document.getElementById('box');
+
+  // CSS选择器获取DOM节点；只返回的是一个DOM节点；
+  var box_1 = document.querySelector("#box");
+
+
+  // console.log(box == box_1);
+  var ps = document.getElementsByClassName("father");
+  console.log(ps);
+
+  // 返回值：伪数组；
+  var ps_1 = document.querySelectorAll(".father");
+  console.log(ps_1);
+</script>
+
+</html>

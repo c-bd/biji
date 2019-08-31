@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .parent {
+      width: 100%;
+      height: 400px;
+      background-color: #ccc;
+    }
+    
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent" id="parent">
+    <div class="son"></div>
+  </div>
+</body>
+<script>
+  var box = document.querySelector("#parent");
+
+  box.onclick = function(e) {
+    // alert(1)
+    // e：把点击这个行为看做一个对象
+    // console.log(e);
+    // 对象上，有几个属性可以标识当前鼠标点击的位置；
+
+    // 相对于当前窗口；
+    // console.log(e.clientX, e.clientY);
+
+    // // 相对于：body的左上角
+    // console.log(e.pageX, e.pageY);
+
+
+    // 点击的哪个DOM节点，反给我的就是哪个DOM节点；
+    // console.log(e.target);
+
+
+    // 返回 事件源
+    // console.log(e.currentTarget);
+
+    // 事件源：事件给谁注册了，谁就是那个源头；
+
+    // this:代表当前事件注册的DOM节点，事件源；
+    console.log(e.currentTarget == this);
+    console.log(box == this);
+
+
+    // 事件对象：
+    // 有一些属性可以表述 鼠标点击到哪状态；
+    // 有些属性也可以 返给我当前点击的事件源；
+    // 当前这些属性的集合体，在描述点击的这个行为；
+
+
+
+
+
+
+
+
+  }
+</script>
+
+</html>

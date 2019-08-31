@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box" abc="123" index="5"></div>
+</body>
+<script>
+  // 昨天：dom.dataset 属性对象
+  // 属性 操作方法：
+  var box = document.querySelector("#box");
+
+
+
+  // -----------------------------------获取
+  // 自定义属性
+  var abc = box.getAttribute("abc");
+  // console.log(abc);
+
+  // 标准属性
+  // console.log(box.id);
+  var id = box.getAttribute("id");
+  // console.log(id);
+
+
+  //---------------------------------设置
+  // 通过JS操作自定义属性
+  box.setAttribute("key", "你好");
+  box.setAttribute("index", "你好");
+
+
+  // ---------------------------------删除属性
+  box.removeAttribute("abc");
+
+  // .setAttribute 这些方法：推荐大家用于自定义属性的操作；
+</script>
+
+</html>

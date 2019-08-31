@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 500px;
+      margin: 100px auto;
+      text-align: center;
+    }
+    
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+      height: 24px;
+    }
+    
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>
+        <input type="checkbox" name="" id="checkAll" />全选/全不选
+      </th>
+      <th>菜名</th>
+      <th>商家</th>
+      <th>价格</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck" />
+      </td>
+      <td>红烧肉</td>
+      <td>隆江猪脚饭</td>
+      <td>￥200</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck" />
+      </td>
+      <td>香酥排骨</td>
+      <td>隆江猪脚饭</td>
+      <td>￥998</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck" />
+      </td>
+      <td>北京烤鸭</td>
+      <td>隆江猪脚饭</td>
+      <td>￥88</td>
+    </tr>
+  </table>
+
+</body>
+<script>
+  // 1.全选和全不选的功能点；
+  // 点击 全选，下面都要跟着变；
+
+  var allCk = document.getElementById("checkAll");
+
+  // 伪数组：全部的子ck
+  var cks = document.getElementsByClassName("ck");
+
+  // 2.注册事件
+  allCk.onclick = function() {
+    // 3.点击之后要怎么着？
+    // 点击之后，获取自己的状态，true;
+    // 要求：子ck 和我的状态一样；
+    // console.log(allCk.checked);
+    // cks[0].checked = allCk.checked;
+    // cks[1].checked = allCk.checked;
+    // cks[2].checked = allCk.checked;
+
+    // 使用循环，在循环的过程中，把我们allCk的状态值影响到每个子ck
+    for (var i = 0; i < cks.length; i++) {
+      cks[i].checked = allCk.checked;
+    }
+
+  }
+
+
+  // 需求：当我们把全部子ck选择中，上面的allCk 也会被选中；
+  // 相反，只有有一个ck没有选，allCk就不选；
+  for (var j = 0; j < cks.length; j++) {
+    // const element = cks[j];
+    // 每一个子ck
+    cks[j].onclick = function() {
+      // 点击之后要执行的事情；
+
+      // 假设：3个全部选中；
+      var flag = true;
+
+      // 验证：一个一个的过；
+      for (let k = 0; k < cks.length; k++) {
+        // 当只要其中有一个ck没有选中，那么推翻你的假设
+        if (cks[k].checked == false) {
+          // 推翻你的假设
+          flag = false;
+          break;
+        }
+
+      }
+
+      // 循环结束的状态：
+      // flag：true 三个子ck全部选中，那么allCk跟着选中
+      // flag：false 三个子ck至少有一个没有选中，那么allCk不能跟着选中
+
+      // 三个子ck全部选中，那么allCk跟着选中
+      // if (flag == true) {
+      //   allCk.checked = true;
+      // }
+      // // 三个子ck 至少有一个没有选中，那么allCk不能跟着选中
+      // else {
+      //   allCk.checked = false;
+      // }
+
+
+      // 三元表达式
+      // flag == true ? allCk.checked = true : allCk.checked = false;
+      // flag ? allCk.checked = true : allCk.checked = false;
+
+      // 简写：
+      allCk.checked = flag;
+
+
+    }
+  }
+</script>
+
+</html>

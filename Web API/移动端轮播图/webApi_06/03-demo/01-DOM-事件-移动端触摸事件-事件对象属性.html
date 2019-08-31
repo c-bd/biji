@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+<script>
+  // DOM 
+  var box = document.querySelector('.box');
+
+  // 手指刚触摸屏幕的时候，执行
+  box.addEventListener("touchstart", function(e) {
+    // console.log(1);
+    console.log(e.touches);
+    console.log(e.targetTouches);
+    console.log(e.changedTouches);
+
+  });
+
+  // 没有移动:开关思想
+  var key = false;
+  // 手指划动
+  box.addEventListener("touchmove", function(e) {
+    // console.log(2);
+    if (key == false) {
+      console.log('----------------------------------');
+      console.log(e.touches);
+      console.log(e.targetTouches);
+      console.log(e.changedTouches);
+      key = true;
+    }
+  });
+
+
+
+  // 手指离开
+  box.addEventListener("touchend", function(e) {
+    // console.log(3);
+    // 
+    console.log('----------------------------------');
+
+    console.log(e.touches);
+    console.log(e.targetTouches);
+    console.log(e.changedTouches);
+  });
+</script>
+
+</html>

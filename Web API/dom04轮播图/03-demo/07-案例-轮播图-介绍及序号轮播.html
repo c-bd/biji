@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .box {
+      width: 730px;
+      height: 454px;
+      padding: 8px;
+      border: 1px solid green;
+      margin: 100px auto;
+    }
+    
+    .inner {
+      position: relative;
+      overflow: hidden;
+      height: 454px;
+    }
+    
+    #imglist {
+      width: 700%;
+      position: absolute;
+      left: 0;
+      /* left变化的时候，才会有过渡效果 */
+      transition: left 300ms linear;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    .list {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -85px;
+    }
+    
+    .list i {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+      color: #333;
+      float: left;
+      font-style: normal;
+      line-height: 20px;
+      font-size: 14px;
+      text-align: center;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    
+    .list i:last-child {
+      margin-right: 0;
+    }
+    
+    .list i.current {
+      background-color: skyblue;
+      color: #fff;
+    }
+    
+    .arrow {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      margin-top: -30px;
+    }
+    
+    .arrow-left,
+    .arrow-right {
+      width: 30px;
+      height: 60px;
+      position: absolute;
+      font: 20px/60px "consolas";
+      color: #fff;
+      background-color: rgba(0, 0, 0, .3);
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .arrow-right {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <div class="inner" id="inner">
+      <ul id="imglist">
+        <li>
+          <a href="#"><img src="images/1.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/2.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/3.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/4.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/5.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/6.jpg" alt=""></a>
+        </li>
+      </ul>
+      <div class="list">
+        <i class="current">1</i>
+        <i>2</i>
+        <i>3</i>
+        <i>4</i>
+        <i>5</i>
+        <i>6</i>
+      </div>
+      <div class="arrow">
+        <span class="arrow-left">&lt;</span>
+        <span class="arrow-right">&gt;</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  // 静态加载完成后执行
+  window.onload = function() {
+    // 返回伪数组
+    var points = document.querySelectorAll(".list i");
+    var ul = document.querySelector("#imglist");
+    var imgWidth = ul.children[0].offsetWidth;
+    console.log(imgWidth);
+
+
+
+
+
+    // 注册事件 ：一个一个注册
+    for (var i = 0; i < points.length; i++) {
+      // 小圆点的下标先存起来；
+      points[i].index = i;
+
+
+      points[i].onmouseover = function() {
+        // 1.小圆点样式的变化 排它
+        // 
+        for (var j = 0; j < points.length; j++) {
+          points[j].classList.remove("current")
+        }
+        this.classList.add("current");
+
+
+        // 2.挪动 往左诺 ul 
+        // 需要小圆点的下标 
+        // 往左诺的值 = -小圆点的下标  * 图片宽度
+        // 下标为0的小圆点，往左挪动 0；
+        // 下标为1的小圆点，往左挪动 1个图片；
+        // 下标为5的小圆点，往左挪动 5个图片；
+        var num = this.index * imgWidth;
+
+        // 设置UL往左诺 定位 
+        // ul.style.left = "-" + num + "px";
+        ul.style.left = `-${num}px`;
+
+
+
+      }
+
+    }
+
+
+
+
+  }
+</script>
+
+</html>

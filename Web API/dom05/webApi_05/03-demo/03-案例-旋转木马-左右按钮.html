@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    ul {
+      list-style: none
+    }
+    
+    img {
+      border: 0;
+      vertical-align: top;
+    }
+    
+    a,
+    button {
+      cursor: pointer;
+    }
+    
+    .wrap {
+      width: 1200px;
+      margin: 100px auto;
+    }
+    
+    .slide {
+      height: 500px;
+      position: relative;
+    }
+    
+    .slide li {
+      position: absolute;
+      left: 200px;
+      top: 0;
+      transition: all 350ms;
+    }
+    
+    .slide li img {
+      width: 100%;
+    }
+    
+    .prev,
+    .next {
+      width: 76px;
+      height: 112px;
+      position: absolute;
+      top: 50%;
+      margin-top: -56px;
+      background: url(./images/prev.png) no-repeat;
+      z-index: 99;
+    }
+    
+    .next {
+      right: 0;
+      background-image: url(./images/next.png);
+    }
+    
+    .slide li.left1 {
+      width: 400px;
+      top: 20px;
+      left: 50px;
+      opacity: 0.2;
+      z-index: 2;
+    }
+    
+    .slide li.left2 {
+      width: 600px;
+      top: 70px;
+      left: 0px;
+      opacity: 0.8;
+      z-index: 3;
+    }
+    
+    .slide li.middle {
+      width: 800px;
+      top: 100px;
+      left: 200px;
+      opacity: 1;
+      z-index: 4;
+    }
+    
+    .slide li.right2 {
+      width: 600px;
+      top: 70px;
+      left: 600px;
+      opacity: 0.8;
+      z-index: 3;
+    }
+    
+    .slide li.right1 {
+      width: 400px;
+      top: 20px;
+      left: 750px;
+      opacity: 0.2;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+      <ul id="ul_dom">
+        <li>
+          <a href="#"><img src="images/slidepic1.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic2.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic3.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic4.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/slidepic5.jpg" alt="" /></a>
+        </li>
+      </ul>
+      <div class="arrow" id="arrow">
+        <a href="javascript:;" class="prev" id="arrLeft"></a>
+        <a href="javascript:;" class="next" id="arrRight"></a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 位置数字一直不变
+    var pos = ['left1', 'left2', 'middle', 'right2', 'right1'];
+
+    // 通过JS往DOM节点加类名；
+    window.onload = function() {
+
+      var lis = document.querySelectorAll("li");
+
+      // 先按照位置数组的默认顺序赋值；
+      function init() {
+        for (var i = 0; i < lis.length; i++) {
+          lis[i].className = pos[i]
+        }
+      }
+      init();
+
+
+
+
+
+
+      // 点击事件：
+      var right = document.querySelector("#arrRight");
+      right.onclick = function() {
+        // 换位置：HTML的结构位置没有变，变的类名数组中的位置；
+
+        // HTML顺序：     1        2       3         4         5
+        // 类名的顺序：'left1', 'left2', 'middle', 'right2', 'right1'
+
+        // 点击之后
+        // HTML顺序：     1        2       3         4         5
+        // 类名的顺序： 'left2', 'middle', 'right2', 'right1' 'left1',
+
+        // 
+        var one = pos.shift();
+        pos.push(one);
+
+        // pos 操作后类名属性
+        // 把新的位置赋值到DOM节点的className
+        // for (var i = 0; i < lis.length; i++) {
+        //   lis[i].className = pos[i];
+        // }
+        init();
+      }
+
+
+      // 
+      var left = document.querySelector("#arrLeft");
+      left.onclick = function() {
+        // 
+        // HTML顺序：     1        2       3         4         5
+        // 类名的顺序：'left1', 'left2', 'middle', 'right2', 'right1'
+
+        // 
+        // HTML顺序：     1        2       3         4         5
+        // 类名的顺序： 'right1' 'left1', 'left2', 'middle', 'right2', 
+
+
+        // 操作位置数组：
+        // 从后删除
+        var one = pos.pop();
+        // 
+        pos.unshift(one);
+
+
+        // 重新每个节点到自己的新位置；
+        init();
+
+      }
+    };
+  </script>
+</body>
+
+</html>

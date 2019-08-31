@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 500px;
+      border: 3px solid #000;
+      background-color: #fff;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="button" value="关灯" id="btn">
+  </div>
+
+</body>
+
+
+
+<script>
+  // 属性 value 
+  // // DOM节点(元素对象)上的属性 value
+  // var dom_btn = document.getElementById("btn");
+  // // 
+  // dom_btn.onclick = function() {
+  //   // 获取
+  //   console.log(dom_btn.value);
+
+  //   // 设置:赋值，给对象上的属性重新赋值，
+  //   dom_btn.value = "abc";
+  // }
+
+
+
+  // 需求：点关灯：页面背景变黑；文字为开灯；
+  //       点开灯：页面背景变白；文字为关灯；
+
+  // 1.获取DOM节点；
+  var dom_btn = document.getElementById("btn");
+
+  // 变量值：接受btn的value
+  var value;
+  // 2.注册事件：
+  dom_btn.onclick = function() {
+    // 3.点击之后的效果；
+
+    // 那到当前的状态；
+    value = dom_btn.value;
+
+    // 点关灯：页面背景变黑；文字为开灯；
+    // 文字是关灯：
+    if (value == '关灯') {
+
+      document.body.style.backgroundColor = '#000';
+      // 文字变为开灯
+      dom_btn.value = "开灯";
+    }
+    // 点开灯：页面背景变白；文字为关灯；
+    else {
+
+      document.body.style.backgroundColor = '#fff';
+      // 
+      dom_btn.value = "关灯";
+    }
+
+
+  }
+</script>
+
+</html>

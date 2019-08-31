@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <style>
+    div.main {
+      width: 600px;
+      margin: 0 auto;
+    }
+    
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+
+    <div class="first">
+      <!-- 使用data-src存储按钮对应的图片路径 -->
+      <input class="ipt" type="button" value="美女1" data-key=1 data-src='./images/01.jpg' />
+      <input class="ipt" type="button" value="美女2" data-key=2 data-src='./images/02.jpg' />
+      <input class="ipt" type="button" value="美女3" data-key=3 data-src='./images/03.jpg' />
+      <input class="ipt" type="button" value="美女4" data-key=4 data-src='./images/04.jpg' />
+      <input class="ipt" type="button" value="美女5" data-key=5 data-src='./images/05.jpg' />
+    </div>
+    <div class="second">
+      <img src="images/01.jpg" alt="" id="img" />
+    </div>
+
+  </div>
+  <script>
+    // 需求：点击不同按钮，实现不同的图片切换：
+    // 点击1：切换第一个图；
+
+    // 先把DOM全部获取到；伪数组；循环遍历
+    var btns = document.getElementsByClassName("ipt");
+
+    var img = document.getElementById("img");
+    // console.log(btns);
+
+
+    // 循环遍历:在循环中把事件注册了
+    for (var i = 0; i < btns.length; i++) {
+      // 循环体：一次一次的执行
+      console.log(btns[i]);
+
+
+      btns[i].onclick = function() {
+        // 按照理解：当i=0;给第一个DOM节点注册事件，打印的i,输出0；
+        // console.log(i);
+        // console.log(btns[i]);
+
+        // 当我们点击的时候，循环已经循环完毕，那么这个时候，i==5;
+
+        // this：点击的时候，this获取就是 点击 DOM节点；
+        // console.log(this);
+        // console.log(this.dataset.src);
+
+        img.src = this.dataset.src;
+      }
+    }
+  </script>
+</body>
+
+</html>

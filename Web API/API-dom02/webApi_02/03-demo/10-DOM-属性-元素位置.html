@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* * {
+      margin: 0;
+      padding: 0;
+    }
+     */
+    
+    .p {
+      /* position: absolute;
+      left: 50px; */
+      margin-left: 100px;
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+    }
+    
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      margin-left: 100px;
+      margin-top: 200px;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="p">
+
+    <div id="box" class="box"></div>
+
+  </div>
+
+</body>
+<script>
+  // 获取定位
+  var box = document.querySelector("#box");
+
+  // 获取：行内样式的样式；
+  // console.log(box.style.top, box.style.left);
+
+
+  // 找参考的父亲：看上面的父辈元素，有没有定位，没有，继续往上，找body;
+
+  // offsetLeft = marginLeft+left
+  console.log(box.offsetLeft);
+  console.log(box.offsetTop);
+
+  // 
+  console.log(box.offsetParent);
+</script>
+
+</html>

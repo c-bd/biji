@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .box {
+      width: 450px;
+      height: 450px;
+      border: 1px solid #aaa;
+      position: relative;
+      top: 100px;
+      left: 100px;
+    }
+    
+    .small {
+      width: 450px;
+      height: 450px;
+      border: 50px solid #000;
+      position: absolute;
+    }
+    
+    .mask {
+      position: absolute;
+      background-color: rgba(255, 255, 0, .3);
+      /* border: 1px solid #ff0; */
+      width: 225px;
+      height: 225px;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+    
+    .big {
+      width: 450px;
+      height: 450px;
+      border: 100px solid #aaa;
+      position: absolute;
+      left: 500px;
+      top: 0;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .big>img {
+      width: 900px;
+      height: 900px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="small">
+      <img src="./images/s.jpg" alt="">
+      <div class="mask"></div>
+    </div>
+    <div class="big">
+      <img src="./images/big.jpg" alt="">
+    </div>
+  </div>
+</body>
+<script>
+  // 1 获取元素
+  var box = document.querySelector(".box");
+  // 左侧的盒子
+  var small = document.querySelector(".small");
+  // 左侧遮罩
+  var mask = document.querySelector(".mask");
+
+  // 右侧显示
+  var big = document.querySelector(".big");
+  // 右侧的图片
+  var bigImg = document.querySelector(".big img");
+  // var binImg = big.children[0];
+
+
+
+
+
+
+
+  // 鼠标移入移出的事件
+  small.onmouseover = function() {
+    // mask 右侧的大图
+    mask.style.display = "block";
+    big.style.display = "block";
+  }
+
+  small.onmouseout = function() {
+    mask.style.display = "none";
+    big.style.display = "none";
+  }
+
+
+
+  // 遮罩跟着鼠标 动起来
+  small.onmousemove = function(e) {
+
+    // 鼠标在以body的左上角为原点的位置
+    // console.log(e.pageX, e.pageY);
+
+    // 鼠标在盒子内的位置
+    // var x = e.pageX - box.offsetLeft;
+    // var y = e.pageY - box.offsetTop;
+
+    // ---------------------------------------跟随移动
+    // mask真实的位置
+    var x = e.pageX - box.offsetLeft - mask.offsetWidth / 2;
+    var y = e.pageY - box.offsetTop - mask.offsetHeight / 2;
+
+    // x: mask 距离 small的左边距离 最小值0；
+    // if (x < 0) {
+    //   x = 0;
+    // }
+
+
+
+    // ---------------------------------------限制范围
+    x = x < 0 ? 0 : x;
+    // y：从上面移出盒子的时候，
+    if (y < 0) {
+      y = 0;
+    }
+    // x的最大值
+    // var max_x = small.offsetWidth - mask.offsetWidth;
+    var max_x = small.clientWidth - mask.offsetWidth;
+    // if (x > max_x) {
+    //   x = max_x;
+    // }
+    x = x > max_x ? max_x : x;
+    // 
+    // var max_y = small.offsetHeight - mask.offsetHeight;
+    var max_y = small.clientHeight - mask.offsetHeight;
+    if (y > max_y) {
+      y = max_y;
+    }
+
+
+    // ----------------------------------------------设置位置
+    mask.style.left = `${x}px`;
+    mask.style.top = `${y}px`;
+
+
+    // ----------------------------------------------右侧移动
+    // 左侧：往左移动的最大值 max_x
+    // 右侧：往左移动的最大值
+    // var MAX_X = bigImg.offsetWidth - big.offsetWidth;
+    // clientWidth：可视区域：padding+content
+    var MAX_X = bigImg.offsetWidth - big.clientWidth;
+    // 右侧图片  往左移动的值 
+    // x/max_x = X/MAX_X;
+    var X = x / max_x * MAX_X;
+    bigImg.style.left = `-${X}px`;
+
+
+
+
+    // 左侧：往右移动的最大值 max_y
+    // 右侧：往右移动的最大值
+    // var MAX_Y = bigImg.offsetHeight - big.offsetHeight;
+    var MAX_Y = bigImg.offsetHeight - big.clientHeight;
+    // 右侧图片  往上移动的值 
+    var Y = y / max_y * MAX_Y;
+    bigImg.style.top = `-${Y}px`;
+
+
+
+
+
+
+
+
+  }
+</script>
+
+</html>

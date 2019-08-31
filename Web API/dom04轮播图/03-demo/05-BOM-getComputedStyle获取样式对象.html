@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      padding-left: 20px;
+      border-top: 10px solid #000;
+      margin-left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" style="font-size: 12px"></div>
+</body>
+<script>
+  // DOM.style.
+  var box = document.querySelector(".box");
+
+  // DOM节点 属性方式 只能获取行内样式；
+  // console.log(box.style);
+
+
+
+  // BOM:返回所有（无论是行内还是非行内）的样式集合，对象。
+  var res = window.getComputedStyle(box);
+
+  // 属性值：字符串；
+  console.log(res.width);
+  console.log(res.fontSize);
+</script>
+
+
+</html>

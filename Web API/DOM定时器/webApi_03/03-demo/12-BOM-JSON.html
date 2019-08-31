@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  // 目标：把对象、数组转为字符串；
+
+
+
+  // 以前：数据约定格式不是很适合描述复杂的对象；
+  // 对象：根本就是一件事物的描述。包括特性和方法；
+  // 人：name、age、sex;
+  // zhangsan|12|男&阿萨达是多|45|女
+
+
+
+  // JSON：本质字符串，有一定格式的字符串；
+
+
+  var obj = {
+    name: "zhangsan",
+    age: 12
+  };
+
+  // 变为 JSON 格式字符串；
+  // '{"name": "zhangsan","age": 12}'
+
+
+
+  // BOM 方法：用于把数据转为JSON格式；
+  // var str = JSON.stringify(obj);
+  // console.log(str, typeof str);
+
+
+
+  // 阿里百秀新闻数据
+  // var arr = [{
+  //   title: "xxxxxxxx",
+  //   content: '内容内容内容内容内容内容',
+  //   time: "2019-7-28",
+  //   zan: 86,
+  // }, {
+  //   title: "xxxxxxxx",
+  //   content: '内容内容内容内容内容内容',
+  //   time: "2019-7-28",
+  //   zan: 86,
+  // }, {
+  //   title: "xxxxxxxx",
+  //   content: '内容内容内容内容内容内容',
+  //   time: "2019-7-28",
+  //   zan: 86,
+  // }, {
+  //   title: "xxxxxxxx",
+  //   content: '内容内容内容内容内容内容',
+  //   time: "2019-7-28",
+  //   zan: 86,
+  // }, {
+  //   title: "xxxxxxxx",
+  //   content: '内容内容内容内容内容内容',
+  //   time: "2019-7-28",
+  //   zan: 86,
+  // }];
+
+
+  var str = JSON.stringify(arr);
+  // localStorage.setItem("news", str);
+
+
+  // 读取数据：返回值字符串
+  var str = localStorage.getItem("news");
+
+  // console.log(str);
+  // 如何把一个JSON格式的字符串转为对象；
+  var obj = JSON.parse(str);
+  // console.log(obj);
+</script>
+
+</html>

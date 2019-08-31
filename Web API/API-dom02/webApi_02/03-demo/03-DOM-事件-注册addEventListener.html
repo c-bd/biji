@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn">
+</body>
+<script>
+  // 给按钮注册事件，点击的时候，输出 123
+  var btn = document.querySelector("#btn");
+
+  // btn.onclick = function() {
+  //   console.log(1);
+  // }
+
+  // // 多次注册事件时，容易被后面的赋值覆盖掉；
+  // btn.onclick = function() {
+  //   console.log(2);
+  // }
+
+
+
+  // 方法：
+  btn.addEventListener("click", function() {
+    // 
+    console.log(1);
+  });
+
+  // 可以多次注册事件，不会前后覆盖；
+  btn.addEventListener("click", function() {
+    // 
+    console.log(2);
+  });
+</script>
+
+</html>

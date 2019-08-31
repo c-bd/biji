@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      width: 100%;
+    }
+    
+    body {
+      width: 100%;
+      height: 2000px;
+    }
+    
+    .p {
+      width: 600px;
+      height: 300px;
+      background-color: #ccc;
+      overflow: hidden;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+    
+    .top {
+      width: 100%;
+      height: 30px;
+      background-color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="p" id="parent">
+    <div class="top" id="box"></div>
+  </div>
+</body>
+<script>
+  // 实现拖动：
+  // 执行特点：必须：1.点击盒子后，2.才能拖到，3.松开才算拖动完成；
+  // 需要完成第一步落下，才能进行移动；
+  // 开关思想
+
+  // 还没有点击呢；
+  var isClick = false;
+
+  // 1.获取DOM节点：
+  var box = document.querySelector("#box");
+  var p_box = document.querySelector("#parent");
+
+  // 2.注册事件：
+  // 2.1 mousedown:box 第一阶段：计算鼠标在盒子内的位置；
+  // 计算鼠标在盒子内的位置= 鼠标在页面中位置-盒子位置（距离上左的数值）
+
+
+  // 代表：鼠标在盒子内的位置；
+  var x_start = 0;
+  var y_start = 0;
+
+  // 
+  box.addEventListener("mousedown", function(e) {
+    // ------------------------------------记录鼠标在盒子内的位置；
+    // 鼠标在盒子内 距离 左侧的值；
+    x_start = e.pageX - p_box.offsetLeft;
+    // 鼠标在盒子内 距离 上侧的值；
+    y_start = e.pageY - p_box.offsetTop;
+
+    // -------------------------------------把开关打开
+    // 鼠标落下
+    isClick = true;
+  });
+
+  // 2.2 mousemove:document
+  // 计算：新的位置 = 鼠标在页面中位置-鼠标落下时，记录的位置；
+  document.addEventListener("mousemove", function(e) {
+
+    // 正面前面已经点击了
+    if (isClick == true) {
+      // 新的盒子的位置；
+      var left = e.pageX - x_start;
+      var top = e.pageY - y_start;
+
+      // 把计算的值，设置上去；style
+      p_box.style.top = `${top}px`;
+      p_box.style.left = `${left}px`;
+    }
+
+  });
+
+  // 2.3 mouseup:box：把开关 关闭；
+  box.addEventListener("mouseup", function() {
+
+    // 点击状态 --恢复到没有点击的状态
+    isClick = false;
+  })
+</script>
+
+</html>

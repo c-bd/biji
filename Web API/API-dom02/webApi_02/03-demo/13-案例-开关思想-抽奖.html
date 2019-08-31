@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main {
+      width: 660px;
+      height: 660px;
+      background-image: url('./images/panze.png');
+      margin: 100px auto;
+      position: relative;
+    }
+    
+    .zhizhen {
+      width: 338px;
+      height: 338px;
+      background-image: url('./images/zhizhen.png');
+      background-repeat: no-repeat;
+      background-position: center top;
+      position: absolute;
+      top: 129px;
+      left: 152px;
+      transition: transform 2s ease-out;
+    }
+    
+    .begin {
+      width: 138px;
+      height: 138px;
+      position: absolute;
+      top: 227px;
+      left: 252px;
+      border-radius: 50%;
+      /* background-color: rgba(255,0,0,.5); */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="zhizhen"></div>
+    <div class="begin"></div>
+  </div>
+</body>
+<script>
+  // 抽奖按钮只能点一次
+  // 思路： 使用一个开关， 表示是否可以点击
+  // 当我们点击之后， 就把开关关掉，再次点击的时候，就不能点击；；
+
+
+  // 获取DOM节点；
+  var begin = document.querySelector(".begin");
+  var zhizhen = document.querySelector(".zhizhen");
+
+  // 没有进行点击
+  var flag = false;
+
+
+  // 2.注册事件
+  begin.addEventListener("click", function() {
+    // 3.点击之后：针要转  style
+    // transform: rotate(123deg)
+    // 随机度数怎么算？
+
+    // 没有点击
+    if (flag == false) {
+
+      zhizhen.style.transform = `rotate(${Math.random() * 360 * 5}deg)`;
+
+      // 点击了；
+      flag = true;
+    }
+
+  })
+</script>
+
+</html>

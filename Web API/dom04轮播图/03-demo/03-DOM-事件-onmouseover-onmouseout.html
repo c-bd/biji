@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" index=0></div>
+</body>
+<script>
+  // 获取DOM 对象
+  var box = document.querySelector(".box");
+
+  // 给box这个对象上属性值赋值了。
+  box.a = "aaaa";
+
+
+  // 鼠标移入一瞬间 触发
+  box.onmouseover = function() {
+    // console.log(1);
+
+    // console.log(this);
+    // console.log(this.className);
+    // var index = this.getAttribute("index");
+    // console.log(index);
+
+    console.log(this.a);
+  }
+
+  box.onmouseout = function() {
+    // console.log(2);
+  }
+</script>
+
+</html>

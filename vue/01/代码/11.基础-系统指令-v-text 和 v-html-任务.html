@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-text="name"></p>
+      <p>{{ name }}</p>
+      <p v-text="nameHtml"></p>
+      <p v-html="nameHtml"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //   1. 初始化一个vue实例
+      //   2. 定义一个 数据对象 name: 张三
+      //   3. 分别使用和v-text插值表达式将张三显示在p标签上
+      //   4. 定义一个数据对象 nameHtml: 内容,使用v-html将内容显示在p标签上,并且内容为红色
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "张三",
+          nameHtml: "<div style='color:red'>83期大卖</div>"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

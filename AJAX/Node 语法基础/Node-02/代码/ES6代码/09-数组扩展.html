@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        // 1. 扩展运算符
+        // let arr1 = [2, 3];
+        // let arr2 = [5, 6];
+        // // let arr3 = arr1.concat(arr2); // 之前的方案
+        // let arr3 = [...arr1, ...arr2];
+        // console.log(arr3);
+
+
+
+        // let arr4 = [3, 2, 5, 9, 1, 4];
+        // // let max = Math.max.apply(null, arr4);
+        // // console.log(max);
+
+        // let max = Math.max(...arr4);
+        // console.log(max);
+
+
+        // 2. Array.from() --- 将伪数组转成数组
+        // let obj = {
+        //     0: 'apple',
+        //     1: 'banana',
+        //     2: 'orange',
+        //     length: 3
+        // }
+
+        // // let 数组 = Array.from(伪数组);
+        // let arr = Array.from(obj);
+        // console.log(arr);
+
+
+        // 3. forEach()  ---- 遍历数组
+        // [3, 4, 5, 2, 7].forEach(function (item, index, arr) {
+        //     // item 表示数组的每个项
+        //     // index 表示数组的每个下标
+        //     // arr 表示当前的数组
+        //     console.log(item);
+        // });
+
+
+        // [3, 4, 5, 2, 7].forEach((item) => {
+        //     console.log(item);
+        // });
+
+
+        // [3, 4, 5, 2, 7].forEach(item => console.log(item));
+
+
+        // 4. find() 和 findIndex()  遍历过程中，查找符合条件的值（下标）
+        // 查找数组中第一个大于4的值
+        // let result = [3, 4, 5, 2, 7].find(function (item, index, arr) {
+        //     // return 条件
+        //     return item > 4;
+        // });
+
+
+        // let result = [3, 4, 5, 2, 7].find(item => item > 4);
+        // console.log(result);
+
+
+
+
+        // 5. includes('查找的值', [开始的位置])  ---  找到了，返回true；没有找到返回false
+        console.log([1,2,3,4,5].includes(3)); // true
+        console.log([1,2,3,4,5].includes(6)); // false
+        console.log([1,2,3,4,5].includes(2, 2)); // false
+    </script>
+</body>
+</html>

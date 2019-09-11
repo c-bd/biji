@@ -1,0 +1,4 @@
+let arr = [3, 4, 5, 6];
+arr.push(7);
+
+console.log(arr);

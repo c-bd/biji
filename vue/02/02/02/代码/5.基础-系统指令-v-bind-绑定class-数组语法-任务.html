@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p :class="[primary,'danger','info']" class="default">
+        beyond-不再犹豫
+      </p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          primary: "primary"
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+ 1. 实例化一个Vue实例
+2. 定义一个p标签 原有class 为default 
+3. 使用v-bind数组语法将class变为 default primary danger info
+     -->
+  </body>
+</html>

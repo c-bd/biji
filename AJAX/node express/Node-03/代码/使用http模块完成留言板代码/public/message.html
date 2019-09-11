@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>留言板</title>
+  <link rel="stylesheet" href="./assets/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="display-1">留言板</h1>
+    <hr>
+    <ul id="messages" class="list-unstyled">
+      <!-- 这里放数据 -->
+    </ul>
+    <hr>
+    <form>
+      <div class="form-group">
+        <label for="txt_name">称呼：</label>
+        <input class="form-control" id="txt_name" type="text">
+      </div>
+      <div class="form-group">
+        <label for="txt_content">留言：</label>
+        <textarea class="form-control" id="txt_content" cols="80" rows="10"></textarea>
+      </div>
+      <button id="btn_send" class="btn btn-primary">提交</button>
+    </form>
+  </div>
+
+  <script src="./assets/template-web.js"></script>
+
+  <script id="moban" type="text/html">
+    {{each arr}}
+    <li class="media">
+      <img class="mr-3" src="./assets/avatar.png" />
+      <div class="media-body">
+        <h4>{{$value.name}}</h4>
+        <p>{{$value.content}}</p>
+      </div>
+    </li>
+    {{/each}}
+  </script>
+
+  <script>
+    function loadData() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/getMsg');
+      xhr.responseType = 'json'; // 预期服务器返回数据的类型
+      xhr.send();
+      xhr.onload = function () {
+        // console.log(this.response);
+        var str = template('moban', {
+          arr: this.response
+        });
+        // 把str 放到 ul#messages 里面
+        document.getElementById('messages').innerHTML = str;
+      }
+    }
+    loadData();
+  </script>
+
+  <script>
+    // 点击提交按钮，将留言的称呼和内容，提交给 /addMsg 接口
+    document.getElementById('btn_send').onclick = function (e) {
+      e.preventDefault();
+      // e.defaultValue = false; // IE 中阻止默认行为的写法
+      // 获取留言的称呼和内容
+      var chenghu = document.getElementById('txt_name');
+      var neirong = document.getElementById('txt_content');
+      // 发送ajax请求
+      var xhr2 = new XMLHttpRequest();
+      xhr2.open('POST', '/addMsg');
+      xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      // xhr2.send('name=xxx&content=yyy');
+      xhr2.send(`name=${chenghu.value}&content=${neirong.value}`);
+      xhr2.onload = function () {
+        // 如果添加成功，服务器返回true；如果服务器添加失败，返回false
+        if (this.response === 'true') {
+          loadData();
+          chenghu.value = neirong.value = '';
+        } else {
+          alert('添加失败');
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

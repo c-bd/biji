@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- v-text是作用于标签的innerText属性 -->
+      <p v-text="text">{{ expression }}</p>
+      <p>测试:{{ expression }}:结尾</p>
+      <p v-text="text">测试:结尾</p>
+      <!-- v-text将content内容给了标签的innerText属性 -->
+      <p v-text="content"></p>
+      <!-- v-html 是将表达式内容给标签的innerHtml属性 -->
+      <p v-html="content"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          text: "我是text的内容",
+          expression: "我是表达式内容",
+          content:
+            "<span style='color:red;font-size:30px;font-weight:bold'>我是内容</span>"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- :属性=" 'c' " -->
+      <!-- 绑定class数组语法 :class="[class变量1,class变量2..]" -->
+      <p :class="['primary',info,danger]" class="default">张宇-月亮惹的祸</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          primary: "primary",
+          info: "info",
+          danger: "danger"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

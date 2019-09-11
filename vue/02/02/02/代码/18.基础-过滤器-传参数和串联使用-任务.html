@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      {{ "abc"| toUpper(2) }}
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        filters: {
+          toUpper(value, index) {
+            return value
+              .split("")
+              .map((item, i) => (i === index ? item.toUpperCase() : item))
+              .join("");
+
+            // let arr = value.split("");
+            // let newArr = arr.map(function(item, i) {
+            //   if (i === index) {
+            //     return item.toUpperCase();
+            //   }
+            //   return item;
+            // });
+            // let str = newArr.join("");
+            // return str;
+          }
+        }
+      });
+    </script>
+    <!-- 
+        实现一个过滤器,可以根据传去的索引,找到对应的字符转成大写
+     -->
+  </body>
+</html>

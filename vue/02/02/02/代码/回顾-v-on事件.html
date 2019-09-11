@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- v-on:事件名="方法名" 只写方法名的话 -->
+
+      <button v-on:click="test">测试</button>
+
+      <button @click="test2($event,1,2,3,4,5)">测试2</button>
+    </div>
+    <div id="app2"></div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          test(event) {
+            //   event是事件参数对象  event.target =>谁(dom元素button)触发了这个事件
+            console.log(event);
+          },
+          test2(event) {
+            console.log(event);
+          }
+        }
+      });
+      var vm1 = new Vue({
+        el: "#app2"
+      });
+
+    </script>
+  </body>
+</html>

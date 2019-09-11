@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 静态内容 -->
+      <ul>
+        <li>北京</li>
+        <li>天津</li>
+        <li>上海</li>
+        <li>重庆</li>
+      </ul>
+      <!-- 动态生成 v-for -->
+      <ul>
+        <!-- 循环生成谁 就在谁的标签上写v-for -->
+        <li v-for="item in list">
+          {{
+            (item + "我爱你")
+              .split("")
+              .reverse()
+              .join("")
+          }}
+        </li>
+      </ul>
+      <!-- item of items -->
+      <ul>
+        <li v-for="item of list">{{ item }}</li>
+      </ul>
+      <div>
+        <template v-for="item in objList">
+          <span>{{ item.name }}</span>
+          <span>{{ item.culture }}</span>
+        </template>
+      </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: ["北京", "天津", "上海", "重庆"],
+          objList: [
+            { name: "阿里", culture: "技术之王" },
+            { name: "字节跳动", culture: "能力之王" },
+            { name: "腾讯", culture: "模仿之王" },
+            { name: "拼多多", culture: "乡村之王" }
+          ]
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

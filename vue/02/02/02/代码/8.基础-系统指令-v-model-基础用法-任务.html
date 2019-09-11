@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ name }}</p>
+      <input v-model="name" type="text" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "狗剩儿"
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+1. 实例化一个Vue实例
+2. 定义一个数据对象 name:张三
+3. 使用v-model实现 input和p标签的数据双向同步
+     -->
+  </body>
+</html>

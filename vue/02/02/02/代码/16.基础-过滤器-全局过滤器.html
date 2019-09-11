@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ str | toUpper }}</p>
+      <input type="text" v-model="str" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      Vue.filter("toUpper", function(value) {
+        //   过滤器的逻辑 可难可易  根据需求来定
+        return value.charAt(0).toUpperCase() + value.substr(1);
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          str: "abc"
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+        注册一个全局过滤器,实现 abc 转成 Abc的功能
+     -->
+  </body>
+</html>

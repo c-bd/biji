@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 建议写v-for时  要给循环项赋值 key -->
+        <!-- v-for优先级 大于v-if -->
+        <!-- <li v-if="index>1" v-for="(item,index) in list" :key="index">
+          {{ item }}
+        </li> -->
+        <!-- if list.length>2  if index>1 -->
+        <template v-if="list.length>2">
+          <li v-if="index>1" v-for="(item,index) in list" :key="index">
+            {{ item }}
+          </li>
+        </template>
+      </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: ["北京", "上海", "天津"]
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

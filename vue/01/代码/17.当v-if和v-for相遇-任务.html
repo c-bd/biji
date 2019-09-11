@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-for="(item,index) in list" :key="index" v-if="item>10">{{ item }}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: [4, 4, 3, 2, 22, 2, 4643, 443, 44, 34, 5, 3]
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+        1. 初始化一个Vue实例
+2. 定义一个 list:[ 4,4,3,2,22,2,4643,443,44,34,5,3 ]
+
+3 将大于10 的列表渲染出来 使用v-for 和v-if
+     -->
+  </body>
+</html>

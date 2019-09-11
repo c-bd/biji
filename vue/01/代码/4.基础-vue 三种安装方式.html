@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./vue.js"></script>
+    <!-- 
+        为什么要在body里面 引入js
+        要在body结尾
+        因为html渲染顺序是从上到下 如果遇到script标签 =>会停止渲染 
+        先去解析 解析完成之后再渲染  如果js包非常大  最造成 页面渲染卡顿 
+        出现 瞬间白屏  
+     -->
+</body>
+</html>

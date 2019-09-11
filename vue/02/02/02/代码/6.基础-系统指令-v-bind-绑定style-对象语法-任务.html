@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <button @click="getBig">变化</button>
+      <button @click="getSmall">缩小</button>
+      <p :style="{fontSize,fontWeight}" style="color:red">
+        赵雷-我们的时光
+      </p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          fontSize: "48px",
+          fontWeight: "bold"
+        },
+        methods: {
+          getBig() {
+            this.fontSize = Number.parseInt(this.fontSize) + 1 + "px";
+          },
+          getSmall() {
+            this.fontSize = Number.parseInt(this.fontSize) - 1 + "px";
+          }
+        }
+      });
+    </script>
+    <!-- 
+1. 实例化一个Vue实例
+2. 定义一个p标签 原有样式 为字体红色
+3. 使用v-bind绑定对象语法 将字体大小设置为48px ,加粗
+     -->
+  </body>
+</html>

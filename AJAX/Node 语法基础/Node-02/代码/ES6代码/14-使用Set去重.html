@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 数组的去重
+        // 将一个数组传递给Set，得到一个没有重复值的Set对象
+        let s = new Set([3, 4, 3, 5, 3, 6, 4, 5]);
+        // console.log(s); // {3, 4, 5, 6}
+
+        // console.log(Array.from(s)); // 把伪数组转成数组
+        console.log([...s]); // 不是所有的伪数组都可以使用...；只有Set可以使用
+
+
+
+
+        // 2. 字符串的去重
+        let ss = new Set('abacadae');
+        // console.log(ss); // {"a", "b", "c", "d", "e"}
+        // [...ss] 把伪数组ss，转成真正的数组 
+        // 数组.join('') -- 将数组的每个单元连接成字符串
+        console.log([...ss].join('')); // abcde
+    </script>
+</body>
+</html>

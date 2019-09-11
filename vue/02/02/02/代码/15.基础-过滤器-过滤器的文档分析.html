@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ "abc" || toUpper}}</p>
+      <input type="text" v-model="name" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // 全局过滤器
+      // 过滤器名称/过滤器函数
+ //    Vue.filter("toUpper",function(value){
+	// 	return value.charAt(0).toUpperCase()+value.substr(1)
+	// })
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name:"abca",
+        },
+        methods: {},
+		filters: {
+		  toUpper(value) {
+		    // return value.charAt(0).toUpperCase() + value.substr(1);
+		    // return value
+		    //   .split("")
+		    //   .map(function(item, index) {
+		    //     if (index === 0) {
+		    //       return item.toUpperCase();
+		    //     }
+		    //     return item;
+		    //   })
+		    //   .join("");
+		    return value
+		      .split("")//把字符串转换成数组
+		      .map((item, index) => (index === 0 ? item.toUpperCase() : item))
+		      .join("");//把数组转换为字符串
+		  }
+		}
+      })
+    </script>
+  </body>
+</html>

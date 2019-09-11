@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="body" id="app" class="app" style="color:red">
+      {{ name }}
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app", //   id选择器
+        // el: ".app", // class选择器
+        // el: document.getElementById("app"), // dom元素也可以 作为el选项的值
+        // el: "#body", 不能用body html作为vue管理的视图
+        data: {
+          name: "Hello World"
+        }
+      });
+    </script>
+  </body>
+</html>

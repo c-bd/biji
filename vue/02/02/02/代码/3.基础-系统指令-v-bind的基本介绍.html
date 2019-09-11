@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .select {
+        color: red;
+        font-size: 40px;
+        font-weight: bold;
+      }
+      .unselect {
+        color: blue;
+        font-size: 40px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- var  id = 'pName' -->
+      <!-- var id  = pName -->
+      <p v-bind:id="pName">{{ name }}</p>
+      <img style="width:100px;height:100px" :src="src" alt="" />
+      <span v-bind:class="className">9月10号教师节快乐</span>
+      <button @click="changeColor">改变颜色</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "狗蛋儿",
+          pName: "goDie",
+          className: "unselect",
+          src:
+            "http://b-ssl.duitang.com/uploads/item/201111/30/20111130175955_eeQ8y.jpg"
+        },
+        methods: {
+          changeColor() {
+            // if (this.className === "select") {
+            //   this.className = "unselect";
+            // } else {
+            //   this.className = "select";
+            // }
+            this.className =
+              this.className === "select" ? "unselect" : "select";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

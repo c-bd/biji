@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实例化Set的时候，可以为其传递一个值（字符串或者数组）
+        let s = new Set();
+        s.add(4);
+        s.add(5);
+        s.add(6);
+        s.add(4);
+        s.add(6);
+        s.add(4);
+
+        console.log(s); // 结果是：{4, 5, 6} ， 因为set里面的成员不允许重复
+    </script>
+</body>
+</html>

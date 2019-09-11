@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 语法: :style="{css属性名: 变量}" -->
+      <p
+        :style="{textDecoration:lineThrough,color}"
+        style="font-size:40px;color:crimson"
+      >
+        赵雷-成都
+      </p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          lineThrough: "line-through",
+          color: "blue"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

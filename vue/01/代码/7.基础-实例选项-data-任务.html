@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ count }}</p>
+      <p>{{ showMessage }}</p>
+      <p>{{ list }}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //   1. 将数据对象中count初始值设置为 1, showMessage为false, list为 数组[1,2,3]
+      //   2. 通过vm.属性的方式打印 以上三个属性
+      //   3. 通过 {{ 变量名 }} 的方式 将以上三个属性显示在页面上
+      //   4. 通过vm.属性 = 赋值的方式 改变 count 为 2 showMessage 为 true 数组为 [1,2,3,4]
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          count: 1,
+          showMessage: false,
+          list: [1, 2, 3]
+        },
+        methods: {}
+      });
+      console.log(vm.count);
+      console.log(vm.showMessage);
+      console.log(vm.list);
+    </script>
+  </body>
+</html>

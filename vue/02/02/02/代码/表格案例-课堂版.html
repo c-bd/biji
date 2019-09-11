@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #app {
+        width: 600px;
+        margin: 10px auto;
+      }
+
+      .tb {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .tb th {
+        background-color: #0094ff;
+        color: white;
+      }
+
+      .tb td,
+      .tb th {
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      .add {
+        padding: 5px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="add">
+        品牌名称:
+        <input type="text" v-model="name" />
+	
+        <!-- 如果name 不等于空 就disabled false  否则等于true      :disabled="!(name!='')" -->
+        <input type="button" value="添加" @click="addItem" :disabled="!name" />
+		<input @click="cut" type="button" name="" id="" value="切换" />
+      </div>
+      <div class="add">
+        品牌名称:
+        <input type="text" placeholder="请输入搜索条件" />
+      </div>
+
+      <div>
+        <table class="tb">
+          <tr>
+            <th>编号</th>
+            <th>品牌名称</th>
+            <th>创立时间</th>
+            <th>操作</th>
+          </tr>
+          <tr v-for="(obj,i) in list " :key="i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.date | formatter('YYYY-MM-DD hh:mm:ss') }}</td>
+            <td>
+              <a href="#" @click="delItem(i)">删除</a>
+            </td>
+          </tr>
+          <tr v-if="!list.length">
+            <td colspan="4">没有品牌数据</td>
+          </tr>
+        </table>
+		<img :src="src" >
+		  <button @click="next"> 增加新一行</button>
+		        <p v-if="innerTexts==0">李飞是你吗？</p>
+		        <p v-if="innerTexts>=1">啥都卡是你吗？</p>
+		        <p v-if="innerTexts>=2">阿斯蒂芬是你吗？</p>
+		        <p v-if="innerTexts>=3">李服务的青蛙大大你吗？</p>
+		        <p v-if="innerTexts>=4">我的武器是你吗？</p>
+		        <p v-if="innerTexts>=5">我去打网球是你吗？</p>
+		        <p v-if="innerTexts>=6">我去打球完成是你吗？</p>
+      </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./moment.min.js"></script>
+    <script>
+      Vue.filter("formatter", function(value, param) {
+        return moment(value).format(param);
+      });
+	  var imgs=[
+		    "http://e.hiphotos.baidu.com/image/pic/item/8ad4b31c8701a18bdb1e8885972f07082938fe07.jpg",
+		    "http://c.hiphotos.baidu.com/image/pic/item/a8014c086e061d95788ea7f272f40ad163d9ca34.jpg",
+		    "http://g.hiphotos.baidu.com/image/pic/item/d043ad4bd11373f0c48ec555ad0f4bfbfaed0442.jpg",
+		    "http://g.hiphotos.baidu.com/image/pic/item/83025aafa40f4bfbc525009e0a4f78f0f6361806.jpg",
+		    "http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923306cfdb49b58d109b2de49f7.jpg",
+		    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563036614748&di=df264606f7a6f7f5095e0d02a3770925&imgtype=0&src=http%3A%2F%2Fimages.china.cn%2Fattachement%2Fjpg%2Fsite1000%2F20150605%2Fc03fd54ab85a16db7f1945.jpg"		  
+	  ]
+      var vm = new Vue({
+        el: "#app",
+        data: {
+			src:"http://e.hiphotos.baidu.com/image/pic/item/8ad4b31c8701a18bdb1e8885972f07082938fe07.jpg",
+          name: "", 
+		  innerTexts:0,// 定义一个变量
+          list: [
+            {
+              name: "TCL",
+              date: new Date()
+            },
+            {
+              name: "小米",
+              date: new Date()
+            },
+            {
+              name: "苹果",
+              date: new Date()
+            }
+          ]
+        },
+        methods: {
+			next(){
+				this.innerTexts=this.innerTexts++
+				console.log(this.innerTexts++);
+			},
+          addItem() {
+            //  获取input的值
+            // this.name;
+            //  更新了数组数据
+            // list.reverse()
+			
+            this.list.unshift({
+              name: this.name,
+              date: new Date()
+            });
+            this.name = "";
+          },
+		  cut(){
+			 
+			  this.src=imgs[Math.floor(Math.random()*imgs.length)]
+			  
+			  
+		  },
+          delItem(index) {
+            if (confirm("您是否要删除此条记录?")) {
+              // 要移除 list中索引为index的数据
+              // splice
+              // this.list.splice(index, 1);  直接删除
+              // filter方法函数中需要返回一个 条件表达式 => 布尔值 如果布尔值为true  则将当前item返回 如果为false 则不返回
+              // this.list = this.list.filter(function(item, i) {
+              //   return i != index;
+              // });
+              this.list = this.list.filter((item, i) => i != index);
+            }
+          }
+        }
+      });
+    </script>
+    <!-- 
+        1. 静态页面 准备
+2. 实例化一个Vue
+3. 定义表格数据
+4. 采用v-for 循环将静态内容切换为动态内容
+5. 采用v-if控制提示消息
+     -->
+    <!-- 
+       添加商品 
+       1. 注册按钮添加事件
+       2. 获取input中的值  定义一个变量  变量 绑定input v-model   
+       3. 将数据添加到list中  unshift 
+       4. 用v-bind绑定disabled属性 解决 空串时 按钮不可点的问题
+       5. 添加成功之后 将name设置为空字符串
+      -->
+    <!-- 
+        删除商品
+        1. 找到删除按钮 注册删除事件
+        2. 传递要删除数据项的下标索引
+       -->
+  </body>
+</html>

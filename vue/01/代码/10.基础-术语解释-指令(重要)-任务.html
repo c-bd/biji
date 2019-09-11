@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-text="name"></p>
+      <p v-text="fn()"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //   1. 初始化一个Vue实例
+      //   2. 定义一个data属性 name: 我是text内容
+      //   3. 使用v-text指令将data内容显示在p标签上
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "我是text内容"
+        },
+        methods: {
+          fn() {
+            return this.name;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

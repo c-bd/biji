@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- a 单变量 -->
+      <p>{{ count }}</p>
+      <!-- a + b -->
+      <p>{{ count + 1 }}</p>
+      <!-- a + 字符串  -->
+      <p>{{ count + "83期大神" + "各个都是精英" }}</p>
+      <!-- 比较 -->
+      <p>{{ count > 0 }}</p>
+      <!-- 三元运算 -->
+      <p>{{ count > 0 ? "成功" : "失败" }}</p>
+      <!-- 连续的计算 -->
+      <p>
+        {{ count > 0 ? "成功" : count == 0 ? "平手" : "失败" }}
+      </p>
+      <!-- 调用方法 -->
+      <p>{{ str }}</p>
+      <p>
+        {{
+          str
+            .split("")
+            .reverse()
+            .join("")
+        }}
+      </p>
+      <!-- 什么不可以写 if/var /for 关键字-->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          count: 1,
+          str: "abcde"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 插值表达式 -->
+      <p>{{ name }}</p>
+      <!-- v-text => 将v-text后面的内容应用在标签的innerText属性上 -->
+      <p v-text="name"></p>
+      <p v-text="name+1"></p>
+      <!-- var innerText = name + '真棒' -->
+      <p v-text="name+'真棒'"></p>
+      <p v-text="fn()"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "张三"
+        },
+        methods: {
+          fn() {
+            return "中秋节快乐-吃月饼";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

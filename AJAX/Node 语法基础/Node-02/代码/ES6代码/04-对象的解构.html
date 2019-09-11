@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let id = 22;
+        // 1. 基本的解构
+        // let {属性名, 属性名, ...} = 对象;
+        // let {id, name, nickname} = {id: 1, name: '宋江', nickname: '及时雨'};
+        // let {nickname, id, name} = {id: 1, name: '宋江', nickname: '及时雨'};
+        // console.log(nickname, id, name); // 及时雨 1 宋江
+
+        // 2. 按需取值
+        // let {id, nickname} = {id: 1, name: '宋江', nickname: '及时雨'};
+        // console.log(id, nickname); // 1 "及时雨"
+
+        // 3. 剩余值
+        // let {id, nickname, ...c} = {id: 1, name: '宋江', nickname: '及时雨', height: 155, wieght: 65};
+        // console.log(c); // {name: "宋江", height: 155, wieght: 65}
+
+        // 4. 有冲突，可以为变量定义其他名字
+        // let {id:别名, name} = {id: 1, name: '宋江', nickname: '及时雨'};
+        // let {id:heroId, name} = {id: 1, name: '宋江', nickname: '及时雨'};
+        // console.log(heroId);
+
+        // 5. 复杂的情况
+        let {code, data} = {
+            code: 200, 
+            msg: '成功', 
+            data: [
+                {id:1, title: 'aaa'}, 
+                {id:2, title: 'aaa'}, 
+                {id:3, title: 'aaa'}
+            ]
+        };
+        console.log(code);
+        console.log(data);
+    </script>
+</body>
+</html>

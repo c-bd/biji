@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" ref="myInput" />
+      <p>{{ content }}</p>
+      <button @click="getInputValue">获取内容</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          content: ""
+        },
+        methods: {
+          getInputValue() {
+            this.content = this.$refs.myInput.value;
+          }
+        }
+      });
+    </script>
+    <!-- 
+        通过ref功能,点击按钮时获取input的value值 
+
+1. 实例化Vue实例
+2. 定义input的ref属性
+3. 注册按钮事件
+4. 按钮事件中通过ref获取input的value内容
+     -->
+	 
+  </body>
+</html>

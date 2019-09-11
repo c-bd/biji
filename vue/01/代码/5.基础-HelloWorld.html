@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1.设置Vue管理的视图 -->
+    <div id="app">
+      <!--5. 在管理视图中 用{{}}使用data中数据 -->
+      {{ name }}
+      {{ title }}
+      <p>
+        <span style="color:red">
+          {{ age }}
+        </span>
+      </p>
+    </div>
+
+    <!-- 2.引入vue.js -->
+    <script src="./vue.js"></script>
+    <script>
+      //  3.实例化一个vue对象
+      var vm = new Vue({
+        // 4. 设置vue实例的选项  将视图和vue实例关联
+        el: "#app",
+        data: {
+          name: "Hello World",
+          title: "任性",
+          age: 18
+        }
+      });
+    </script>
+  </body>
+</html>

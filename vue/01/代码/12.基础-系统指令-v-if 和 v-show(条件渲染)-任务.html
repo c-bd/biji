@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-if="showMessage">123456</p>
+      <p v-show="showMessage">654321</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //   1. 定义一个Vue实例
+      //   2. 定义一个布尔型变量showMessage
+      //   3. 分别使用v-if 和 v-show来条件渲染 P标签内容
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          showMessage: true
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

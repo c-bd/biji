@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 如果箭头函数，参数只有一个，则小括号可以省略
+        // let fn = (x) => {
+        //     return x * x;
+        // }
+
+
+        // 省略小括号的写法
+        // let fn = x => {
+        //     return x * x;
+        // }
+        // console.log(fn(9));
+
+        // 2. 如果函数体只有一行代码，则大括号可以省略；并且默认表示返回函数体的值（自带return的效果）
+        let fn = x => x * x;
+        console.log(fn(7));
+    </script>
+</body>
+</html>

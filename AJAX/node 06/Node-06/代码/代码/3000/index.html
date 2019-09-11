@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>我是3000网站</h1>
+    <script>
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', 'http://localhost:4000/getHeroes2');
+        // xhr.send();
+        // xhr.onload = function () {
+        //     console.log(this.response);
+        // }
+    </script>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        // $(function () {
+        //     // alert(123;
+        // });
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:4000/getHeroes',
+            success: function (res) {
+                console.log(res);
+            },
+            dataType: 'jsonp'
+        });
+
+    </script>
+    <!-- <img src="http://img4.imgtn.bdimg.com/it/u=3803313464,4106249688&fm=26&gp=0.jpg" > -->
+
+    <p>4000网站返回的字符串，会被3000网站当做js代码解析</p>
+
+    <script>
+      
+    </script>
+    <script >
+    
+        
+    
+    // </script>
+    <!-- // <script src="http://localhost:4000/getHeroes?callback=abc"></script> -->
+</body>
+</html>

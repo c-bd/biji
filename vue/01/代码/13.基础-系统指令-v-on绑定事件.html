@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- v-on:事件名.修饰符="方法名" -->
+      <button v-on:click="fn">83期大神</button>
+      <button @click="fn">测试点击</button>
+      <button @click.once="fn">测试once</button>
+      <!-- 如果只写方法名  那么调用方法中会有一个默认参数 event事件参数-->
+      <button @click="fn1">测试事件参数</button>
+      <!-- 如果 @事件名="方法" =>方法总需要传参 怎么办 方法(传参)  可以通过$event获取到 参数 -->
+      <button @click="fn2(1,2,3,4,5,6,$event)">测试事件传参</button>
+      <button @click="count = 5">事件后直接跟逻辑</button>
+      <p>{{ count }}</p>
+      <p v-if="showMessage">{{ name }}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+          name: "张三",
+          showMessage: false
+        },
+        methods: {
+          fn() {
+            this.showMessage = !this.showMessage;
+          },
+          fn1(event) {
+            console.log(event);
+          },
+          fn2(a, b, c, d, e, f, g, event) {
+            console.log(event);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

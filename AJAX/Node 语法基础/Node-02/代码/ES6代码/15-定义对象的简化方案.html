@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let id = 1;
+        let name = 'zs';
+        let age = 20;
+
+        // 之前定义对象的方案
+        // let obj = {
+        //     // 属性: 值
+        //     id: id,
+        //     name: name,
+        //     age: age,
+        //     fn: function () {
+        //         console.log(this.age);
+        //     }
+        // };
+
+        // obj.fn();
+
+
+        // ES6的新方案
+        let obj = {
+            id,  // 属性名id和前面的变量id名字相同，则可以省略 :id
+            name,
+            nianling: age,
+            // 下面的函数是上面函数的简化写法，可以省略 :function  。但是注意这里仅仅是上面函数的简化，不是箭头函数
+            fn () {
+                console.log(this.name);
+            }
+        };
+        obj.fn();
+    </script>
+</body>
+</html>

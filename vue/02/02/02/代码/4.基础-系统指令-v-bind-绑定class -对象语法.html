@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .left {
+        position: absolute;
+        left: 0;
+        color: brown;
+      }
+      .right {
+        position: absolute;
+        right: 0;
+        color: coral;
+      }
+      .default {
+        font-size: 40px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!--   :class="{ class名称": 布尔值 }" -->
+      <p :class="{left:showLeft,right:showRight}" class="default">
+        9月13号放假去天安门
+      </p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          showLeft: true,
+          showRight: false
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

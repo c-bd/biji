@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ nameInput }}</p>
+      <input type="text" v-model="nameInput" />
+      <p>{{ nameTextArea }}</p>
+      <textarea
+        v-model="nameTextArea"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+      ></textarea>
+      <p>{{ nameCheckbox }}</p>
+      <input type="checkbox" v-model="nameCheckbox" />您是否同意月薪18k?
+      <p>{{ nameCheckboxs }}</p>
+      <input type="checkbox" value="bj" v-model="nameCheckboxs" />北京
+      <input value="tj" type="checkbox" v-model="nameCheckboxs" />天津
+      <input value="sh" type="checkbox" v-model="nameCheckboxs" />上海
+      <p>{{ nameRadio }}</p>
+      <input type="radio" value="男" v-model="nameRadio" />男
+      <input type="radio" value="女" v-model="nameRadio" />女
+      <p>{{ nameSelect }}</p>
+      <select name="" id="" v-model="nameSelect">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="天津">天津</option>
+      </select>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          nameInput: "我是input",
+          nameTextArea: "我是textarea",
+          nameCheckbox: true,
+          nameCheckboxs: [],
+          nameRadio: "女",
+          nameSelect: "上海"
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+1. 实例化一个Vue实例
+2. input 绑定 属性 nameInput,实现input同步
+3. textarea 绑定 属性 nameTextArea 实现textarea同步 
+4. checkbox 绑定一个属性 nameCheckbox 实现 checkbox同步   
+5. 多个 checkbox绑定同一个属性 nameCheckboxs 实现 checkbox同步   北京 上海 天津
+6. radio 绑定属性 nameRadio 实现同步  男 女 
+7. select  绑定属性 nameSelect 实现同步  北京 上海 天津 
+     -->
+  </body>
+</html>

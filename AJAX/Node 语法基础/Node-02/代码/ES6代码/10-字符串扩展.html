@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 模板字符串
+        // let a = 1;
+        // let b = {x: 2};
+        // let c = 3;
+        // let str = `asdfasdf
+        // asdfasd
+        // asd` + a + `fasdf
+        // asdfa${a}sfdasdf
+        // asd${b.x}fasdfa${a + c}sdf`;
+        // console.log(str);
+
+        
+
+        // 2. includes('查找的字符串', [位置]) --- 查找字符串中是否包含某个子串
+        // console.log('abcdefg'.includes('b'));  // true
+        // console.log('abcdefg'.includes('bcd')); // true
+        // console.log('abcdefg'.includes('cef')); // false
+        // console.log('abcdefg'.includes('b', 3)); // false
+
+
+        // 3. startsWith('字符串', [位置]) --- 查找字符串的开头是否是某个字符串
+        // console.log('abcdefg'.startsWith('a'));  // true
+        // console.log('abcdefg'.startsWith('abc'));  // true
+        // console.log('abcdefg'.startsWith('abcdefg'));  // true
+        // console.log('abcdefg'.startsWith('a', 1)); // false
+        // console.log('abcdefg'.startsWith('m')); // false
+
+
+        // 4. endsWith('字符串', [length]) --- 查找字符串的结尾是否是某个字符串
+        // console.log('abcdefg'.endsWith('g'));  // true
+        // console.log('abcdefg'.endsWith('efg')); // true
+        // console.log('abcdefg'.endsWith('abc')); // false
+        // console.log('abcdefg'.endsWith('d', 4)); // true
+
+        // 5. repeat()  ---- 重复一个字符串
+        // console.log('<li>hello</li>'.repeat(10));
+
+        // 6. trim() --- 去掉字符串两边的空白
+        console.log('asfdasdf'.trim());
+        console.log('    asfdasdf             '.trim());
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- :style="[对象1,对象2...]" -->
+      <p :style="[obj1,obj2]" style="color:rgb(182, 30, 212);font-size:30px">
+        周杰伦-双节棍
+      </p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          obj1: {
+            fontSize: "48px",
+            fontWeight: "800",
+            backgroundColor: "blue"
+          },
+          obj2: {
+            fontSize: "78px",
+            fontWeight: "800"
+          }
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

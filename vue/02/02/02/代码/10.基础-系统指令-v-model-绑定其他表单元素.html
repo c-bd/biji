@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- input -->
+      <p>{{ name }}</p>
+      <input v-model="name" type="text" />
+      <!-- textarea -->
+      <p>{{ nameTextArea }}</p>
+      <textarea
+        v-model="nameTextArea"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+      ></textarea>
+      <!-- checkbox 单个的checkbox -->
+      <p>{{ boolCheckbox }}</p>
+      <input type="checkbox" v-model="boolCheckbox" />食堂好吃吗
+      <p>{{ arrCheckbox }}</p>
+      <!-- 多个的checkbox  绑定的值是个 数组 数组里面是选项 -->
+      <input type="checkbox" v-model="arrCheckbox" value="字节跳动" />字节跳动
+      <input type="checkbox" v-model="arrCheckbox" value="华为" />华为
+      <input type="checkbox" v-model="arrCheckbox" value="腾讯" />腾讯
+      <input type="checkbox" v-model="arrCheckbox" value="阿里" />阿里
+      <!-- radio  单选  男/女 -->
+      <p>{{ radio }}</p>
+      <input type="radio" v-model="radio" value="男" />男
+      <input v-model="radio" type="radio" value="女" /> 女
+      <!-- select -->
+      <p>{{ select }}</p>
+      <select name="" id="" v-model="select">
+        <option value="京东">京东</option>
+        <option value="字节跳动">字节跳动</option>
+        <option value="美团">美团</option>
+      </select>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "狗剩儿",
+          nameTextArea: "我textarea的内容",
+          boolCheckbox: false,
+          arrCheckbox: ["字节跳动"],
+          radio: "女",
+          select: "京东"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

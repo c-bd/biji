@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3. 箭头函数内部，没有 arguments 对象
+        // function abc () {
+        //     console.log(arguments); // arguments对象可以获取到所有的实参
+        // }
+        // abc(3, 8, 9);
+
+
+
+
+        // 箭头函数
+        // let abc = () => {
+        //     console.log(arguments); // 报错，找不到arguments对象
+        // }
+        // abc(3, 4, 6);
+
+
+
+
+        // 使用剩余参数，可以获取到函数的所有实参
+        // let abc = (x, y, ...z) => {
+        //     console.log(x, y); // 7, 8
+        //     console.log(z); // [9, 4, 15, 21]
+        // }
+        // abc(7, 8, 9, 4, 15, 21);
+
+
+
+
+        // let abc = (...z) => {
+        //     console.log(z); // [7, 8, 9, 4, 15, 21]
+        // }
+        // abc(7, 8, 9, 4, 15, 21);
+
+
+        // 4. 箭头函数不能当做构造函数
+        // let abc = () => {
+
+        // }
+        // let a = new abc(); // 报错，箭头函数不是一个构造函数；abc is not a constructor
+
+        // 5. 箭头函数内部没有自己的this，箭头函数内部的this指向外部作用域的this
+        var age = 20;
+
+        let obj = {
+            age: 30,
+            fn1: function () {
+                console.log(this); // obj 对象
+                console.log(this.age); // 30
+            },
+            fn2: () => {
+                console.log(this); // window对象
+                console.log(this.age); // 20
+            }
+        };
+
+        obj.fn1();
+        obj.fn2();
+
+    </script>
+</body>
+</html>

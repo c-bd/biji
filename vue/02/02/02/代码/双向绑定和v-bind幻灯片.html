@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>v-model和v-bind可以做什么</title>
+    <style>
+      img {
+        width: 300px;
+        height: 300px;
+      }
+      .operate button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <p class="operate">
+        <button :disabled="showPage==1" @click="cutPage">上一页</button>
+        <button :disabled="showCount==0" @click="cutCount">上一步</button>
+        <button @click="addCount">下一步</button>
+        <button :disabled="showPage==2" @click="addPage">下一页</button>
+      </p>
+      <div v-if="showPage==1">
+        <h1>1.v-model可以做什么</h1>
+        <p><input v-if="showCount>=1" type="text" v-model="name" /></p>
+        <h2 v-if="showCount>=2">上面input中的值,如果没有v-model你怎么获取?</h2>
+        <p v-if="showCount>=3">你是不是会写下如下的代码</p>
+        <p v-if="showCount>=4">
+          <font color="red">document.getElementById("input").value</font>
+        </p>
+        <h3 v-if="showCount>=5">
+          上面的代码和DOM进行了深度绑定,<font color="red">很不方便</font>
+        </h3>
+        <h2 v-if="showCount>=6">
+          可是有了v-model,<font color="red">input的值</font
+          >和Vue中data中name做了绑定,可以认为<font color="red">input的值</font
+          >就是<font color="red">data中name的值</font>
+        </h2>
+        <h2 v-if="showCount>=7">
+          那么在Vue的methods方法中,<font color="red">this.name</font>
+          的值就是input中的值,不再需要上面那种傻傻的方式了
+        </h2>
+        <h2 v-if="showCount>=8">
+          <font color="red">this.name</font> 可以拿到input值<font color="red">
+            this.name = 值 </font
+          >则可以设置input值
+          这就是双向绑定带来的好处,只需要关注数据,不再关注视图
+        </h2>
+      </div>
+      <div v-if="showPage==2">
+        <h1>1.v-bind可以做什么</h1>
+        <img v-if="showCount>=1" :src="imgUrl" alt="" /><button
+          @click="changeImg"
+          v-if="showCount>=8"
+        >
+          更换图片
+        </button>
+        <h2 v-if="showCount>=2">想换个图片的话,你怎么办?</h2>
+        <p v-if="showCount>=3">是不是会写下如下的代码</p>
+        <p v-if="showCount>=4">
+          <font color="red">
+            document.getElementbyId("img").setAttrbute("src",新地址)</font
+          >
+        </p>
+        <h3 v-if="showCount>=5">
+          上面的代码和DOM进行了深度绑定,<font color="red">很不方便</font>
+        </h3>
+        <h2 v-if="showCount>=6">
+          可是有了v-bind,<font color="red">src的值</font
+          >和Vue中data中imgUrl做了绑定,可以认为<font color="red"
+            >图片的地址</font
+          >现在由<font color="red">data中imgUrl决定</font>
+        </h2>
+        <h2 v-if="showCount>=7">
+          那么在Vue的methods方法中,<font color="red">this.imgUrl</font>
+          的值就是图片地址,想要换图片,直接
+          <font color="red">this.imgUrl=新地址</font>
+          就搞定了
+        </h2>
+      </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var imgs = [
+        "http://e.hiphotos.baidu.com/image/pic/item/8ad4b31c8701a18bdb1e8885972f07082938fe07.jpg",
+        "http://c.hiphotos.baidu.com/image/pic/item/a8014c086e061d95788ea7f272f40ad163d9ca34.jpg",
+        "http://g.hiphotos.baidu.com/image/pic/item/d043ad4bd11373f0c48ec555ad0f4bfbfaed0442.jpg",
+        "http://g.hiphotos.baidu.com/image/pic/item/83025aafa40f4bfbc525009e0a4f78f0f6361806.jpg",
+        "http://f.hiphotos.baidu.com/image/pic/item/8cb1cb1349540923306cfdb49b58d109b2de49f7.jpg",
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563036614748&di=df264606f7a6f7f5095e0d02a3770925&imgtype=0&src=http%3A%2F%2Fimages.china.cn%2Fattachement%2Fjpg%2Fsite1000%2F20150605%2Fc03fd54ab85a16db7f1945.jpg"
+      ];
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "张三",
+          showCount: 0,
+          showPage: 1,
+          imgUrl:
+            "http://e.hiphotos.baidu.com/image/pic/item/8ad4b31c8701a18bdb1e8885972f07082938fe07.jpg"
+        },
+        methods: {
+          cutCount() {
+            if (this.showCount) this.showCount--;
+          },
+          cutPage() {
+            if (this.showPage) this.showPage--, (this.showCount = 0);
+          },
+
+          addCount() {
+            this.showCount++;
+          },
+          addPage() {
+            if (this.showPage < 2) this.showPage++, (this.showCount = 0);
+          },
+          changeImg() {
+            // 随机更换图片
+            this.imgUrl = imgs[Math.floor(Math.random() * imgs.length)];
+          }
+        }
+      });
+    </script>
+    <!-- 
+        v-model可以做什么
+        
+     -->
+  </body>
+</html>

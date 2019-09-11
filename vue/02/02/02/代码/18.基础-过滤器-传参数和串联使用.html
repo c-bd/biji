@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ msg |reverse | toLower}}</p>
+	  
+      <input type="text" v-model="msg" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "ABCDEFGHIGK"
+        },
+        methods: {},
+        filters: {
+          toLower(value) {
+            return value
+              .split("")
+              .map((item, i) => (i%2==0 ? item.toLowerCase() : item.toUpperCase()))
+              .join("");
+          },
+		 
+          reverse(value) {
+            return value
+			// 将字符串转换成数组
+              .split("")
+              .reverse()
+              .join("");
+          },
+		  // spliec(value){
+			 //  return value
+			 //  .split("")
+			 //  .splice(1,5)
+			 //  .join("");
+			 // 
+		  // }
+        }
+      });
+    </script>
+  </body>
+</html>

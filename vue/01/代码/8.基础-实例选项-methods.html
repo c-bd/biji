@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ name }}</p>
+      <p>{{ fn2() }}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "张三"
+        },
+        methods: {
+          // key(方法名):value(function)
+          fn: function(name) {
+            this.fn1(name);
+          },
+          fn1: function(name) {
+            this.name = name;
+          },
+          fn2: function() {
+            return "83期都是大牛";
+          },
+          //  懒人写法
+          fn3: () => {
+            console.log(this.name);
+          },
+          fn4() {
+            console.log(this.name);
+          }
+        }
+      });
+      //   vm.fn();
+      // vm. 调用到 data中所有的属性
+      // vm. 调用到methods中所有的方法
+      // 在data中命名时 不能和methods中的方法重名
+    </script>
+  </body>
+</html>

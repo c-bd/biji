@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name1: "hello world",
+          name2: "hello world2"
+        },
+        methods: {
+          fn1() {
+            console.log(this.name1);
+          },
+          fn2() {
+            console.log(this.name2);
+          }
+        }
+      });
+    </script>
+    <!-- 
+1. 实例化一个Vue实例, 
+2. 定义两个属性 name1 name2 初始值分别为  Hello world  Hello world2
+3. 定义两个方法 fn1 fn2  两个方法中分别输出 name1 和 name2的值
+     -->
+  </body>
+</html>

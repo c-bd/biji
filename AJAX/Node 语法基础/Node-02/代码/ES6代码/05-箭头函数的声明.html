@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**之前定义函数的方式*/
+        // 1. 使用function命令
+        // function fn (x, y) {
+        //     return x + y;
+        // }
+
+        // 2. 使用函数表达式
+        // var fn = function (x, y) {
+        //     return x + y;
+        // }
+        // fn(3, 5);
+
+        // 3. 构造函数方式
+        // 4. 定义并直接调用函数
+        // ~function (x, y) {
+        //     console.log(x + y);
+        // }(3, 5);
+
+        // 5. 箭头函数
+        let fn = (x, y) => {
+            console.log(x + y);
+        };
+        fn(4, 9);
+
+
+        // $.get('/time', () => {
+        //     // 
+        // });
+    </script> 
+</body>
+</html>

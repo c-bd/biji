@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item in list">{{ item }}</li>
+      </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: { list: ["北京", "上海", "天津"] },
+        methods: {}
+      });
+    </script>
+    <!-- 
+         1. 初始化一个Vue实例
+2. 定义data对象中list:['北京','上海','天津']
+3. 将list中的内容 v-for循环在li标签上显示
+     -->
+  </body>
+</html>

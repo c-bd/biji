@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- v-if  后面的表达式返回的布尔值决定 当前元素的显示或者隐藏 -->
+      <template v-if="showMessage">
+        <p v-text="message"></p>
+        <p>{{ jMessage }}</p>
+        <p>{{ tMessage }}</p>
+        <p>{{ iMessage }}</p>
+      </template>
+
+      <!-- <p v-show="showMessage">{{ message }}</p> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          showMessage: false, // 是否显示信息
+          message: "十月一号将进行国庆阅兵",
+          jMessage: "马云将退休,张勇接任",
+          tMessage: "男篮输掉与尼日利亚比赛,奥运会堪忧",
+          iMessage: "华为推出鸿蒙系统"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

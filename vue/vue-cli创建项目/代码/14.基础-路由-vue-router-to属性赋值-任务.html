@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-link to="/bj/abc">北京</router-link>
+      <!-- 纯字符串 -->
+      <router-link to="/sh">上海(字符串)</router-link>
+      <!-- 对象 -->
+      <router-link :to="{path:'/sh'}">上海(对象)</router-link>
+      <!-- name对象 -->
+      <router-link :to="{name:'shanghai'}">上海(name对象)</router-link>
+      <!-- 变量 -->
+      <router-link :to="pathNameObj">上海(变量)</router-link>
+      <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+      var router = new VueRouter({
+        routes: [
+          {
+            name: "shanghai",
+            path: "/sh",
+            component: {
+              template: `<div>我是上海</div>`
+            }
+          },
+          {
+            path: "/bj/:abc",
+            component: {
+              template: `<div>我是北京{{$route.params.abc}}</div>`
+            }
+          }
+        ]
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          pathStr: "/sh",
+          pathObj: { path: "/sh" },
+          pathNameObj: { name: "shanghai" }
+        },
+        methods: {},
+        router
+      });
+    </script>
+    <!-- 
+1. 用vue-router实例化路由 
+2. 导航为 北京 上海 
+3. 分别采用四种赋值方式 将上海跳转到对应的组件
+4. 在北京跳转时 实现 带参数的跳转
+     -->
+  </body>
+</html>

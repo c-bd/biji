@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input v-focus="123" type="text" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // 局部自定义指令
+      // 注册在当前实例上
+      //  directives: { key(指令名称): 指令对象  { inserted(dom,expression){} } }
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        directives: {
+          focus: {
+            inserted: function(dom, expression) {
+              dom.focus();
+              dom.value = expression.value;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

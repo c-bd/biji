@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      /* 最终状态 */
+      .main {
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background-color: pink;
+        margin: 100px auto;
+      }
+      /* 写样式 及动画效果  v-enter定义起始状态 */
+      .test-enter,
+      .test-leave-to {
+        width: 0;
+        height: 0;
+        border-radius: 0;
+        background-color: saddlebrown;
+      }
+      .test-enter-active,
+      .test-leave-active {
+        transition: all 2s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <button @click="show=!show">显示/隐藏</button>
+      <!-- 需要用transition包裹我们的组件 -->
+      <transition name="test">
+        <div v-if="show" class="main"></div>
+      </transition>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // 要给某个元素做动作 这个元素必须得显示隐藏
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: false
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span id="span"></span>
+    <script>
+      //    promise  是为了解决 回调地狱的问题
+      // 异步请求 接收返回值 只能在回调函数里面吧
+      // 如果下一个请求依赖于上一个请求的返回结果
+      // 就需要在回调函数里写另一个请求
+      // 如果又有同样的第三个请求
+      // 有需要在第二个请求的回调函数里写第三个
+      //   第一个请求
+      // 嵌套写法
+      //   $.ajax({
+      //     url,
+      //     data,
+      //     success: function(result) {
+      //       // 第二个请求
+      //       $.ajax({
+      //         url,
+      //         data,
+      //         success: function(result1) {
+      //           // 第三个请求
+      //         }
+      //       });
+      //     }
+      //   });
+      //    如果你想正常返回 你需要 reslove 来处理
+      // 如果你不需要正常返回 你需要reject来处理
+      //   第一次请求
+      var index = 0;
+      setInterval(function() {
+        document.getElementById("span").innerText = ++index + "秒";
+      }, 1000);
+      //   第一次
+      new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve({ name: "张三" }); // 如果想正常返回数据  就需要用reslove(data数据)
+        }, 3000);
+      })
+        .then(function(result) {
+          //    第二次请求
+          return new Promise(function(reslove, reject) {
+            setTimeout(function() {
+              reslove({ ...result, age: 18 });
+            }, 2000);
+          });
+        })
+        .then(result => {
+          //   第三次
+          return new Promise(function(reslove, reject) {
+            reslove({ ...result });
+          });
+          //return axios();
+        })
+        .then(result => {
+          // 第四次
+          return { ...result, title: "83期同学们真好学!!!" };
+        })
+        .then(result => {
+          // 第五次
+          debugger;
+        }); // then中中接收的数据 是promise中reslove的数据
+      //  axios 支持promise
+      //   return new Primise(function(reslove, reject) {
+      //     $.ajax({
+      //       url,
+      //       data,
+      //       success: function(data) {
+      //         reslove(data);
+      //       }
+      //     });
+      //   }).then(data);
+    </script>
+  </body>
+</html>

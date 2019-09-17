@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ city }}</p>
+      <input type="text" v-model="city" />
+      <ul>
+        <li v-for="(item,index) in list">
+          {{ item.city + item.count + "套房" }}
+        </li>
+      </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          city: "北京",
+          list: [
+            { city: "北京", count: 1 },
+            { city: "北京", count: 2 },
+            { city: "北京", count: 3 }
+          ]
+        },
+        methods: {},
+        watch: {
+          city(newValue) {
+            this.list = this.list.map(item => {
+              // 长江后浪推前浪
+              // json后面的属性会覆盖前面的属性
+              return { ...item, city: newValue };
+              // item.city = newValue
+              // return item
+            });
+            // this.list = this.list.map(item => ({ ...item, city: newValue })); // 炫技模式
+          }
+        }
+      });
+    </script>
+    <!-- 
+         定义一个城市city变量,当城市city变量发生改变时 生成对应城市的一个数组 如  
+        1   实现 city的双向绑定  
+
+​        2  watch监听city的数据项改变 
+
+​        3  改变函数中实现
+     -->
+  </body>
+</html>

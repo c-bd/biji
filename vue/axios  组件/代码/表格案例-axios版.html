@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    #app {
+      width: 600px;
+      margin: 10px auto;
+    }
+
+    .tb {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .tb th {
+      background-color: #0094ff;
+      color: white;
+    }
+
+    .tb td,
+    .tb th {
+      padding: 5px;
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    .add {
+      padding: 5px;
+      border: 1px solid black;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="add">
+      品牌名称:
+      <input type="text" v-model="name" v-focus />
+      <!-- 如果name 不等于空 就disabled false  否则等于true      :disabled="!(name!='')" -->
+      <input type="button" value="添加" @click="addItem" :disabled="!name" />
+    </div>
+
+    <div class="add">
+      品牌名称:
+      <input type="text" placeholder="请输入搜索条件" v-model="searchVal" />
+    </div>
+
+    <div>
+      <table class="tb">
+        <tr>
+          <th>编号</th>
+          <th>品牌名称</th>
+          <th>创立时间</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="(obj,i) in list " :key="i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ obj.name }}</td>
+          <td>{{ obj.date | formatter('YYYY-MM-DD hh:mm:ss') }}</td>
+          <td>
+            <a href="#" @click="delItem(obj.id)">删除</a>
+          </td>
+        </tr>
+        <tr v-if="!list.length">
+          <td colspan="4">没有品牌数据</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="./vue.js"></script>
+  <script src="./moment.min.js"></script>
+  <script src="./axios.min.js"></script>
+  <script>
+    Vue.filter("formatter", function (value, param) {
+      return moment(value).format(param);
+    });
+    var vm = new Vue({
+      watch: {
+        // 监听谁就写谁的名字
+        searchVal(newValue) {
+          axios({
+            url: `http://localhost:3000/brands?name_like=${newValue}`
+          }).then(result => {
+            this.list = result.data;
+          });
+        }
+      },
+      // ----------------------------- 完成------------------------------
+      computed: {
+        // 定义一个过滤后的list
+        filterList: function () {
+          // this指向vue实例
+          // this.list; // 当前list数据
+          // this.searchVal; // 当前的搜索条件
+          return this.list.filter(item => {
+            return item.name.indexOf(this.searchVal) > -1;
+          });
+          // this.list.filter(item => item.name.indexOf(this.searchVal) > -1); // 炫技模式
+        }
+      },
+      // -----------------------------------------------------------
+      directives: {
+        focus: {
+          inserted: function (dom) {
+            dom.focus();
+          }
+        }
+      },
+      // --------------------------------完成-=======================
+      el: "#app",
+      data: {
+        searchVal: "", // 定义一个搜索变量
+        name: "", // 定义一个变量
+        list: [
+          // {
+          //   name: "TCL",
+          //   date: new Date()
+          // },
+          // {
+          //   name: "小米",
+          //   date: new Date()
+          // },
+          // {
+          //   name: "苹果",
+          //   date: new Date()
+          // }
+        ]
+      },
+      methods: {
+        // 加载列表数据
+        loadData() {
+          axios({
+            url: "http://localhost:3000/brands"
+          }).then(result => {
+            this.list = result.data;
+          });
+        },
+        addItem() {
+          //  获取input的值
+          // this.name;
+          //  更新了数组数据
+          axios({
+            url: "http://localhost:3000/brands",
+            method: "post",
+            data: { name: this.name, date: new Date() }
+          }).then(result => {
+            // 新增成功
+            this.loadData();
+            this.name = "";
+          });
+        },
+        delItem(id) {
+          if (confirm("您是否要删除此条记录?")) {
+            // 要移除 list中索引为index的数据
+            axios({
+              url: `http://localhost:3000/brands/${id}`,
+              method: "delete"
+            }).then(result => {
+              this.loadData(); // 再次调用拉取数据接口 完成后台数据到前端数据的同步
+            });
+          }
+        }
+      },
+      // 钩子函数
+      created() {
+        // 事件  当实例创建成功之后会执行
+        // this 指向Vue实例 this.
+        this.loadData();
+      }
+    });
+  </script>
+  <!-- 
+        1. 静态页面 准备
+2. 实例化一个Vue
+3. 定义表格数据
+4. 采用v-for 循环将静态内容切换为动态内容
+5. 采用v-if控制提示消息
+     -->
+  <!-- 
+       添加商品 
+       1. 注册按钮添加事件
+       2. 获取input中的值  定义一个变量  变量 绑定input v-model   
+       3. 将数据添加到list中  unshift 
+       4. 用v-bind绑定disabled属性 解决 空串时 按钮不可点的问题
+       5. 添加成功之后 将name设置为空字符串
+      -->
+  <!-- 
+        删除商品
+        1. 找到删除按钮 注册删除事件
+        2. 传递要删除数据项的下标索引
+       -->
+  <!-- 
+         自动聚焦功能
+         1. 定义指令
+         2. 使用指令  =>标签上写指令
+        -->
+  <!-- 
+          搜索 => 
+          1. 取到 搜索条件 => vue 双向绑定 v-model = 数据=> 视图  定义变量 绑定input
+          2 定义计算属性 => computed 定义计算属性
+         -->
+  <!-- 
+           列表中的数据变成axios版本
+           1 引入axios
+           2 Vue 生命周期 => Vue实例 创建  =>渲染 => 数据更新 => 销毁
+           2  beforeCreate created(创建实例之后)  beforeMount mounted(页面渲染完成之后) beforeUpdate updated  beforeDestory destoryed
+          -->
+</body>
+
+</html>

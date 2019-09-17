@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-link to="/team/勇士">勇士</router-link>
+      <router-link to="/team/湖人">湖人</router-link>
+      <router-link to="/team/快船">快船</router-link>
+      <router-link to="/team/火箭">火箭</router-link>
+      <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+      var defaultObj = {
+        template: `<p>欢迎来到NBA</p>`
+      };
+      var router = new VueRouter({
+        routes: [
+          {
+            path: "/",
+            component: defaultObj
+          },
+          {
+            path: "/team/:teamname",
+            component: {
+              template: `<div>我是{{$route.params.teamname}}的粉丝</div>`
+            }
+          }
+        ]
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router
+      });
+    </script>
+    <!-- 
+1. 在上一小节任务中,将多个球队指向的组件改为同一个组件
+2. 在导航中传入参数 (当前点击的名称)
+3. 在组件中显示的内容: 我是 "传入的球队"队的粉丝
+     -->
+  </body>
+</html>

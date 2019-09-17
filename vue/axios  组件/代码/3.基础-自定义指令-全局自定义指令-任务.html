@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input v-abc="content" type="text" />
+    <div v-textcopy="content"></div>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    Vue.directive("focus", {
+      inserted(dom, expression) {
+        dom.value = expression.value;
+        dom.focus();
+      }
+    });
+    Vue.directive("textcopy", {
+      inserted(dom, expression) {
+        // debugger;
+        dom.innerText = expression.value;
+      }
+    });
+    // var vm = new Vue({
+    //   el: "#app",
+    //   data: {
+    //     content: "我是要显示在div中的内容"
+    //   },
+    //   methods: {}
+    // });
+  </script>
+  <script>
+    Vue.directive("abc", {
+      inserted(dom, expression) {
+        // console.log(expression);
+        dom.value = expression.value
+        dom.focus()
+      }
+    });
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        content: "我是标签列内容"
+      },
+      methods: {
+
+      }
+
+
+    })
+
+
+
+
+
+
+  </script>
+  <!-- 
+         实现一个可以自动聚焦input的自定义指令v-focus
+
+- 实现一个类似v-text指令的功能的自定义指令v-textcopy
+     -->
+</body>
+
+</html>

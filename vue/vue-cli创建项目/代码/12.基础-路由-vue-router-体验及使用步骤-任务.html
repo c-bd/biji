@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-link to="/golden">勇士</router-link>
+      <router-link to="/lakersk">湖人</router-link>
+      <router-link to="/labersp">快船</router-link>
+      <router-link to="/hous">火箭</router-link>
+      <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <!-- 引入js -->
+    <script src="./vue-router.js"></script>
+    <script>
+      var defaultObj = {
+        template: `<p>欢迎来到NBA</p>`
+      };
+      var goldenObj = {
+        template: `<div>
+                水花兄弟-库里-汤普森
+            </div>`
+      };
+      var lakerskObj = {
+        template: `<div>
+               夜店兄弟- 詹姆斯-浓眉
+            </div>`
+      };
+      var lakersP = {
+        template: `<div>
+              沉默兄弟-  泡椒-卡哇伊
+            </div>`
+      };
+      var housObj = {
+        template: `<div>
+            碰瓷兄弟-灯泡
+            </div>`
+      };
+      var router = new VueRouter({
+        routes: [
+          {
+            path: "/",
+            component: defaultObj
+          },
+          {
+            path: "/golden",
+            component: goldenObj
+          },
+          {
+            path: "/lakersk",
+            component: lakerskObj
+          },
+          {
+            path: "/labersp",
+            component: lakersP
+          },
+          {
+            path: "/hous",
+            component: housObj
+          }
+        ]
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router
+      });
+    </script>
+    <!-- 
+1. 使用vue-router实现一个前端路由
+2. 导航为 勇士 湖人 快船 火箭
+3. 勇士 =>库里-汤普森  湖人 =>詹姆斯-浓眉  快船 => 泡椒-卡哇伊  火箭 => 灯泡
+     -->
+  </body>
+</html>

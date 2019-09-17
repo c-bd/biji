@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <city :list="list"></city>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      Vue.component("city", {
+        template: `<div>
+            <p v-for="item in list">{{item}}</p>
+        </div>`,
+        props: ["list"]
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: ["北京", "上海", "天津"]
+        },
+        methods: {}
+      });
+    </script>
+    <!-- 
+ 1. 定义子组件
+2. 在父组件中将 ["北京", "上海","天津"] 传递给子组件
+3. 在子组件中获取该数据 并采用v-for循环显示在页面上
+     -->
+  </body>
+</html>

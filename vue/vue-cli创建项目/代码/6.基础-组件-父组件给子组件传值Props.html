@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 给谁传值 就在谁的标签上定义属性 -->
+      <!-- 1 定义属性  名字随便取 但是 不能和组件(content-a)中的data/methods/computed重名-->
+      <!-- 属性="值" 死值 => v-bind:属性="变量" -->
+      <content-a :title="name" :content="content"></content-a>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //Vue
+      var obj = {
+        template: `<div>
+           <p>{{name}}</p>
+           <p>{{title}}</p>
+           <p>{{content}}</p>
+        </div>`,
+        data() {
+          return {
+            name: "狗蛋儿"
+          };
+        },
+        props: ["title", "content"] // 字符串数组 => 字符串 => 前面定义的属性名称=>必须对应
+      };
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "狗剩儿",
+          content: "Props真简单啊"
+        },
+        methods: {},
+        components: {
+          "content-a": obj
+        }
+      });
+    </script>
+    <!--  父组件给子组件传值  用props -->
+    <!-- 
+       1  定义props属性
+       2  接收props属性  => 组件的选项中定义props选项 => 有对象 ,有数组 => 数组(简单)  => 字符串数组 ["a","b","c"]
+       3  使用属性 data/methods/computed/props都代理给了Vue实例this
+       插值表达式 data => {{ name }} methods=>{{ fn() }} computed=> {{ reverseMessage }} props => {{ title }}
+    -->
+  </body>
+</html>

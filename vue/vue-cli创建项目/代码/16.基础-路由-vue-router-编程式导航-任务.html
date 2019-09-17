@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+      var objA = {
+        template: `<div>
+            A页面
+            <button @click="goB">跳转到B</button> 
+            <button @click="goD">前进到D</button> 
+            </div>`,
+        methods: {
+          goB() {
+            //   编程式导航
+            this.$router.push("/B");
+          },
+          goD() {
+            //   编程式导航
+            this.$router.go(3);
+          }
+        }
+      };
+      var objB = {
+        template: `<div>B页面
+            <button @click="goC">跳转到C</button> 
+
+        </div>`,
+        methods: {
+          goC() {
+            //   编程式导航
+            this.$router.push("/C");
+          }
+        }
+      };
+      var objC = {
+        template: `<div>C页面
+            <button @click="goD">跳转到D</button> 
+        </div>`,
+        methods: {
+          goD() {
+            //   编程式导航
+            this.$router.push("/D");
+          }
+        }
+      };
+      var objD = {
+        template: `<div>D页面
+        <button @click="goA">返回A</button>
+        </div>`,
+        methods: {
+          goA() {
+            this.$router.go(-3); // 回退3步   A=> B => C =>D => A
+          }
+        }
+      };
+      var router = new VueRouter({
+        routes: [
+          {
+            path: "/",
+            redirect: "/A"
+          },
+          {
+            path: "/A",
+            component: objA
+          },
+          {
+            path: "/B",
+            component: objB
+          },
+          {
+            path: "/C",
+            component: objC
+          },
+          {
+            path: "/D",
+            component: objD
+          }
+        ]
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router
+      });
+    </script>
+    <!-- 
+1. 实例化一个导航路由
+2. 导航为 A, B, C ,D 
+3. 实现A => B , B => C, 然后从C返回时,直接回到A
+4. 实现A => B ,B => C , C =>D 从D返回时 不能返回
+5. 实现A => B ,B => C , C =>D 从D返回直接返回到A 在A中直接前进到D
+     -->
+  </body>
+</html>

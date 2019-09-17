@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-abc>{{ name }}</p>
+      <input v-focus type="text" />
+      <p v-textcopy="name + '123'"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // 全局自定义指令
+      //   两个参数,第一个参数  指令名称, 第二个参数 指令对象
+      //   指令名称 不用写v- 用的时候要写v-
+      Vue.directive("abc", {
+        //   固定写法  => 元素生成时会执行
+        // 前两个参数  第一个参数  指令作用于标签的dom对象
+        // inserted函数体 =>  根据指令的业务 完成对应的需求
+        inserted: function(dom) {
+          dom.style.color = "red";
+          dom.style.backgroundColor = "blue";
+        }
+      });
+      Vue.directive("focus", {
+        inserted(dom) {
+          dom.focus();
+          dom.style.backgroundColor = "pink";
+        }
+      });
+      Vue.directive("textcopy", {
+        inserted(dom, expression) {
+          dom.innerText = expression.value;
+          dom.style.color = "red";
+        }
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: "狗剩儿"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

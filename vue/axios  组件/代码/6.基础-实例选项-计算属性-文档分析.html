@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ reMessage() }}</p>
+    <p>{{ reMessage() }}</p>
+    <p>{{  happy }}</p>
+    <p>{{  happy }}</p>
+    <p>{{  happy() }}</p>
+
+    <input type="text" v-model="message" />
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // computed:{key(计算属性名称):value(带返回值的函数(必须返回))}
+    //   data/methods 所有的属性和方法都代理给了Vue实例 可以用过this直接拿到
+    // data/methods/computed 所有的属性和方法都代理给了Vue实例 可以用过this直接拿到
+    // computed命名计算属性名时  不能data中属性重名 也不能和methods方法重名
+    // props
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        message: "abc"
+      },
+      methods: {
+        reMessage() {
+          console.log("执行methods方法");
+          return this.message
+            .split("")
+            .reverse()
+            .join("");
+        }
+      },
+      // computed: {
+      //   // 前面是名称  后面是带返回值的函数  必须带返回值
+
+      //   reversedMessage: function () {
+      //     console.log("执行计算属性方法");
+      //     // this 指向vue实例
+      //     return this.message
+      //       .split("")
+      //       .reverse()
+      //       .join("");
+      //   }
+      // }
+      // 这个只要写在vue实例中那么下面的方法和属性的this都指向实例对象vue
+      computed: {
+        happy() {
+          console.log('我尼玛');
+
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

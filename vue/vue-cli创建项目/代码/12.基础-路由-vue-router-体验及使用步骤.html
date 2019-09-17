@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 2 设置导航  类似于a标签 不完全等同  a-->
+      <router-link to="/bj">北京</router-link>
+      <router-link to="/sh">上海</router-link>
+      <router-link to="/tj">天津</router-link>
+      <router-link to="/cq">重庆</router-link>
+      <!-- 3 容器必须有  承载组件的内容-->
+      <router-view></router-view>
+    </div>
+    <!-- 1 引入vue-router -->
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+      // 4 实例化一个vue-router对象
+      // 5 配置路由选项 => 路由表 => hash值对应的组件或者模块
+      var router = new VueRouter({
+        routes: [
+          {
+            path: "/",
+            component: {
+              template: `<div>今天东西真简单啊</div>`
+            }
+          },
+          {
+            path: "/bj",
+            component: {
+              template: `<div>北京 {{count}}</div>`,
+              data() {
+                return {
+                  count: 0
+                };
+              }
+            }
+          },
+          {
+            path: "/sh",
+            component: {
+              template: `<div>上海</div>`
+            }
+          },
+          {
+            path: "/cq",
+            component: {
+              template: `<div>重庆</div>`
+            }
+          },
+          {
+            path: "/tj",
+            component: {
+              template: `<div>天津</div>`
+            }
+          }
+        ]
+      });
+      //   6 将路由实例挂载到Vue实例上
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router
+      });
+    </script>
+  </body>
+</html>

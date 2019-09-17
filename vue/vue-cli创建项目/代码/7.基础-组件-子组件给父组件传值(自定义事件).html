@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 想监听谁的事件 就在谁的标签上写监听 v-on -->
+      <content-a @transdata="receiveData"></content-a>
+      <p>{{ name }}</p>
+      <!-- 常用模式 -->
+      <!-- <button @click="receiveData"></button> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var obj = {
+        template: `<div>
+            <p>我是子组件</p>
+            <button @click="transData">触发传值</button>
+         </div>`,
+        data() {
+          return {
+            name: "狗剩儿"
+          };
+        },
+        methods: {
+          transData() {
+            //   传值 将name传出去
+            // $emit(自定义事件名(),若干参数)
+            // 事件名称 => 目前在本地引用模式下 只能全小写
+            // 若干参数 => 想写几个参数 写几个
+            // v-on @
+            this.$emit("transdata", this.name, 1, 2, 3, 4, 5); // 相当于抛出了一个事件 带了一个参数
+          }
+        }
+      };
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          name: ""
+        },
+        methods: {
+          // 接收方法里的参数 => 若干参数
+          receiveData(name, a, b, c, d, e) {
+            this.name = name;
+          }
+        },
+        components: {
+          "content-a": obj
+        }
+      });
+      //  子组件给父组件传值
+      // $emit => 相当于在(this)当前实例抛出一个自定义事件 => 只能在当前实例监听
+      // click  change  input  系统事件
+      // 自定义事件
+    </script>
+  </body>
+</html>

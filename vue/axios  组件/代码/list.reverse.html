@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- <p>{{ list }}</p>
+      <p>{{ test() }}</p>
+      <p>{{ name }}</p> -->
+      <p>{{ list.reverse() }}</p>
+      <!-- <input type="text" :value="name" v-on:change() /> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: [1, 2, 3],
+          name: "狗剩儿"
+        },
+        methods: {
+          test() {
+            console.log("执行test方法");
+            return "我是方法的内容";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

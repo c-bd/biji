@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .select {
+        font-size: 40px;
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <city-li
+        @selectcity="receiveData"
+        v-for="item in list"
+        :cityname="item"
+        :currentname="currentCity"
+      ></city-li>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // v-bind绑定class对象语法
+      var obj = {
+        template: `<li :class="{select:selectClass}" @click="transData" >{{cityname}}</li>`,
+        props: ["cityname", "currentname"],
+        methods: {
+          transData() {
+            //   data/methods/computed/props都代理给了Vue实例 this
+            console.log(this.cityname);
+            this.$emit("selectcity", this.cityname);
+          }
+        },
+        computed: {
+          selectClass() {
+            //   必须有返回值
+            return this.cityname === this.currentname; // 如果相等 就意味着当前点击项 和循环项相等返回true 否则返回false
+          }
+        }
+      };
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: ["北京", "上海", "天津"],
+          currentCity: null // 当前点击的城市
+        },
+        methods: {
+          receiveData(cityname) {
+            this.currentCity = cityname;
+          }
+        },
+        components: {
+          "city-li": obj
+        }
+      });
+    </script>
+    <!--  
+     1. 上一小节基础上  实现 点击子组件的城市时,将当前点击的城市传递给父组件,
+2. 父组件 将 当前点击城市 通过props再次传递给子组件 
+3. 子组件 根据当前选中和循环项目比对 得出 哪个城市 得到 select class 
+4. 对 select  class进行样式赋值,使其 字体大小为40px  字体颜色为红色
+     -->
+
+    <!-- 
+      父子传值 props 
+      子传父  $emit 触发自定义事件 
+      v-for  v-bind  v-on  计算属性 v-bind:class特殊用法
+      -->
+  </body>
+</html>

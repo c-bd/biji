@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 使用组件 -->
+      <content-a></content-a>
+      <content-a></content-a>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // Vue.component
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          // 所有组件 // 只能在当前实例使用
+          "content-a": {
+            template: `<div>
+                  大家中秋过得怎么样啊?加班真好啊
+              </div>`
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

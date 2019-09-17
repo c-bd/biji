@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <parent-b></parent-b>
+      <parent-b></parent-b>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var childA = {
+        template: `<div>我是子组件childA</div>`
+      }; // 定义一个组件对象
+      var parentB = {
+        template: `<div>
+                <child-a></child-a>
+            我是父组件parentB
+           <child-a></child-a>
+        </div>`,
+        components: {
+          "child-a": childA
+        }
+      }; // 定义一个组件对象
+
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          "parent-b": parentB
+        }
+      });
+    </script>
+    <!-- 
+1.实现一个Vue实例
+2. 自定义一个组件parentB，内容为我是父组件parentB
+3. 自定义一个组件childA ,内容是我是子组件childA
+4. 将在父组件中使用childA, 并在页面上实现显示两个parentB
+     -->
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .select {
+      color: red;
+      font-size: 100px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind用法 -->
+    <div :class="{select}">老家的饭好吃吗</div>
+    <!-- 计算属性用法 -->
+    <div :class="selectClass">老家的饭好吃吗</div>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        select: false
+      },
+      methods: {},
+      computed: {
+        selectClass() {
+          // this
+          return this.select ? "select" : "";
+        }
+      }
+    });
+  </script>
+  <!-- 有重复内容的时候就需要用到计算属性 -->
+
+
+  <!--通过计算属性实现 根据**`变量select(布尔值)`**的内容 是否将div标签的class设置为**`select`**  -->
+</body>
+
+</html>

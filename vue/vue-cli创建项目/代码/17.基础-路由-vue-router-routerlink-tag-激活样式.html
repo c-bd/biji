@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .router-link-active {
+      color: red;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .box {
+      background-color: #f00;
+      height: 300px;
+      width: 500px;
+    }
+
+    .fox {
+      background-color: #f0f;
+      height: 100px;
+      width: 300px;
+    }
+
+    .nox {
+      background-color: #00f;
+      height: 50px;
+      width: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 2 设置导航  类似于a标签 不完全等同  a-->
+    <router-link to="/bj">北京</router-link>
+    <router-link to="/sh">上海</router-link>
+    <router-link to="/tj">天津</router-link>
+    <router-link to="/cq">重庆</router-link>
+    <!-- 3 容器必须有  承载组件的内容-->
+    <router-view class="box"></router-view>
+  </div>
+  <!-- 1 引入vue-router -->
+  <script src="./vue.js"></script>
+  <script src="./vue-router.js"></script>
+  <script>
+    // 4 实例化一个vue-router对象
+    // 5 配置路由选项 => 路由表 => hash值对应的组件或者模块
+    var router = new VueRouter({
+      routes: [
+        {
+          path: "/",
+          redirect: "/bj"
+        },
+
+        {
+          path: "/bj",
+          component: {
+            template: `<div >北京              
+                <router-link to="/bj/sy">顺义</router-link>
+                <router-link to="/bj/cy">朝阳</router-link>
+                <router-link to="/bj/hd">海淀</router-link>
+                <router-view class="fox"></router-view>
+              </div> 
+              `
+          },
+          children: [
+            {
+              path: " ",
+              comments: {
+                template: `<div>我是北京顺义</div>`,
+              }
+            },
+            {
+              path: "sy",
+              component: {
+                template: `
+              <div>我是顺义</div>
+                `,
+
+              }
+            },
+            {
+              path: "cy",
+              component: {
+                template: `
+                <div>我是朝阳
+                
+                  <router-link to="/bj/hd/bgz">三</router-link>
+                  <router-view class="nox"></router-view>
+              
+              </div>
+                `,
+
+              },
+              children: [
+                {
+                  path: "bgz",
+                  component: {
+                    template: `
+                    <div>我是第三层组件</div>`
+                  }
+                }
+              ]
+            },
+            {
+              path: "hd",
+              component: {
+                template: `
+              <div>我是海淀</div>
+                `,
+
+              }
+            }
+          ],
+
+        },
+        {
+          path: "/sh",
+          component: {
+            template: `<div>上海</div>`
+          }
+        },
+        {
+          path: "/cq",
+          component: {
+            template: `<div>重庆</div>`
+          }
+        },
+        {
+          path: "/tj",
+          component: {
+            template: `<div>天津</div>`
+          }
+        }
+      ]
+    });
+    //   6 将路由实例挂载到Vue实例上
+    var vm = new Vue({
+      el: "#app",
+      data: {},
+      methods: {},
+      router
+    });
+  </script>
+</body>
+
+</html>

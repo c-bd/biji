@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 渲染 -->
+    <script src="./axios.min.js"></script>
+    <script>
+      // 返回一个promise对象
+      //   axios.get("http://localhost:3000/brands").then(function(result) {
+      //     console.log(result.data);
+      //   });
+      //   返回一个promise对象
+      //   axios({
+      //     url: "http://localhost:3000/brands"
+      //   }).then(result => {
+      //     console.log(result);
+      //   });
+      axios({
+        url: "http://localhost:3000/brands",
+        method: "post",
+        data: { name: "83期未来可期", date: new Date() } // axios中data为body参数   路径参数 url?id=3  params
+      });
+    </script>
+  </body>
+</html>

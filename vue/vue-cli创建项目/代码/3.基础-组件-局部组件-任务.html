@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <step-counter></step-counter>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      // 做一个加减步进器
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+          "step-counter": {
+            template: `<div>
+               <button @click="cut">-</button>
+               <span>{{count}}</span>  
+               <button @click="add">+</button>
+            </div>`,
+            data() {
+              return {
+                count: 0
+              };
+            },
+            methods: {
+              cut() {
+                // if (this.count > 0) {
+                //   this.count--;
+                // }
+                // this.count > 0 && this.count--;
+                this.count && this.count--;
+              },
+              add() {
+                this.count++;
+              }
+            },
+            components: {}
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

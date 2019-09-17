@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <div id="app">
+      <!-- 页面中有多个一样结构的标签: span+button -->
+  <!-- <span>{{ count1 }}</span> <button @click="changeCount1">按钮</button>
+      <br />
+      <span>{{ count2 }}</span> <button @click="changeCount2">按钮</button>
+      <br />
+      <span>{{ count3 }}</span> <button @click="changeCount3">按钮</button>
+      <br />
+      <span>{{ count4 }}</span> <button @click="changeCount4">按钮</button>
+      <br />
+      <span>{{ count5 }}</span> <button @click="changeCount5">按钮</button> -->
+  <!-- <br />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          count1: 0,
+          count2: 0,
+          count3: 0,
+          count4: 0,
+          count5: 0
+        },
+        methods: {
+          changeCount1() {
+            this.count1++;
+          },
+          changeCount2() {
+            this.count2++;
+          },
+          changeCount3() {
+            this.count3++;
+          },
+          changeCount4() {
+            this.count4++;
+          },
+          changeCount5() {
+            this.count5++;
+          }
+        }
+      });
+    </script> -->
+
+  <div id="app">
+    <!-- 2. 使用组件 -->
+    <span-a></span-a>
+    <span-a></span-a>
+    <span-a></span-a>
+    <span-a></span-a>
+    <span-a></span-a>
+    <span-a></span-a>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // 注册全局组件
+    // Vue.component("span-btn", {
+    //   //   页面结构
+    //   template: `
+    //     <div>
+    //      <span>{{count}}</span> 
+    //      <button @click="changeCount">按钮</button>
+    // </div>
+    // `,
+    //   // 数据对象  => 是一个函数 => 带返回值得函数 =>
+    //   data() {
+    //     //  函数中返回一个对象  return {}  new Object()  []  new Array()
+    //     return {
+    //       count: 0
+    //     };
+    //   },
+    //   methods: {
+    //     changeCount() {
+    //       this.count++;
+    //     }
+    //   }
+    // });
+    // 名字这里写abc  或者是abc - a
+    Vue.component("span-a", {
+      template: `
+        <div>
+         <span>{{count}}</span> 
+         <button @click="changeCount">按钮</button>
+    </div>
+    `,
+      // 在这里data是一个带返回值的函数
+      data() {
+        // return 一个对象 相当于new Objct 一个新的对象   所以互相不影响  模板循环写一个就重新创建一个新对象 所以他们之间互相不会影响
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        changeCount() {
+          this.count++;
+        }
+      },
+
+
+
+
+    })
+    new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+
+</html>

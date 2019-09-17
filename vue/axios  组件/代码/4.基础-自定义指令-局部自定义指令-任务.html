@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-focus />
+    <div v-htmlcopy="contentHtml"></div>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        contentHtml:
+          "<span style='color:red;font-size:100px;font-weight:bold'>老高讲得太难了,我好难啊</span>"
+      },
+      methods: {},
+      // directives: {
+      //   // 名字
+      //   focus: {
+      //     inserted(dom, expression) {
+      //       dom.focus();
+      //     }
+      //   },
+      //   // 自定义指令的名称
+      //   htmlcopy: {
+      //     inserted: function (dom, expression) {
+      //       dom.innerHTML = expression.value;
+      //     }
+      //   }
+      // }，
+
+      directives: {
+        focus: {
+          inserted(dom, expression) {
+            dom.focus(),
+              dom.value = expression.value
+          }
+        },
+        innerHTML: {
+          inserted(dom, expression) {
+            dom.focus(),
+              dom.value = expression
+          }
+        }
+      }
+    });
+  </script>
+  <!-- 
+         实现一个可以自动聚焦input的自定义指令v-focus
+
+- 实现一个类似v-html指令的功能的自定义指令v-htmlcopy
+     -->
+</body>
+
+</html>

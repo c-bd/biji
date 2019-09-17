@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1 导航 -->
+    <a href="#bj">北京</a>
+    <a href="#sh">上海</a>
+    <a href="#tj">天津</a>
+    <a href="#cq">重庆</a>
+    <!-- 路由的方式 -->
+    <!-- 2 定义一个容器 承载模块的展示-->
+    <div id="container"></div>
+    <!-- 基础-路由-js实现前端路由 -->
+    <!-- 1. 在页面上实现4个链接,北京,上海,天津,重庆
+2. 实现点击4个链接时,页面上显示对应的城市名称
+3. 并且刷新页面之后,上次切换的城市还在 -->
+
+    <script>
+      //    前端路由根据hash值变化 来切换模块
+      // 监听hash值变化  hash值改变事件
+      var func = function() {
+        // 获取当前的hash值
+        var path = window.location.hash.substr(1);
+        var dom = document.getElementById("container");
+        // 根据path值判断 那个hash值对应哪个城市
+        // hash值 => 模块
+        // 路由表 => path => 模块
+        switch (path) {
+          case "bj":
+            dom.innerText = "北京";
+            break;
+          case "sh":
+            dom.innerText = "上海";
+            break;
+          case "tj":
+            dom.innerText = "天津";
+            break;
+          case "cq":
+            dom.innerText = "重庆";
+            break;
+          default:
+            break;
+        }
+      };
+      window.onhashchange = func;
+      // 获取当前的hash值
+      func();
+    </script>
+  </body>
+</html>

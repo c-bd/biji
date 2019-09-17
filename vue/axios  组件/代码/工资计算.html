@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>工资计算表</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <span>收入:¥{{ money }}</span>
+        <input type="text" v-model="money" />
+      </div>
+      <div>
+        <span>公积金扣款(12%)¥{{ gongMoney }}</span>
+      </div>
+      <div>
+        <span>医疗扣款(2%)¥{{ yiMoney }}</span>
+      </div>
+      <div>
+        <span>失业保险(0.2%)¥{{ shiyeMoney }}</span>
+      </div>
+      <div>
+        <span>养老保险(8%)¥{{ yangMoney }}</span>
+      </div>
+      <div>
+        <span>扣除保险后:¥{{ totalMoney }}</span>
+      </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          money: 10000
+        },
+        methods: {},
+        computed: {
+          // 公积金扣款
+          gongMoney() {
+            return this.money * 0.12;
+          },
+          // 医疗保险扣款
+          yiMoney() {
+            return this.money * 0.02;
+          },
+          // 失业保险
+          shiyeMoney() {
+            return this.money * 0.002;
+          },
+          yangMoney() {
+            return this.money * 0.08;
+          },
+          totalMoney() {
+            return (
+              this.money -
+              this.gongMoney -
+              this.shiyeMoney -
+              this.yangMoney -
+              this.yiMoney
+            );
+          }
+        }
+      });
+      //   定义数据
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+{{ message }}    <h1>{{ message }} <span>{{ foo }}</span></h1>
+    <input v-model="message" type="text">
+    <p>{{ message }}</p>
+    <ul>
+      <li>{{ foo }}</li>
+    </ul>
+
+    <div>
+      {{ foo }}
+      <p>{{ message }}</p>
+    </div>
+
+    {{ message }}
+
+    <div>
+      床前明月光
+    </div>
+
+    <ul>
+      <li>
+        <ul>
+          <li>
+            <ul>
+              <li>{{ count }}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button @click="test">改变 message</button>
+  </div>
+
+  <script src="./js/index.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world',
+        foo: 'bar',
+        count: 100
+      },
+      methods: {
+        test () {
+          // this.message = 'hello'
+          this.count++
+        }
+      }
+    })
+  </script>
+</body>
+</html>

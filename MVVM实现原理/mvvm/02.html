@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>hello world</h1>
+  <script>
+    const data = {
+      // message: 'hello world'
+    }
+
+    // 常规方式：给对象添加一个属性
+    // 动态添加：data.xxx = xxx
+    // 或者在创建对象的时候添加
+
+    // 普通数据成员
+    let message = 'hello world'
+
+    // 高级方式
+    // 参数1：数据对象
+    // 参数2：属性名
+    // 参数3：配置对象
+    //        get 访问器
+    //        set 赋值器
+    // 注意：该属性不是一般的数据，它本身无法存储数据
+    //       它的值是 get 方法的返回值
+    Object.defineProperty(data, 'message', {
+      configurable: false, // 是否可以重新配置
+      enumerable: true, // 是否可遍历
+      
+      // value: 'hello world', // 属性值
+      // writable: true, // 是否允许修改
+
+      get () {
+        console.log('message get 方法被调用了')
+        return message
+      },
+
+      // // 当对 message 赋值的时候调用 set
+      // set (value) {
+      //   console.log('message set 方法被调用了', value)
+      //   document.querySelector('h1').innerHTML = value
+      //   message = value
+      // }
+    })
+
+    // for (let key in data) {
+    //   console.log(key)
+    // }
+
+    // Object.defineProperty(data, 'message', {
+    //   get () {
+    //     return 'hello'
+    //   }
+    // })
+  </script>
+</body>
+</html>

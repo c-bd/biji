@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const data = {
+      message: 'hello world',
+      foo: 'bar'
+    }
+
+    // new Proxy 创建一个代理对象
+    // 参数1：目标对象
+    // 参数2：配置对象
+    //       get 访问器
+    //       set 赋值器
+    // Proxy 会代理所有成员
+    // 返回值：返回一个对象，该对象和 data 是一样的，但是会走代理
+    const p = new Proxy(data, {
+      get (target, property) {
+        // console.log('target => ', target) // 目标对象
+        // console.log('property => ', property) // 属性名
+        console.log(property, '被访问了')
+        return target[property]
+      },
+      set (target, property, value) {
+        console.log('target => ', target)
+        console.log('property => ', property)
+        console.log('value => ', value)
+        target[property] = value
+      }
+    })
+
+
+  </script>
+</body>
+</html>

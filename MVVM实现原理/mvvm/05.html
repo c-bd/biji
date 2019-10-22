@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const em = new EventEmitter()
+
+    // em.on('a', () => {
+    //   console.log('a1')
+    // })
+
+    // em.on('a', () => {
+    //   console.log('a2')
+    // })
+
+    // em.on('b', () => {
+    //   console.log('b1')
+    // })
+
+    // em.emit('a')
+
+    // {
+    //   a: [函数, 函数],
+    //   b: [函数]
+    // }
+
+    function EventEmitter () {
+      this.callbackList = {
+        
+      }
+    }
+
+    EventEmitter.prototype.on = function (eventName, callback) {
+      // 注册处理函数
+      // on('a', 函数)
+      // on('a', 函数)
+      // on('b', 函数)
+
+      // 如果没有a，就创建一个 a ，值是一个数组
+      if (!this.callbackList[eventName]) {
+        this.callbackList[eventName] = []
+      }
+
+      this.callbackList[eventName].push(callback)
+    }
+
+    EventEmitter.prototype.emit = function (eventName) {
+      // 发布调用
+      // emit('a')
+      // emit('abcd')
+      const list = this.callbackList[eventName]
+
+      if (list) {
+        list.forEach(callback => {
+          callback()
+        })
+      }
+    }
+  </script>
+</body>
+</html>
